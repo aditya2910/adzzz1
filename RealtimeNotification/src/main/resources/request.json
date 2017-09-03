@@ -1,0 +1,9 @@
+ {
+   "notification": {
+     "title": "Portugal vs. Denmark",
+     "body": "5 to 1",
+     "icon": "firebase-logo.png",
+     "click_action": "http://localhost:8000"
+   },
+   "to": "cezvGuLDPs0:APA91bG8fZyT-QSe_5CqLAPXqG6jWyjlvhjC19Kc1gXM-0VB6KXBRdlSf-sS6KDRRpOYDklhCgwcPO8AMY2pLHhX4j56nw0iAkJW6zFOciZxu6qPFfOdYyrJG934UuN73rV1L940AG0f"
+ }
