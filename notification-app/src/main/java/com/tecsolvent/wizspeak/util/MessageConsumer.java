@@ -29,13 +29,17 @@ public class MessageConsumer extends  Thread {
 
     @Override
     public void run() {
-        Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
+    	Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
         topicCountMap.put(TOPIC, new Integer(1));
         Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumerConnector.createMessageStreams(topicCountMap);
         KafkaStream<byte[], byte[]> stream =  consumerMap.get(TOPIC).get(0);
         ConsumerIterator<byte[], byte[]> it = stream.iterator();
-        while(it.hasNext())
-            System.out.println(new String(it.next().message()));
+		while (it.hasNext()) {
+			String msg = new String(it.next().message());
+			System.out.println("msg: " + msg);
+			// TODO: parse this msg and invoke notificaition to respective users
+
+		}
 
     }
 
