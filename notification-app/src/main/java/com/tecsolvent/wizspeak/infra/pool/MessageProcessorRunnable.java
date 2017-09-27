@@ -1,6 +1,11 @@
 package com.tecsolvent.wizspeak.infra.pool;
 
+import java.util.List;
 import java.util.Map;
+
+import com.tecsolvent.wizspeak.infra.cache.api.KeyValueCache;
+import com.tecsolvent.wizspeak.redis.impl.KeyValueRedisImpl;
+import com.tecsolvent.wizspeak.util.Constants;
 
 public class MessageProcessorRunnable implements Runnable{
 
@@ -13,9 +18,11 @@ public class MessageProcessorRunnable implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO - get list of subscribers from redis and send msg to them except sender
-		System.out.println("TODO - get list of subscribers from redis and send msg to them except sender");
+		KeyValueCache keyValueCache = KeyValueRedisImpl.getInstance();
+		List<String> listOfSubs = keyValueCache.getAll(msgMap.get( Constants.POST_ID_KEY).toString() );
+		System.out.println("listOfSubs: " + listOfSubs);
 		
+		// TODO: push this message as notification to listOfSubs to UI
 	}
 
 }
