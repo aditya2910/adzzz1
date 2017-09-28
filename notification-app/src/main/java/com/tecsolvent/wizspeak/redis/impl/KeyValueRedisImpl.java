@@ -61,15 +61,15 @@ public class KeyValueRedisImpl implements KeyValueCache {
 		return subscribers;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		KeyValueCache kvCache = new KeyValueRedisImpl();
 		List<String> list1 = kvCache.getAll("1");
 		System.out.println("before list1 - " + list1);
 		List<String> subscribers = new ArrayList<>();
-		subscribers.add("Anurag4");
-		subscribers.add("Anurag5");
+		subscribers.add("Anurag6");
+		subscribers.add("Anurag7");
 		kvCache.addElements("1", subscribers);
 		List<String> list2 = kvCache.getAll("1");
 		System.out.println("after list2 - " + list2);
-	}
+	}*/
 }

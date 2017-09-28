@@ -19,7 +19,9 @@ public class MessageProcessorRunnable implements Runnable{
 	@Override
 	public void run() {
 		KeyValueCache keyValueCache = KeyValueRedisImpl.getInstance();
-		List<String> listOfSubs = keyValueCache.getAll(msgMap.get( Constants.POST_ID_KEY).toString() );
+		//List<String> listOfSubs = keyValueCache.getAll(msgMap.get( Constants.POST_ID_KEY).toString() );
+		//List<String> listOfSubs = keyValueCache.getAll( "111" );
+		List<String> listOfSubs = keyValueCache.getAll( Constants.POST_ID_KEY );
 		System.out.println("listOfSubs: " + listOfSubs);
 		
 		// TODO: push this message as notification to listOfSubs to UI

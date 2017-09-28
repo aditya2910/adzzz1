@@ -43,7 +43,7 @@ public class MessageConsumer extends  Thread {
         ConsumerIterator<byte[], byte[]> it = stream.iterator();
         while(it.hasNext()){
 			String msg = new String(it.next().message() );
-			System.out.println("msg: " + msg);
+			System.out.println("incomimg msg: " + msg);
 			ObjectMapper mapper = new ObjectMapper();
 			try {
 				Map<String,Object> msgMap = mapper.readValue(msg, Map.class);
