@@ -1,8 +1,8 @@
-package com.wizspeak.notification.upstream.handler;
+package com.tecsolvent.wizspeak.notification.upstream.handler;
 
 import java.util.Map;
 
-import com.wizspeak.notification.upstream.util.Type;
+import com.tecsolvent.wizspeak.notification.dao.Notification;
 
 /**
  * this interface specifies contract for upstream to identify interested parties for given post_id
@@ -22,6 +22,6 @@ public interface WizspeakUpstreamHandler {
 	 * @param notificationMessage
 	 */
 	void createNotificationForInterestedParties( String actorId, long postId, 
-			Type notificationType, Map<String,String> notificationMessage );
+			Notification.Type notificationType, Map<String,String> notificationMessage );
 	
 }
