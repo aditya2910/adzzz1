@@ -17,8 +17,8 @@ public interface IDataAccessService {
 	/**
 	 * add new actor to the list of interested parties in cache after notification creation.
 	 * 
-	 * @param key
-	 * @param subsribers
+	 * @param postId
+	 * @param actorId
 	 */
 	public void addActorToInterestedParties( String postId, String actorId);
 	

@@ -1,5 +1,7 @@
 package com.wizspeak.notification.upstream.handler;
 
+import java.util.Map;
+
 import com.wizspeak.notification.upstream.util.Type;
 
 /**
@@ -19,7 +21,7 @@ public interface WizspeakUpstreamHandler {
 	 * @param notificationType
 	 * @param notificationMessage
 	 */
-	void createNotificationForInterestedParties( String userId, String actorId, long postId, 
-			Type notificationType, String notificationMessage );
+	void createNotificationForInterestedParties( String actorId, long postId, 
+			Type notificationType, Map<String,String> notificationMessage );
 	
 }
