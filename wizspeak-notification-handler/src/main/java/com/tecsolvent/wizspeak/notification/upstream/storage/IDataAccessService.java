@@ -1,4 +1,4 @@
-package com.wizspeak.notification.upstream.storage;
+package com.tecsolvent.wizspeak.notification.upstream.storage;
 
 import java.util.List;
 
