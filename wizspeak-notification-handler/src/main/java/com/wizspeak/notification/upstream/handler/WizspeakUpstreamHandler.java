@@ -3,7 +3,7 @@ package com.wizspeak.notification.upstream.handler;
 import com.wizspeak.notification.upstream.util.Type;
 
 /**
- * this interface specifies contract to for upstream to identify interested parties for given post_id
+ * this interface specifies contract for upstream to identify interested parties for given post_id
  *
  */
 public interface WizspeakUpstreamHandler {

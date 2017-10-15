@@ -6,13 +6,13 @@ import java.util.List;
  * this class would be point for storing and retrieving any data from underlying cache or database impl 
  *
  */
-public interface ICacheMaster {
+public interface IDataAccessService {
 	/**
 	 * get list of interested parties from cache
 	 * @param postId
 	 * @return
 	 */
-	public List<String> getListOfInterestedPartiesFromCache(String postId);
+	public List<String> getListOfInterestedParties(String postId);
 	
 	/**
 	 * add new actor to the list of interested parties in cache after notification creation.
@@ -20,6 +20,6 @@ public interface ICacheMaster {
 	 * @param key
 	 * @param subsribers
 	 */
-	public void addElements( String postId, String actorId);
+	public void addActorToInterestedParties( String postId, String actorId);
 	
 }
