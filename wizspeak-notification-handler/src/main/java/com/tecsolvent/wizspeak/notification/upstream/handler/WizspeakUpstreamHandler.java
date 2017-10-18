@@ -13,6 +13,7 @@ public interface WizspeakUpstreamHandler {
 	/**
 	 * this method would get interested parties from cache for given post id
 	 * and iterate though the list of interested parties and invoke create notification 
+	 * ( NotificationService - create )
 	 * After iteration, add the new user/actor to interested parties list
 	 * 
 	 * @param userId
@@ -21,7 +22,7 @@ public interface WizspeakUpstreamHandler {
 	 * @param notificationType
 	 * @param notificationMessage
 	 */
-	void createNotificationForInterestedParties( String actorId, long postId, 
+	void sendNotification( String actorId, long postId, 
 			Notification.Type notificationType, Map<String,String> notificationMessage );
 	
 }

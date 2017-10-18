@@ -26,6 +26,8 @@ public class Notification {
 	/* type of the notification. */
 	private Type type;
 	
+	
+	// TODO: need both setter and getter for status
 	/* Enum to hold different state/status of the notification. */
 	public enum Status {
 		

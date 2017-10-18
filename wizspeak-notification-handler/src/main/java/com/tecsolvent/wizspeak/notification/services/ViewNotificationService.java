@@ -15,18 +15,23 @@ public interface ViewNotificationService {
 	 * Update notification status
 	 * @param id, notification identifier.
 	 * @param status, status of notification.
+	 * @return boolean
 	 * @throws NotificationLogicException
 	 */
-	public void updateStatus(long id, Notification.Status status) throws NotificationLogicException;
+	public boolean updateStatus(long id, Notification.Status status) throws NotificationLogicException;
+	// TODO: change id to meaningful name
+	// this will be unsupported for now.
+	
 	
 	/**
 	 * Retrieves notifications of given user.
 	 * @param userId, user identifier
+	 * @param actorId
 	 * @param offset, index of the notification.
 	 * @param limit, number of notification required.
 	 * @return list of notification based on limit and offset.
 	 * @throws NotificationLogicException
 	 */
-	public List<Notification> get(long userId, long offset, long limit) throws NotificationLogicException;
+	public List<Notification> get(long userId, long actorId, long offset, long limit) throws NotificationLogicException;
 
 }

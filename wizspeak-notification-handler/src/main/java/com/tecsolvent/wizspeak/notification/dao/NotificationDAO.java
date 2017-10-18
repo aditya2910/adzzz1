@@ -18,10 +18,14 @@ public interface NotificationDAO {
 	
 	/**
 	 * Updates the notificaiton. 
+	 * update delta of notification
 	 * 
 	 * @param notification
+	 * @return boolean.
 	 * @throws NotificationCRUDException
 	 */
-	public void update(Notification notification) throws NotificationCRUDException;
+	public boolean update(Notification notification) throws NotificationCRUDException;
 
+	// TODO: have delete API with unsupported impl for now.
+	
 }
