@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<bean id="keyValueCache" class="com.tecsolvent.wizspeak.notification.upstream.storage.impl.KeyValueCache"
+			init-method="initIt">
+			<property name="redisHost" value="139.162.33.112" />
+			<property name="redisPort" value="6379" />
+	</bean>
+	
+	
+	
+</beans>

@@ -15,10 +15,38 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jdk.version>1.8</jdk.version>
+		<spring-framework.version>4.3.4.RELEASE</spring-framework.version>
 	</properties>
 
 	<dependencies>
-		
+		<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>4.2.1.RELEASE</version>
+    </dependency>
+ 
+    <!-- Spring test -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>4.2.1.RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+     
+    <!-- JUnit test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.redisson</groupId>
+		<artifactId>redisson</artifactId>
+		<version>3.1.0</version>
+	</dependency>
+				
 	</dependencies>
 
 	<build>
