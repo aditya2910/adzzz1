@@ -2,11 +2,21 @@ package com.tecsolvent.wizspeak.notification.dao;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import com.tecsolvent.wizspeak.notification.util.ValidationUtil;
+
 /* Model class for notifications. */
 public class Notification {
 	
+	/* Dummy id to represent new object. */
+	public static final String NEW_ID = "NEW_ID";
+	
 	/* notification identifier */
-	private long id;
+	private String id;
+	
+	/* identifier of entity with which notification is associated with. */
+	private long associationId;
 	
 	/* picture associated with the notification. */
 	private String picUrl;
@@ -29,27 +39,36 @@ public class Notification {
 	/* Category of the notification. */
 	private Category category;
 	
+	/* user identifier for whom notification belongs */
+	private long userId;
+	
 	/**
-	 * Constructor
+	 * Default constructor
+	 */
+	public Notification() {
+		setId(NEW_ID);
+	}	
+	
+	/**
 	 * @param id
 	 * @param picUrl
+	 * @param userId
 	 * @param message
+	 * @param associationId
 	 * @param status
-	 * @param dateAdded
-	 * @param dateModified
 	 * @param type
 	 * @param category
 	 */
-	public Notification(long id, String picUrl, String message, Status status, Date dateAdded, Date dateModified, Type type, Category category) {
-		
+	public Notification(String id, String picUrl, long userId, String message, long associationId, Status status, Type type, Category category) {
+		this();
 		setId(id);
 		setPicUrl(picUrl);
+		setUserId(userId);
 		setMessage(message);
 		setStatus(status);
-		setDateAdded(dateAdded);
-		setDateModified(dateModified);
 		setType(type);
 		setCategory(category);		
+		setAssociationId(associationId);
 	}
 	
 	/* Enum to hold different state/status of the notification. */
@@ -109,7 +128,7 @@ public class Notification {
 		}
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -140,37 +159,74 @@ public class Notification {
 	public Category getCategory() {
 		return category;
 	}
+	
+	public long getUserId() {
+		return userId;
+	}
 
-	private void setId(long id) {
+	public void setId(String id) {
+		if (id == null || id.length() == 0) {
+			throw new IllegalArgumentException("Invalid identifier.");
+		}
 		this.id = id;
 	}
 
 	private void setPicUrl(String picUrl) {
+		ValidationUtil.validateNonNull(picUrl, "Picture url can't be null.");
 		this.picUrl = picUrl;
 	}
 
 	private void setMessage(String message) {
+		ValidationUtil.validateNonNull(message, "Message can't be null.");
 		this.message = message;
 	}
 
-	private void setStatus(Status status) {
+	public void setStatus(Status status) {
+		ValidationUtil.validateNonNull(status, "Status can't be null.");
 		this.status = status;
 	}
 
-	private void setDateAdded(Date dateAdded) {
+	public void setDateAdded(Date dateAdded) {
+		ValidationUtil.validateNonNull(dateAdded, "Date added can't be null.");
 		this.dateAdded = dateAdded;
 	}
 
-	private void setDateModified(Date dateModified) {
+	public void setDateModified(Date dateModified) {
+		ValidationUtil.validateNonNull(dateModified, "Date modified can't be null.");
 		this.dateModified = dateModified;
 	}
 
 	private void setType(Type type) {
+		ValidationUtil.validateNonNull(type, "Notification type can't be null.");
 		this.type = type;
 	}
 
 	private void setCategory(Category category) {
+		ValidationUtil.validateNonNull(category, "Notification category can't be null.");
 		this.category = category;
 	}
+	
+	private void setUserId(long userId) {		
+		this.userId = userId;
+	}
 
+	public long getAssociationId() {
+		return associationId;
+	}
+
+	private void setAssociationId(long associationId) {
+		this.associationId = associationId;
+	}
+	
+	String getSearchKey() {
+		return getSearchKey(String.valueOf(getUserId()), String.valueOf(getAssociationId()), getCategory(), getType());
+	}
+	
+	static String getSearchKey(String userId, String assocId, Category category, Type type) {
+		return userId + assocId + category.getValue() + type.getValue();
+	}
+	
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }
