@@ -1,0 +1,24 @@
+<?php
+App::uses('Component', 'Controller');
+
+class CurlComponent extends Component {
+
+
+
+        public function __construct() {
+
+
+
+        }
+
+        public function fetchCurl($url){
+
+            $ch1 = curl_init();
+            curl_setopt($ch1,CURLOPT_URL,$url);
+			curl_setopt($ch1,CURLOPT_RETURNTRANSFER,true);
+			$output=curl_exec($ch1);
+			curl_close($ch1);
+			$result = json_decode($output);
+			result $result;
+        }
+}
