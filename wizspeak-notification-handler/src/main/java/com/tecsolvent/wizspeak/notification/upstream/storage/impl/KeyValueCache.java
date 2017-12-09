@@ -1,17 +1,20 @@
 package com.tecsolvent.wizspeak.notification.upstream.storage.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.redisson.Redisson;
 import org.redisson.api.RBucket;
 import org.redisson.api.RMap;
+import org.redisson.api.RSet;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 
 import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.exception.InterestedPartiesHandlerException;
 import com.tecsolvent.wizspeak.notification.upstream.storage.api.IKeyValueCache;
+import com.tecsolvent.wizspeak.notification.util.StringUtils;
 
 public class KeyValueCache implements IKeyValueCache {
 	
@@ -45,16 +48,36 @@ public class KeyValueCache implements IKeyValueCache {
 	}
 
 	public boolean addElements(String key, List<String> subsribers) throws InterestedPartiesHandlerException {
-		System.out.println( "redisson: " + redisson );
-		return false;
+		if(StringUtils.isEmpty(key)){
+			throw new InterestedPartiesHandlerException("key cannot be null/empty!!");
+		}
+		RSet<String> rset = redisson.getSet(key);
+		return rset.addAll(subsribers);
+	}
+	
+	public boolean addActorToInterestedParties(String key, String actorId) throws InterestedPartiesHandlerException {
+		if(StringUtils.isEmpty(key)){
+			throw new InterestedPartiesHandlerException("key cannot be null/empty!!");
+		}
+		RSet<String> rset = redisson.getSet(key);
+		return rset.add(actorId);
 	}
 
 	public List<String> getAll(String key) throws InterestedPartiesHandlerException {
-		// TODO Auto-generated method stub
-		return null;
+		if(StringUtils.isEmpty(key)){
+			throw new InterestedPartiesHandlerException("key cannot be null/empty!!");
+		}
+		RSet<String> rset = redisson.getSet(key);
+		List<String> subscribers = new ArrayList<String>();
+		if(rset != null && !rset.isEmpty()){
+			for(String subscriber : rset){
+				subscribers.add(subscriber);
+			}
+		}
+		return subscribers;
 	}
 	
-	// TODO: add below methods to IKeyValueCache when they are discussed to be fine
+	// TODO: add below methods to IKeyValueCache when they are discussed to be fine. Is all get methods fine ?
 	public void addNotificationObjectsToStore(String key, Notification notification) throws InterestedPartiesHandlerException {
 		RBucket<Notification> bucket = redisson.getBucket(key);
 		bucket.set(notification);
