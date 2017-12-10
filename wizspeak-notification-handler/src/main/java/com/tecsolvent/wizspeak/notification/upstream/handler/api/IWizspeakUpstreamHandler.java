@@ -21,8 +21,9 @@ public interface IWizspeakUpstreamHandler {
 	 * @param postId
 	 * @param notificationType
 	 * @param notificationMessage
+	 * @param isActorSubscriber - check if the actor wants to get added to interested party list
 	 */
-	void sendNotification( String actorId, long postId, Notification.Type notificationType, Map<String,String> msgContainer );
+	void sendNotification( String actorId, long postId, Notification.Type notificationType, Map<String,String> msgContainer, boolean isActorSubscriber );
 	// boolean isActorSubscriber
 	
 }
