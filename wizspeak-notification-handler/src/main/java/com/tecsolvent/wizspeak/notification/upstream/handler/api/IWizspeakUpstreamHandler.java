@@ -22,7 +22,7 @@ public interface IWizspeakUpstreamHandler {
 	 * @param notificationType
 	 * @param notificationMessage
 	 */
-	void sendNotification( String actorId, long postId, 
-			Notification.Type notificationType, Map<String,String> msgContainer );
+	void sendNotification( String actorId, long postId, Notification.Type notificationType, Map<String,String> msgContainer );
+	// boolean isActorSubscriber
 	
 }

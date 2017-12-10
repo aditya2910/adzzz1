@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.tecsolvent.wizspeak.notification.exception.InterestedPartiesHandlerException;
 
-//TODO: see if having DataAccessService is also needed with KeyValueCache
+/**
+ * this interface is for handling data store and retrieve to redis
+ * @author adityakumar
+ *
+ */
 public interface IKeyValueCache {
 	
 	public boolean addElements(String key, List<String> subsribers) throws InterestedPartiesHandlerException;
