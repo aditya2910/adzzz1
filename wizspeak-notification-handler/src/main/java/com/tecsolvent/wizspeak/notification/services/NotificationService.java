@@ -3,7 +3,9 @@ package com.tecsolvent.wizspeak.notification.services;
 import java.util.List;
 import java.util.Map;
 
+import com.tecsolvent.wizspeak.notification.dao.NotFoundException;
 import com.tecsolvent.wizspeak.notification.dao.Notification;
+import com.tecsolvent.wizspeak.notification.dao.Notification.Category;
 
 /* Service class to handle CRUD operations for notifications.*/
 public interface NotificationService {
@@ -11,13 +13,15 @@ public interface NotificationService {
 	/**
 	 * Creates or updates a notification.
 	 * @param userId, user identifier 
+	 * @param category, category of the notification
 	 * @param postId, post identifier
 	 * @param notificationType, type of notification to be generated.
 	 * @param msgContainer, data map to construct the message.
 	 * @return boolean
 	 * @throws NotificationLogicException
 	 */
-	public boolean create(long userId, long postId, Notification.Type notificationType, Map<String, String> msgContainer) throws NotificationLogicException;
+  public void save(long userId, Category category, long postId, Notification.Type notificationType, Map<String, String> msgContainer) throws NotificationLogicException;
+
 	
 	/**
 	 * Updates a notification. 
@@ -37,7 +41,7 @@ public interface NotificationService {
 	 * @return list of notification based on limit and offset.
 	 * @throws NotificationLogicException
 	 */
-	public List<Notification> get(long userId, long offset, long limit) throws NotificationLogicException;
+	public List<Notification> get(long userId, int offset, int limit) throws NotificationLogicException;
 	
 	/**
 	 * Retrieves all notifications of the user.
