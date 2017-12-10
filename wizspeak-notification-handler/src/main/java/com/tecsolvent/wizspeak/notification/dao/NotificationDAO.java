@@ -21,9 +21,10 @@ public interface NotificationDAO {
 	public String save(Notification notification) throws NotificationCRUDException;
 	
 	/**
-	 * Updates the notification. 
+	 * update  of notification
 	 * 
 	 * @param notification
+	 * @return boolean.
 	 * @throws NotificationCRUDException
 	 */
 	public void update(Notification notification) throws NotificationCRUDException;
@@ -50,4 +51,5 @@ public interface NotificationDAO {
 	 */
 	public Notification get(long userId, Category category, long assocId, Type notificationType ) throws NotFoundException;
 
+	
 }

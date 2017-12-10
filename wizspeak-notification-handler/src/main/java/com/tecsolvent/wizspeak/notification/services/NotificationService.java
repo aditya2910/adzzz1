@@ -17,17 +17,20 @@ public interface NotificationService {
 	 * @param postId, post identifier
 	 * @param notificationType, type of notification to be generated.
 	 * @param msgContainer, data map to construct the message.
+	 * @return boolean
 	 * @throws NotificationLogicException
 	 */
-	public void save(long userId, Category category, long postId, Notification.Type notificationType, Map<String, String> msgContainer) throws NotificationLogicException;
+  public void save(long userId, Category category, long postId, Notification.Type notificationType, Map<String, String> msgContainer) throws NotificationLogicException;
+
 	
 	/**
 	 * Updates a notification. 
 	 * Note :- Null values should be ignored.
 	 * @param notification, notification object
+	 * @return boolean
 	 * @throws NotificationLogicException
 	 */
-	public void update(Notification notification) throws NotificationLogicException;	
+	public boolean update(Notification notification) throws NotificationLogicException;	
 	
 	
 	/**

@@ -36,6 +36,7 @@ public class Notification {
 	/* type of the notification. */
 	private Type type;
 	
+
 	/* Category of the notification. */
 	private Category category;
 	
@@ -71,6 +72,7 @@ public class Notification {
 		setAssociationId(associationId);
 	}
 	
+
 	/* Enum to hold different state/status of the notification. */
 	public enum Status {
 		
