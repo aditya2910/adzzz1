@@ -36,14 +36,14 @@ public class WizspeakUpstreamHandlerTest {
 		//keyValueCache.addElements("key", list);
 		
 		List<String> listResp = keyValueCache.getAll("key");
-		list.forEach(System.out::println);
+		//list.forEach(System.out::println);
 	}
 	
 	@Test
 	public void sendNotificationTest() {
 		System.out.println("wizspeakUpstreamHandler: " + wizspeakUpstreamHandler);
-		Map<String, String> msgContainer = new HashMap<>();
-		wizspeakUpstreamHandler.sendNotification("actorId", Long.MAX_VALUE, Type.COMMENT, msgContainer, true);
+		Map<String, String> msgContainer = new HashMap<String, String>();
+		wizspeakUpstreamHandler.sendNotification("actorId", Notification.Category.AMBITION, Long.MAX_VALUE, Type.COMMENT, msgContainer, true);
 	}
 
 }

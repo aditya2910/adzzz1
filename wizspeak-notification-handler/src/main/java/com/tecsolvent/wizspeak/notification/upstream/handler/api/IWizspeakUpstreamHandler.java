@@ -17,13 +17,14 @@ public interface IWizspeakUpstreamHandler {
 	 * After iteration, add the new user/actor to interested parties list
 	 * 
 	 * @param userId
+	 * @param notificationCategory
 	 * @param actorId
 	 * @param postId
 	 * @param notificationType
 	 * @param notificationMessage
 	 * @param isActorSubscriber - check if the actor wants to get added to interested party list
 	 */
-	void sendNotification( String actorId, long postId, Notification.Type notificationType, Map<String,String> msgContainer, boolean isActorSubscriber );
+	void sendNotification( String actorId, Notification.Category notificationCategory, long postId, Notification.Type notificationType, Map<String,String> msgContainer, boolean isActorSubscriber );
 	// boolean isActorSubscriber
 	
 }

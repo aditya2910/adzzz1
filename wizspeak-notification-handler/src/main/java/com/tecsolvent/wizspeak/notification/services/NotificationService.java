@@ -30,7 +30,7 @@ public interface NotificationService {
 	 * @return boolean
 	 * @throws NotificationLogicException
 	 */
-	public boolean update(Notification notification) throws NotificationLogicException;	
+	public void update(Notification notification) throws NotificationLogicException;	
 	
 	
 	/**
