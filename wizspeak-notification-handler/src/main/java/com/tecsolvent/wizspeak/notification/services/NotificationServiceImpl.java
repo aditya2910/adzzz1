@@ -33,14 +33,34 @@ public class NotificationServiceImpl implements NotificationService {
 			
 		}
 		
+		
 		// TODO update the notification message.
 		
-		Notification notification = new Notification(notificationId, "", userId, "", assocId, Notification.Status.UNREAD, notificationType, category);
+		Notification notification = new Notification(notificationId, "", userId, getMessage(notificationType), assocId, Notification.Status.UNREAD, notificationType, category);
 		try {
 			notificationDAO.save(notification);
 		} catch (NotificationCRUDException e) {
 			throw new NotificationLogicException("Error in saving notification.", e);
 		}
+	}
+	
+	private String getMessage(Notification.Type notificationType) {
+		StringBuilder msg = new StringBuilder("Some user ");
+		switch(notificationType) {
+		case COMMENT:
+			msg.append("commented.");
+			break;
+		case FRND_REQ:
+			msg.append("send friend request.");
+			break;
+		case LIKE:
+			msg.append("liked.");
+			break;
+		default:
+			break;
+		
+		}
+		return msg.toString();
 	}
 	
 }
