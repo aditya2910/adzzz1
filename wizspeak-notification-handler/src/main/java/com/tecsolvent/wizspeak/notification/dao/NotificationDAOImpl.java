@@ -1,6 +1,5 @@
 package com.tecsolvent.wizspeak.notification.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,14 +42,16 @@ public class NotificationDAOImpl implements NotificationDAO {
 		userCache.put(userId, notifications);
 		
 		return notification.getId();
-	}
-
-	public void update(Notification notification) throws NotificationCRUDException {
-		// TODO Auto-generated method stub		
-	}
-
-	public Notification get(long notificationId) throws NotFoundException {		
-		return notificationCache.get(String.valueOf(notificationId));
+	}	
+	
+	public Notification get(String notificationId) throws NotFoundException {	
+		Notification notification = notificationCache.get(notificationId);
+		
+		if (notification == null) {
+			throw new NotFoundException("Notification does not exist");
+		}
+		
+		return notification;
 	}
 
 	public List<Notification> getAll(long userId) {	
