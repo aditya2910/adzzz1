@@ -18,22 +18,13 @@ public interface NotificationDAO {
 	 * @return notification identifier.
 	 * @throws NotificationCRUDException
 	 */
-	public String save(Notification notification) throws NotificationCRUDException;
-	
-	/**
-	 * update  of notification
-	 * 
-	 * @param notification
-	 * @return boolean.
-	 * @throws NotificationCRUDException
-	 */
-	public void update(Notification notification) throws NotificationCRUDException;
+	public String save(Notification notification) throws NotificationCRUDException;	
 	
 	/**
 	 * @param notificationId, notification identifier
 	 * @return notification
 	 */
-	public Notification get(long notificationId) throws NotFoundException;
+	public Notification get(String notificationId) throws NotFoundException;
 	
 	/**
 	 * @param userId, user identifier

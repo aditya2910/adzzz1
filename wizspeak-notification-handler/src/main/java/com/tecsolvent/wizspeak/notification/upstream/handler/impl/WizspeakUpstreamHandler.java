@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Type;
 import com.tecsolvent.wizspeak.notification.exception.InterestedPartiesHandlerException;
 import com.tecsolvent.wizspeak.notification.services.NotificationLogicException;
@@ -21,7 +22,7 @@ public class WizspeakUpstreamHandler implements IWizspeakUpstreamHandler {
 	@Autowired 
 	private NotificationService notificationService;
 
-	public void sendNotification(String actorId, long postId, Type notificationType, Map<String, String> msgContainer, boolean isActorSubscriber) {
+	public void sendNotification(String actorId, Notification.Category notificationCategory, long postId, Type notificationType, Map<String, String> msgContainer, boolean isActorSubscriber) {
 		try {
 			List<String> listOfExistingInterestedParties = keyValueCache.getAll(Long.toString(postId));
 			Iterator<String> iteratorOfInterestedParties = listOfExistingInterestedParties.iterator();
@@ -29,7 +30,7 @@ public class WizspeakUpstreamHandler implements IWizspeakUpstreamHandler {
 			while( iteratorOfInterestedParties.hasNext() ) {
 				String interestedPartyId = iteratorOfInterestedParties.next();
 				try {
-					notificationService.create(postId, postId, notificationType, msgContainer);
+					notificationService.save(postId, notificationCategory, postId, notificationType, msgContainer);
 				} catch (NotificationLogicException e) {
 					e.printStackTrace();
 				}
