@@ -3,6 +3,8 @@ package com.tecsolvent.wizspeak.notification.upstream.handler.api;
 import java.util.Map;
 
 import com.tecsolvent.wizspeak.notification.dao.Notification;
+import com.tecsolvent.wizspeak.notification.dao.Notification.Category;
+import com.tecsolvent.wizspeak.notification.dao.Notification.Type;
 
 /**
  * this interface specifies contract for upstream to identify interested parties for given post_id
@@ -23,7 +25,7 @@ public interface IWizspeakUpstreamHandler {
 	 * @param notificationMessage
 	 * @param isActorSubscriber - check if the actor wants to get added to interested party list
 	 */
-	void sendNotification( String actorId, long postId, Notification.Type notificationType, Map<String,String> msgContainer, boolean isActorSubscriber );
+	void sendNotification( long userId, Category category, long actorId, long postId, Type notificationType, Map<String,String> msgContainer, boolean isActorSubscriber );
 	// boolean isActorSubscriber
 	
 }
