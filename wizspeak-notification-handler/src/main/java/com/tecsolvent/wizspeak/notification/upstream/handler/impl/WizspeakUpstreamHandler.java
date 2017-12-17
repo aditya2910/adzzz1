@@ -1,12 +1,9 @@
 package com.tecsolvent.wizspeak.notification.upstream.handler.impl;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tecsolvent.wizspeak.notification.dao.Notification.Category;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Type;
 import com.tecsolvent.wizspeak.notification.exception.InterestedPartiesHandlerException;
@@ -24,18 +21,9 @@ public class WizspeakUpstreamHandler implements IWizspeakUpstreamHandler {
 	private NotificationService notificationService;
 
 	public void sendNotification(long userId, Category category, long actorId, long postId, Type notificationType, Map<String, String> msgContainer, boolean isActorSubscriber) {
+
 		try {
 			Set<String> setOfExistingInterestedParties = keyValueCache.getAll(Long.toString(postId));
-			System.out.println("setOfExistingInterestedParties: " + setOfExistingInterestedParties);
-			/*Iterator<String> iteratorOfInterestedParties = setOfExistingInterestedParties.iterator();
-			
-			while( iteratorOfInterestedParties.hasNext() ) {
-				try {
-					notificationService.save( actorId, category, postId, notificationType, msgContainer);
-				} catch (NotificationLogicException e) {
-					e.printStackTrace();
-				}
-			}*/
 			
 			setOfExistingInterestedParties.forEach(ip -> {
 				try {
