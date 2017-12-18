@@ -55,7 +55,12 @@
 		<version>3.1.0</version>
 	</dependency>
 				
-
+	<dependency>
+        <groupId>com.sparkjava</groupId>
+        <artifactId>spark-core</artifactId>
+        <version>2.5</version>
+    </dependency>
+    
 	</dependencies>
 
 	<build>
@@ -67,6 +72,8 @@
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
+					<source>1.8</source>
+                		<target>1.8</target>
 				</configuration>
 			</plugin>
 

@@ -1,8 +1,10 @@
 package com.tecsolvent.wizspeak.notification.upstream.storage.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.redisson.Redisson;
 import org.redisson.api.RBucket;
@@ -63,12 +65,12 @@ public class KeyValueCache implements IKeyValueCache {
 		return rset.add(actorId);
 	}
 
-	public List<String> getAll(String key) throws InterestedPartiesHandlerException {
+	public Set<String> getAll(String key) throws InterestedPartiesHandlerException {
 		if(StringUtils.isEmpty(key)){
 			throw new InterestedPartiesHandlerException("key cannot be null/empty!!");
 		}
 		RSet<String> rset = redisson.getSet(key);
-		List<String> subscribers = new ArrayList<String>();
+		Set<String> subscribers = new HashSet<String>();
 		if(rset != null && !rset.isEmpty()){
 			for(String subscriber : rset){
 				subscribers.add(subscriber);

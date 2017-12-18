@@ -11,7 +11,10 @@
 	</bean>
 	<bean id="wizspeakUpstreamHandler" class="com.tecsolvent.wizspeak.notification.upstream.handler.impl.WizspeakUpstreamHandler">
 	</bean>
-	
+	<bean id="notificationService" class="com.tecsolvent.wizspeak.notification.services.NotificationServiceImpl">
+	</bean>
+	<bean id="notificationDAO" class="com.tecsolvent.wizspeak.notification.dao.NotificationDAOImpl">
+	</bean>
 	
 	
 </beans>
