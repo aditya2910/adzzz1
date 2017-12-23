@@ -13,23 +13,30 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
 public class MainTestClass {
+	static ClassPathXmlApplicationContext ctx = null;
+	static {
+		ctx = new ClassPathXmlApplicationContext("appConfig.xml");
+	}
 	
 	public static void main(String[] args) {
 	get("/hello", new Route() {
 		@Override
 		public Object handle(Request request, Response response) throws NotificationLogicException {
-		// process request
-			ViewNotificationService vns = new ViewNotificationServiceImpl();
-			return vns.get(1234);
+			return createResponse();
 		}
 		});
 	}
 	private static String createResponse() throws NotificationLogicException {
 		//1234
-		ViewNotificationService vns = new ViewNotificationServiceImpl();
-			List<Notification> listOfNotification = vns.get(1234);
-			System.out.println("listOfNotification size: " + listOfNotification.size());
+		
+
+		ViewNotificationService vns = ctx.getBean(ViewNotificationServiceImpl.class);
+		System.out.println("vns: " + vns);
+		List<Notification> listOfNotification = vns.get(1234);
 		
 		return "Hello World";
 	}
