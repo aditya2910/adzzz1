@@ -17,28 +17,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class MainTestClass {
-	static ClassPathXmlApplicationContext ctx = null;
-	static {
-		ctx = new ClassPathXmlApplicationContext("appConfig.xml");
-	}
 	
 	public static void main(String[] args) {
-	get("/hello", new Route() {
-		@Override
-		public Object handle(Request request, Response response) throws NotificationLogicException {
-			return createResponse();
-		}
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("appConfig.xml");
+		get("/hello", new Route() {
+			@Override
+			public Object handle(Request request, Response response) throws NotificationLogicException {
+				ViewNotificationService vns = ctx.getBean(ViewNotificationServiceImpl.class);
+				System.out.println("vns: " + vns);
+				vns.get(123L);
+				return "Hello World";
+			}
 		});
-	}
-	private static String createResponse() throws NotificationLogicException {
-		//1234
-		
-
-		ViewNotificationService vns = ctx.getBean(ViewNotificationServiceImpl.class);
-		System.out.println("vns: " + vns);
-		List<Notification> listOfNotification = vns.get(1234);
-		
-		return "Hello World";
 	}
 
 }
