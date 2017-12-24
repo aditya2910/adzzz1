@@ -1,6 +1,5 @@
 package com.tecsolvent.wizspeak.notification.upstream.storage.impl;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +7,6 @@ import java.util.Set;
 
 import org.redisson.Redisson;
 import org.redisson.api.RBucket;
-import org.redisson.api.RMap;
 import org.redisson.api.RSet;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -21,8 +19,8 @@ import com.tecsolvent.wizspeak.notification.util.StringUtils;
 public class KeyValueCache implements IKeyValueCache {
 	
 	private static RedissonClient redisson = null;
-	String redisHost = null;
-	String redisPort = null;
+	private String redisHost = null;
+	private String redisPort = null;
 	
 	public String getRedisHost() {
 		return redisHost;
@@ -80,24 +78,25 @@ public class KeyValueCache implements IKeyValueCache {
 	}
 	
 	// TODO: add below methods to IKeyValueCache when they are discussed to be fine. Is all get methods fine ?
-	public void addNotificationObjectsToStore(String key, Notification notification) throws InterestedPartiesHandlerException {
+	public void addNotification(String key, Notification notification) {
 		RBucket<Notification> bucket = redisson.getBucket(key);
 		bucket.set(notification);
 	}
 	
-	public Notification getNotificationObjectsFromStore(String key) throws InterestedPartiesHandlerException {
+	public Notification getNotification(String key) {
 		RBucket<Notification> bucket = redisson.getBucket(key);
 		return bucket.get();
 	}
 	
-	public void addNotificationsMapToStore(String key, Map<String,Notification> mapOfNotifications) throws InterestedPartiesHandlerException {
-		RMap<String, Notification> rmap = redisson.getMap(key);
-		rmap.putAll(mapOfNotifications);
+	public void addNotificationsMap(String key, Map<String,Notification> mapOfNotifications) {
+		RBucket< Map<String, Notification>> bucket = redisson.getBucket(key);
+		bucket.set(mapOfNotifications);
 	}
 	
-	public Map<String,Notification> getNotificationsMapFromStore(String key, Map<String,Notification> mapOfNotifications) throws InterestedPartiesHandlerException {
+	public Map<String,Notification> getNotificationsMap(String key) {
 		//https://github.com/redisson/redisson/wiki/7.-Distributed-collections
-		return null;
+		RBucket< Map<String, Notification>> bucket = redisson.getBucket(key);
+		return bucket.get();
 	}
 
 }

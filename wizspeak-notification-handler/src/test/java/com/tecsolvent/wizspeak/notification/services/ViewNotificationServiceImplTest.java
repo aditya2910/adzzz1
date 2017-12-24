@@ -4,43 +4,42 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.tecsolvent.wizspeak.notification.dao.NotFoundException;
 import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.dao.NotificationCRUDException;
 import com.tecsolvent.wizspeak.notification.dao.NotificationDAO;
 import com.tecsolvent.wizspeak.notification.dao.NotificationDAOImpl;
 
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:appConfig.xml")
 public class ViewNotificationServiceImplTest {
 	
+	@Autowired
 	private ViewNotificationServiceImpl viewService;
 	
+	@Autowired
 	private NotificationDAO notificationDAO;
 	
 	private static final long userId = 100000;
-	
-	@Before
-	public void setUp() {
-		viewService = new ViewNotificationServiceImpl();
-		notificationDAO = new NotificationDAOImpl();
-		viewService.setNotificationDAO(notificationDAO);
-	}
-	
-	@After
-	public void tearDown() {
-		viewService = null;
-		notificationDAO = null;
-	}
 
 	@Test
-	public void updateStatus() throws NotificationCRUDException, NotificationLogicException {
-		Notification notification = new Notification("100", "", 12, "", 23, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
+	public void updateStatus() throws NotificationCRUDException, NotificationLogicException, NotFoundException {
+		Notification notification = new Notification(Notification.NEW_ID, "", userId, "", 23, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
 		notificationDAO.save(notification);
 		viewService.updateStatus(notification.getId(), Notification.Status.UNREAD);
+		notification = notificationDAO.get(notification.getId());
 		assertEquals(Notification.Status.UNREAD, notification.getStatus());
 	}
 	
@@ -52,7 +51,7 @@ public class ViewNotificationServiceImplTest {
 	@Test(expected=NotificationLogicException.class) 
 	public void testInvalidLimit() throws NotificationLogicException, NotificationCRUDException {
 		long assocId = 5001;
-		Notification notification = new Notification("100", "", 12, "", assocId, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
+		Notification notification = new Notification(Notification.NEW_ID, "", userId, "", assocId, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
 		notificationDAO.save(notification);
 		viewService.get(assocId, 0, 3);
 	}
@@ -67,7 +66,7 @@ public class ViewNotificationServiceImplTest {
 	public void testGetLimitOffset() throws NotificationLogicException, NotificationCRUDException {
 		long assocId = 5001;
 		for (int i = 0; i < 1000; i++) {
-			Notification notification = new Notification(String.valueOf(i), "", userId, "", assocId++, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
+			Notification notification = new Notification(Notification.NEW_ID, "", userId, "", assocId++, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
 			notificationDAO.save(notification);
 		}
 		List<Notification> randomNotifications = viewService.get(userId, 0, 100);
@@ -77,18 +76,19 @@ public class ViewNotificationServiceImplTest {
 	@Test
 	public void testGet() throws NotificationLogicException, NotificationCRUDException {
 		long assocId = 5001;
-		Notification notification = new Notification("100", "", userId, "", assocId, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
+		long userId = 123456787;
+		Notification notification = new Notification(Notification.NEW_ID, "", userId, "", assocId, Notification.Status.READ, Notification.Type.COMMENT, Notification.Category.AMBITION);
 		notificationDAO.save(notification);
 		
 		List<Notification> notifications = viewService.get(userId);
 		
-		assertTrue(notifications.size() == 1);
-		assertTrue(notifications.get(0).getUserId() == userId);
+		assertTrue("Size didn't match.",notifications.size() == 1);
+		assertTrue("User id didn't match", notifications.get(0).getUserId() == userId);
 	}
 		
 	@Test
 	public void testEmptyGetAll() throws NotificationLogicException {
-		List<Notification> notifications = viewService.get(userId);
+		List<Notification> notifications = viewService.get(123452345);
 		assertNotNull(notifications);
 		assertEquals(0, notifications.size());
 	}

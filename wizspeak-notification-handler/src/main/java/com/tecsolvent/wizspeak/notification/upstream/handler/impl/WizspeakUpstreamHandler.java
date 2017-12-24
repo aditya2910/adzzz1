@@ -3,7 +3,6 @@ package com.tecsolvent.wizspeak.notification.upstream.handler.impl;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Category;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Type;
 import com.tecsolvent.wizspeak.notification.exception.InterestedPartiesHandlerException;
@@ -14,18 +13,24 @@ import com.tecsolvent.wizspeak.notification.upstream.storage.impl.KeyValueCache;
 
 public class WizspeakUpstreamHandler implements IWizspeakUpstreamHandler {
 	
-	@Autowired
-	private KeyValueCache keyValueCache;
-	
-	@Autowired 
+	private KeyValueCache keyValueCache;	
 	private NotificationService notificationService;
+	
+	public void setKeyValueCache(KeyValueCache keyValueCache) {
+		this.keyValueCache = keyValueCache;
+	}
+
+	public void setNotificationService(NotificationService notificationService) {
+		this.notificationService = notificationService;
+	}
 
 	public void sendNotification(long userId, Category category, long actorId, long postId, Type notificationType, Map<String, String> msgContainer, boolean isActorSubscriber) {
 
 		try {
 			Set<String> setOfExistingInterestedParties = keyValueCache.getAll(Long.toString(postId));
+			setOfExistingInterestedParties.add(String.valueOf(userId));
 			
-			setOfExistingInterestedParties.forEach(ip -> {
+			for (String ip : setOfExistingInterestedParties) {
 				try {
 					notificationService.save( Long.parseLong(ip), category, postId, notificationType, msgContainer);
 				} catch (NumberFormatException e) {
@@ -33,11 +38,8 @@ public class WizspeakUpstreamHandler implements IWizspeakUpstreamHandler {
 				} catch (NotificationLogicException e) {
 					e.printStackTrace();
 				}
-			});
+			}			
 			
-			if(!setOfExistingInterestedParties.contains(Long.toString(userId)) ) {
-				keyValueCache.addActorToInterestedParties(Long.toString(postId), Long.toString(userId));
-			}
 			if( isActorSubscriber ) {
 				keyValueCache.addActorToInterestedParties(Long.toString(postId), Long.toString(actorId));
 			}

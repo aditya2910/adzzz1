@@ -1,9 +1,7 @@
 package com.tecsolvent.wizspeak.notification.services;
 
-import java.util.List;
 import java.util.Map;
 
-import com.tecsolvent.wizspeak.notification.dao.NotFoundException;
 import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Category;
 

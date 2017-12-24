@@ -2,8 +2,6 @@ package com.tecsolvent.wizspeak.notification.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tecsolvent.wizspeak.notification.dao.NotFoundException;
 import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.dao.Notification.Status;
@@ -12,7 +10,6 @@ import com.tecsolvent.wizspeak.notification.dao.NotificationDAO;
 
 public class ViewNotificationServiceImpl implements ViewNotificationService {
 	
-	@Autowired
 	private NotificationDAO notificationDAO;
 
 	public void setNotificationDAO(NotificationDAO notificationDAO) {

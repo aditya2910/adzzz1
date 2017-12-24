@@ -5,29 +5,23 @@ import java.util.HashMap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.tecsolvent.wizspeak.notification.dao.Notification;
 import com.tecsolvent.wizspeak.notification.dao.NotificationDAOImpl;
 
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:appConfig.xml")
 public class NotificationServiceImplTest {
 	
+	@Autowired
 	private NotificationServiceImpl notificationService;
-	private NotificationDAOImpl notificationDAO;
 	
 	private static final long userId = 100000;
-
-	@Before
-	public void setUp() {
-		notificationService = new NotificationServiceImpl();
-		notificationDAO = new NotificationDAOImpl();
-		notificationService.setNotificationDAO(notificationDAO);
-	}
-	
-	@After
-	public void tearDown() {
-		notificationService = null;
-		notificationDAO = null;
-	}
 	
 	@Test
 	public void testSave() throws NotificationLogicException {
