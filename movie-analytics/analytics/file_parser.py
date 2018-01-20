@@ -1,5 +1,7 @@
 import os
 import sys
+import fileinput
+import re
 
 def ls(dir, hidden=False, relative=True):
     nodes = []
@@ -47,17 +49,27 @@ def get_path_of_folder_having_input_review_files():
     return dir_path
 
 
+def get_cleanup_filename(file):
+    file_name_split = file.split('/')
+    file_name = file_name_split[len(file_name_split)-1]
+    file_number = re.findall('\d', file_name)
+    return re.sub('\d.txt', file_number[0]+'_clean.txt', file)
+
 def cleanup_file(file):
     print 'working on file: ', file
-    with open(file, 'r+') as f:
-        lines = f.readlines()
-        #f.seek(0)
-        #f.truncate()
-        for line in lines:
-            print line
-            if 'a"' in line:
-                print line
-        f.write(line)
+    file_clean_name = get_cleanup_filename(file)
+    print 'file_clean_name', file_clean_name
+    if os.path.exists(file_clean_name): os.remove(file_clean_name)
+    clean_file = open(file_clean_name, "a")  # open for append
+    flag = False
+    for line in open(file):
+        line = line.replace("a", "newword")
+        clean_file.write(line + "\n")
+    clean_file.close()
+
+
+def replace_words(base_text, device_values):
+    return base_text+"test"
 
 
 if __name__ == "__main__":
