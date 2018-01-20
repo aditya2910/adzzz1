@@ -63,7 +63,8 @@ def cleanup_file(file):
     clean_file = open(file_clean_name, "a")  # open for append
     flag = False
     for line in open(file):
-        line = line.replace("a", "newword")
+        if line.__contains__('\n'):
+            print 'matched'
         clean_file.write(line + "\n")
     clean_file.close()
 
@@ -76,5 +77,6 @@ if __name__ == "__main__":
     dir_path = get_path_of_folder_having_input_review_files()
     file_names_list = test(dir_path)
     for file in file_names_list:
-        cleanup_file(file)
+        if not file.__contains__('clean'):
+            cleanup_file(file)
     print 'done !'
