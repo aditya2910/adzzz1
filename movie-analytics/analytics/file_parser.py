@@ -3,6 +3,11 @@ import sys
 import fileinput
 import re
 
+'''
+This module parses comments taken from bookmyshow.
+Also
+'''
+
 def ls(dir, hidden=False, relative=True):
     nodes = []
     for nm in os.listdir(dir):
@@ -55,6 +60,15 @@ def get_cleanup_filename(file):
     file_number = re.findall('\d', file_name)
     return re.sub('\d.txt', file_number[0]+'_clean.txt', file)
 
+
+
+
+def clean_special_chars_from_line(line):
+    if line.__contains__('Verified Review') or is_line_having_dd_mm_yy(line):
+        return ''
+    return line
+
+
 def cleanup_file(file):
     print 'working on file: ', file
     file_clean_name = get_cleanup_filename(file)
@@ -62,21 +76,32 @@ def cleanup_file(file):
     if os.path.exists(file_clean_name): os.remove(file_clean_name)
     clean_file = open(file_clean_name, "a")  # open for append
     flag = False
+    skip_next_line = False
     for line in open(file):
+        line = clean_special_chars_from_line(line)
         if line.__contains__('\n') and len(line) == 1:
             flag = True
-            print 'matched'
-        if flag:
+            skip_next_line = True
+        if flag and skip_next_line:
             clean_file.write(line.rstrip('\n'))
             flag = False
+        elif skip_next_line:
+            skip_next_line = False
         else:
-            flag = False
             clean_file.write(line)
     clean_file.close()
 
 
 def replace_words(base_text, device_values):
     return base_text+"test"
+
+
+def is_line_having_dd_mm_yy(line):
+    re1 = '((?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:\\d{1}\\d{1})))(?![\\d])'  # DDMMYY 1
+
+    rg = re.compile(re1, re.IGNORECASE | re.DOTALL)
+    m = bool(rg.search(line))
+    return m
 
 
 if __name__ == "__main__":
