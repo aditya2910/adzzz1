@@ -6,11 +6,13 @@ from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 from movie_review_calc import ReviewCalc
 
+
 # This is how the Naive Bayes classifier expects the input
 def create_word_features(words):
     useful_words = [word for word in words if word not in stopwords.words("english")]
     my_dict = dict([(word, True) for word in useful_words])
     return my_dict
+
 
 def train_data_and_save_classifier(mood):
     mood_hyponyms = get_hypynyms_of_list(mood)
@@ -48,10 +50,6 @@ def train_data_and_save_classifier(mood):
     print(accuracy * 100)
 
 
-
-
-
-
 def get_hypynyms_of_list(mood):
     syn = wordnet.synsets(mood)[0]
     mood_hyponyms = syn.hyponyms()
@@ -61,6 +59,7 @@ def get_hypynyms_of_list(mood):
         content = str(content)
         mood_hyponyms_words.append(find_between_r(content, "('", ".n."))
     return mood_hyponyms_words
+
 
 def find_between_r( s, first, last ):
     try:
@@ -72,13 +71,9 @@ def find_between_r( s, first, last ):
 
 
 if __name__ == "__main__":
-    print 'train_data_and_save_classifier'
-    #train_data_and_save_classifier("action")
-    #review = "boring"
-    #get_suggestion_for_given_review(review)
-
+    print 'train data and saving classifier is in process.....'
+    train_data_and_save_classifier("action")
     ReviewCalc.get_positive_review_percentage()
-
     print 'done !'
 
 

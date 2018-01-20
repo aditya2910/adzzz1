@@ -5,8 +5,9 @@ import re
 
 '''
 This module parses comments taken from bookmyshow.
-Also
+Also, this parser does not remove all the emojis. So, delete the erroring emojis manually from clean files.
 '''
+
 
 def ls(dir, hidden=False, relative=True):
     nodes = []
@@ -98,7 +99,6 @@ def replace_words(base_text, device_values):
 
 def is_line_having_dd_mm_yy(line):
     re1 = '((?:(?:[0-2]?\\d{1})|(?:[3][01]{1}))[-:\\/.](?:[0]?[1-9]|[1][012])[-:\\/.](?:(?:\\d{1}\\d{1})))(?![\\d])'  # DDMMYY 1
-
     rg = re.compile(re1, re.IGNORECASE | re.DOTALL)
     m = bool(rg.search(line))
     return m

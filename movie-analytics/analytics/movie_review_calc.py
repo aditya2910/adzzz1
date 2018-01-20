@@ -3,6 +3,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import re
 
+
 class ReviewCalc:
 
     POSITIVE = "POSITIVE"
@@ -45,17 +46,16 @@ def get_suggestion_for_given_review(review):
     print classifier.classify(words)
     return classifier.classify(words)
 
+
 def load_classifier():
     f = open('semtiment_classifier.pickle', 'rb')
     classifier = pickle.load(f)
     f.close()
     return classifier
 
+
 def create_word_features(words):
     words = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in words]
     useful_words = [word for word in words if word not in stopwords.words("english")]
     my_dict = dict([(word, True) for word in useful_words])
     return my_dict
-
-
-
