@@ -63,9 +63,15 @@ def cleanup_file(file):
     clean_file = open(file_clean_name, "a")  # open for append
     flag = False
     for line in open(file):
-        if line.__contains__('\n'):
+        if line.__contains__('\n') and len(line) == 1:
+            flag = True
             print 'matched'
-        clean_file.write(line + "\n")
+        if flag:
+            clean_file.write(line.rstrip('\n'))
+            flag = False
+        else:
+            flag = False
+            clean_file.write(line)
     clean_file.close()
 
 
