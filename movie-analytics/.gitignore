@@ -3,10 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.pickle
-workspace.xml
-misc.xml
-modules.xml
-*.iml
+.idea/
 
 # C extensions
 *.so
