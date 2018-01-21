@@ -72,8 +72,12 @@ def find_between_r( s, first, last ):
 
 if __name__ == "__main__":
     print 'train data and saving classifier is in process.....'
-    train_data_and_save_classifier("action")
-    ReviewCalc.get_positive_review_percentage()
+    person_mood = "action"
+    #train_data_and_save_classifier(person_mood)
+    # TODO: enter the file of the movie to be predicted
+    cleaned_review_file = "/Users/adityakumar/Desktop/adi/my-git/adzzz1/movie-analytics/input_review_file/movie_reviews_1_clean.txt"
+    positive_review_percentage = ReviewCalc.get_positive_review_percentage(cleaned_review_file)
+    print 'positive_review_percentage:', positive_review_percentage
     print 'done !'
 
 
