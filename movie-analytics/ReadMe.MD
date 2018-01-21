@@ -1,7 +1,5 @@
-****** WIP ******
 
-you need to download dataset from nltk
-
+you need to download dataset from nltk:
 import nltk
 download nltk.movie_reviews(), stopwords and wordnet
 
