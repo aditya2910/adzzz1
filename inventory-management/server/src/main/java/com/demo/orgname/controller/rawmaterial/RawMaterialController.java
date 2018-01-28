@@ -26,15 +26,15 @@ public class RawMaterialController {
 	
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<RawMaterial> startWork() {
-		System.out.println("..........................................get context: " + context);
+		System.out.println("..........................................getting all raw materials: " + context);
 		List<RawMaterial> rawMaterials = rawMaterialService.getAllRawMaterials();
         return rawMaterials;
     }
 	
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void defaultEndpoint(@RequestBody RawMaterial rawMaterial) {
-		System.out.println(".......................................post...Default ");
-        //return "RawMaterial saved";
+		System.out.println("Saving Raw Material ");
+		rawMaterialService.addRawMaterial(rawMaterial);
     }
 	
 	
