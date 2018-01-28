@@ -1,16 +1,20 @@
 package com.demo.orgname.dao.rawmaterial;
 
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-//@Entity
+@Entity
 public class RawMaterial {
 	
-	//@Id
+	@Id
 	private String id;
     private String name;
     private String unit;
     private String type;
+    
+    public RawMaterial() {
+	}
+    
 	public RawMaterial(String id, String name, String unit, String type) {
 		super();
 		this.id = id;
