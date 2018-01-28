@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.orgname.dao.rawmaterial.RawMaterial;
 
 @RestController
-@RequestMapping("/rawMaterials")
+@RequestMapping("/rawMaterial")
 public class RawMaterialController {
 	
 	@Autowired
