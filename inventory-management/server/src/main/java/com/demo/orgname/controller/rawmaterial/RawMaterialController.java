@@ -1,29 +1,31 @@
-package com.sb.endpoint;
+package com.demo.orgname.controller.rawmaterial;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.orgname.dao.rawmaterial.RawMaterial;
+
 @RestController
-@RequestMapping("/main")
-public class RestEndPoint {
+@RequestMapping("/rawMaterials")
+public class RawMaterialController {
 	
 	@Autowired
 	private ApplicationContext context;
 	
-	@RequestMapping(value = "/hello" , method= RequestMethod.GET)
+	@RequestMapping(method= RequestMethod.GET)
     public String startWork() {
 		System.out.println("..........................................get context: " + context);
         return "hello";
     }
 	
-	
-	@RequestMapping(value = "/abc" , method= RequestMethod.POST)
-    public String defaultEndpoint() {
+	@RequestMapping(method= RequestMethod.POST)
+    public String defaultEndpoint(@PathVariable RawMaterial rawMaterial) {
 		System.out.println(".......................................post...Default ");
-        return "Default Handler response Success";
+        return "RawMaterial saved";
     }
 	
 	
