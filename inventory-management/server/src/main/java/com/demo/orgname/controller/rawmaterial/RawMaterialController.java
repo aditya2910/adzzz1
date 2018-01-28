@@ -15,7 +15,7 @@ import com.demo.orgname.dao.rawmaterial.RawMaterial;
 import com.demo.orgname.service.rawmaterial.RawMaterialServiceImpl;
 
 @RestController
-@RequestMapping("/rawMaterials")
+@RequestMapping("/rawMaterial")
 public class RawMaterialController {
 	
 	@Autowired
