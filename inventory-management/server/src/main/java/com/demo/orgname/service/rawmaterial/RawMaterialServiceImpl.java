@@ -25,4 +25,16 @@ public class RawMaterialServiceImpl {
 	public void addRawMaterial(RawMaterial rawMaterial) {
 		repository.save(rawMaterial);
 	}
+	
+	public RawMaterial getRawMaterial(String id) {
+		return repository.findOne(id);
+	}
+
+	public int getRawMaterialsCount() {
+		return (int) repository.count();
+	}
+
+	public void updateRawMaterial(RawMaterial rawMaterial) {
+		repository.save(rawMaterial);
+	}
 }

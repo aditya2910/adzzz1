@@ -24,18 +24,41 @@ public class RawMaterialController {
 	@Autowired
 	private RawMaterialServiceImpl rawMaterialService;
 	
+	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public void save(@RequestBody RawMaterial rawMaterial) {
+		System.out.println("Saving Raw Material ");
+		rawMaterialService.addRawMaterial(rawMaterial);
+    }
+	
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<RawMaterial> startWork() {
+    public List<RawMaterial> getAll() {
 		System.out.println("..........................................getting all raw materials: " + context);
 		List<RawMaterial> rawMaterials = rawMaterialService.getAllRawMaterials();
         return rawMaterials;
     }
 	
-	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public void defaultEndpoint(@RequestBody RawMaterial rawMaterial) {
-		System.out.println("Saving Raw Material ");
-		rawMaterialService.addRawMaterial(rawMaterial);
+	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public RawMaterial getById(@PathVariable String id) {
+		System.out.println("getting raw material");
+		RawMaterial rawMaterial = rawMaterialService.getRawMaterial(id);
+		System.out.println("rawMaterial: " + rawMaterial);
+        return rawMaterial;
+    }
+	
+	@RequestMapping(value="/count", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public int update() {
+		System.out.println("getting raw materials count");
+		return rawMaterialService.getRawMaterialsCount();
+    }
+	
+	// put
+	@RequestMapping(method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public void getCount(@RequestBody RawMaterial rawMaterial) {
+		System.out.println("updating raw material");
+		rawMaterialService.updateRawMaterial(rawMaterial);
     }
 	
 	
+	
+	// custom query - NOT WORKING
 }
