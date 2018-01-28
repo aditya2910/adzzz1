@@ -45,13 +45,12 @@ public class RawMaterialController {
         return rawMaterial;
     }
 	
-	@RequestMapping(value="/count", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/count", method= RequestMethod.GET)
     public int update() {
 		System.out.println("getting raw materials count");
 		return rawMaterialService.getRawMaterialsCount();
     }
 	
-	// put
 	@RequestMapping(method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void getCount(@RequestBody RawMaterial rawMaterial) {
 		System.out.println("updating raw material");
