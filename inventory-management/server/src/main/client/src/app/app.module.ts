@@ -24,7 +24,14 @@ import { RawmaretialAddComponent } from './rawmaretial-add/rawmaretial-add.compo
         path: 'add',
         component: RawmaretialAddComponent
       },
-      { path : "", redirectTo: "/", pathMatch: "full" }
+      { path : "",
+        redirectTo: "/",
+        pathMatch: "full"
+      },
+      {
+        path: 'view',
+        component: RawmaterialListComponent
+      }
     ])
   ],
   providers: [RawmaterialService],
