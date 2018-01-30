@@ -4,16 +4,17 @@
 
 <fieldset>
   <legend>Name</legend>
-  <input type="text" size="25" [(ngModel)]="name">
+  <input type="text" name="name" size="25" [(ngModel)]="name">
 </fieldset>
 <fieldset>
   <legend>Unit</legend>
-  <input type="text" size="25" [(ngModel)]="unit">
+  <input type="text" name="unit" size="25" [(ngModel)]="unit">
 </fieldset>
 <fieldset>
   <legend>Type</legend>
-  <input type="text" size="25" [(ngModel)]="type">
+  <input type="text" name="type" size="25" [(ngModel)]="type">
 </fieldset>
 <br>
 <input type="submit" value="submit" name="b1" (click)="saveData()">
 
+{{message}}

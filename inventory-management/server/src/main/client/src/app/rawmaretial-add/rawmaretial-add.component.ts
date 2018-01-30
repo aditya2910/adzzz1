@@ -9,14 +9,17 @@ export class RawmaretialAddComponent implements OnInit {
 
   constructor() { }
 
-  name:string;
-  unit:string;
-  type:string;
+  name: string;
+  unit: string;
+  type: string;
+  message: string;
 
   ngOnInit() {
   }
 
   saveData() {
     console.log("hello......");
+    console.log(this.name);
+    this.message = "Data Saved";
   }
 }
