@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RawmaterialService} from "../shared/rawmaterial/rawmaterial.service";
 
 @Component({
   selector: 'app-rawmaretial-add',
@@ -7,30 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RawmaretialAddComponent implements OnInit {
 
-  constructor() { }
+  response: Response;
+
+  constructor(private rawmaterialService: RawmaterialService) { }
 
   name: string;
   unit: string;
   type: string;
   message: string;
-  isFormEmpty: boolean;
 
-  ngOnInit() {
-    this.isFormEmpty = true;
-  }
+  ngOnInit() { }
 
   saveData() {
     console.log("name: " + this.name);
     console.log("unit: " + this.unit);
     console.log("type: " + this.type);
-    if( this.name !== "" || this.unit !== "" || this.type  !== "" ){
-      this.isFormEmpty = true;
-    }
+
     this.name = "";
     this.unit = "";
     this.type = "";
+    //TODO: make REST call and set message based on REST response
+    // this.rawmaterialService.save(this.name, this.unit, this.type).subscribe(
+    //   data => {
+    //     this.response = data;
+    //   },
+    //   error => console.error(error)
+    // );
 
-    // make REST call and set message based on REST response
     this.message = "Data Saved";
   }
 }
