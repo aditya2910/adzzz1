@@ -13,14 +13,24 @@ export class RawmaretialAddComponent implements OnInit {
   unit: string;
   type: string;
   message: string;
+  isFormEmpty: boolean;
 
   ngOnInit() {
+    this.isFormEmpty = true;
   }
 
   saveData() {
-    console.log("hello......");
-    console.log(this.name);
-    this.name= "";
+    console.log("name: " + this.name);
+    console.log("unit: " + this.unit);
+    console.log("type: " + this.type);
+    if( this.name !== "" || this.unit !== "" || this.type  !== "" ){
+      this.isFormEmpty = true;
+    }
+    this.name = "";
+    this.unit = "";
+    this.type = "";
+
+    // make REST call and set message based on REST response
     this.message = "Data Saved";
   }
 }

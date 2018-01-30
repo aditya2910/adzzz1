@@ -13,4 +13,10 @@ export class RawmaterialService {
       .map((respnse: Response) => respnse.json());
   }
 
+  save():Observable<any>{
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return null;
+  }
 }
