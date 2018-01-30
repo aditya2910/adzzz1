@@ -28,12 +28,12 @@ export class RawmaretialAddComponent implements OnInit {
     this.unit = "";
     this.type = "";
     //TODO: make REST call and set message based on REST response
-    // this.rawmaterialService.save(this.name, this.unit, this.type).subscribe(
-    //   data => {
-    //     this.response = data;
-    //   },
-    //   error => console.error(error)
-    // );
+    this.rawmaterialService.save(this.name, this.unit, this.type).subscribe(
+      data => {
+        this.response = data;
+      },
+      error => console.error(error)
+    );
 
     this.message = "Data Saved";
   }
