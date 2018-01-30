@@ -17,6 +17,6 @@ export class RawmaretialAddComponent implements OnInit {
   }
 
   saveData() {
-
+    console.log("hello......");
   }
 }
