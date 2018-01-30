@@ -15,7 +15,8 @@ export class RawmaterialService {
   }
 
   save(name:string, unit:string, type:string):Observable<any>{
-    console.log("making rest post call.....");
+    console.log("making rest post call.....name: " + name);
+
     let rawMaterial = {
       "id": "7ccf6c48-6eac-4cbc-8ba0-c6f2a9f954a5",
       name: name,

@@ -24,9 +24,7 @@ export class RawmaretialAddComponent implements OnInit {
     console.log("unit: " + this.unit);
     console.log("type: " + this.type);
 
-    this.name = "";
-    this.unit = "";
-    this.type = "";
+
     //TODO: make REST call and set message based on REST response
     this.rawmaterialService.save(this.name, this.unit, this.type).subscribe(
       data => {
@@ -34,6 +32,9 @@ export class RawmaretialAddComponent implements OnInit {
       },
       error => console.error(error)
     );
+    this.name = "";
+    this.unit = "";
+    this.type = "";
 
     this.message = "Data Saved";
   }
