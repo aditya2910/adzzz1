@@ -3,6 +3,7 @@ import {Http, RequestOptionsArgs, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map'
 import { Headers, RequestOptions } from '@angular/http';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class RawmaterialService {
@@ -16,9 +17,9 @@ export class RawmaterialService {
 
   save(name:string, unit:string, type:string):Observable<any>{
     console.log("making rest post call.....name: " + name);
-
+    const id: string = uuid();
     let rawMaterial = {
-      "id": "7ccf6c48-6eac-4cbc-8ba0-c6f2a9f954a5",
+      
       name: name,
       unit: unit,
       type: type

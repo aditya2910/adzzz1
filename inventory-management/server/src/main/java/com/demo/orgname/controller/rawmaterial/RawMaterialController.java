@@ -26,7 +26,7 @@ public class RawMaterialController {
 	
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void save(@RequestBody RawMaterial rawMaterial) {
-		System.out.println("Saving Raw Material ");
+		System.out.println("Saving Raw Material : " + rawMaterial.getName());
 		rawMaterialService.addRawMaterial(rawMaterial);
     }
 	
