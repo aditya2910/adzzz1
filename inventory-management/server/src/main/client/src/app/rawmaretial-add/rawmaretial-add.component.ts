@@ -9,7 +9,14 @@ export class RawmaretialAddComponent implements OnInit {
 
   constructor() { }
 
+  name:string;
+  unit:string;
+  type:string;
+
   ngOnInit() {
   }
 
+  saveData() {
+
+  }
 }
