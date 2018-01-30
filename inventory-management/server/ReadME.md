@@ -1,3 +1,5 @@
+S E R V E R
+
 This project uses MySql. Its config is stored in application.properties
 
 For Postman call for RawMaterial:
@@ -22,6 +24,12 @@ and below json
 	"unit": "KG",
 	"type": "Others"
 }
+
+
+
+C L I E N T
+
+
 
 
 

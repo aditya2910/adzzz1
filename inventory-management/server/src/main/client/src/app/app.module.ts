@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import {HttpModule} from "@angular/http";
 import { RawmaterialListComponent } from './rawmaterial-list/rawmaterial-list.component';
 import {RawmaterialService} from "./shared/rawmaterial/rawmaterial.service";
+import { RawmaretialAddComponent } from './rawmaretial-add/rawmaretial-add.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RawmaterialListComponent
+    RawmaterialListComponent,
+    RawmaretialAddComponent
   ],
   imports: [
     BrowserModule,
