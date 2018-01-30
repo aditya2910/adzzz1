@@ -8,7 +8,7 @@ import {RawmaterialService} from "../shared/rawmaterial/rawmaterial.service";
 })
 export class RawmaterialListComponent implements OnInit {
   rawmaterials: Array<any>;
-
+  //rawmaterials: Array<{name: string, unit: string, type: string}>;
   constructor(private rawmaterialService: RawmaterialService) { }
 
   ngOnInit() {

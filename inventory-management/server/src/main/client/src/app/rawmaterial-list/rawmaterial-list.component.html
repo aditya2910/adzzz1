@@ -4,7 +4,23 @@
 
 </h2>
 
-<div *ngFor="let rm of rawmaterials">
-  {{rm.name}}
-  {{rm.type}}
-</div>
+<div >
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Unit</th>
+        <th>Type</th>
+    </tr>
+    <tr *ngFor="let rm of rawmaterials">
+        <td>{{rm.name}}</td>
+        <td>{{rm.unit}}</td>
+        <td>{{rm.type}}</td>
+    </tr>
+</table>
+
+<!--<div *ngFor="let rm of rawmaterials">-->
+          <!--<span>{{rm.name}}</span>-->
+          <!--<span>{{rm.unit}}</span>-->
+          <!--<span>{{rm.type}}</span>-->
+    <!--</div>-->
+  </div>

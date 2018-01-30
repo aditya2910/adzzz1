@@ -19,7 +19,6 @@ export class RawmaterialService {
     console.log("making rest post call.....name: " + name);
     const id: string = uuid();
     let rawMaterial = {
-      
       name: name,
       unit: unit,
       type: type
