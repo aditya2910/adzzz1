@@ -20,6 +20,7 @@ export class RawmaretialAddComponent implements OnInit {
   saveData() {
     console.log("hello......");
     console.log(this.name);
+    this.name= "";
     this.message = "Data Saved";
   }
 }
