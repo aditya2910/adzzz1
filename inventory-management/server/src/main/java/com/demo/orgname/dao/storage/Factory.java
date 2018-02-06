@@ -1,4 +1,4 @@
-package com.demo.orgname.dao.rawmaterial;
+package com.demo.orgname.dao.storage;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,34 +9,40 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="raw_material")
-public class RawMaterial {
-	
+@Table(name="rm_factory")
+public class Factory {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	@Column(name = "id", nullable = false)
 	private String id;
-	@Column(name = "name", unique=true, nullable = false)
+	@Column(name = "name", nullable = false)
     private String name;
-	@Column(name = "unit")
-    private String unit;
-	@Column(name = "type")
+	@Column(name = "type", unique=true, nullable = false)
     private String type;
-    
-    public RawMaterial() {
-	}
-    
+	@Column(name = "area", nullable = false)
+    private String area;
+	@Column(name = "address", unique=true, nullable = false)
+    private String address;
+	@Column(name = "phone", unique=true, nullable = false)
+    private String phone;
+	
 	public String getId() {
 		return id;
 	}
 	public String getName() {
 		return name;
 	}
-	public String getUnit() {
-		return unit;
-	}
 	public String getType() {
 		return type;
+	}
+	public String getArea() {
+		return area;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public String getPhone() {
+		return phone;
 	}
 }
