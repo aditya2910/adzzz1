@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "dataentry_rm_inward", catalog = "sbw")
-public class RawMaterialInwardDataEntry implements Serializable {
+public class RawMaterialInward implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,14 +40,14 @@ public class RawMaterialInwardDataEntry implements Serializable {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "de_id", referencedColumnName = "id")
-	private RawMaterialInwardDataEntryMaster rawMaterialInwardDataEntryMaster;
+	private RawMaterialInwardMetaData rawMaterialInwardDataEntryMaster;
 
-	public RawMaterialInwardDataEntry() {
+	public RawMaterialInward() {
 	}
 
 	// NOTE: create parameterized constructor without having de_id column
-	public RawMaterialInwardDataEntry(String bag_quantity, String rm_code, String rm_type, String unit_quantity,
-			String value_rupees, RawMaterialInwardDataEntryMaster rawMaterialInwardDataEntryMaster) {
+	public RawMaterialInward(String bag_quantity, String rm_code, String rm_type, String unit_quantity,
+			String value_rupees, RawMaterialInwardMetaData rawMaterialInwardDataEntryMaster) {
 		super();
 		this.bag_quantity = bag_quantity;
 		this.rm_code = rm_code;
@@ -105,11 +105,11 @@ public class RawMaterialInwardDataEntry implements Serializable {
 		this.value_rupees = value_rupees;
 	}
 
-	public RawMaterialInwardDataEntryMaster getRawMaterialInwardDataEntryMaster() {
+	public RawMaterialInwardMetaData getRawMaterialInwardDataEntryMaster() {
 		return rawMaterialInwardDataEntryMaster;
 	}
 
-	public void setRawMaterialInwardDataEntryMaster(RawMaterialInwardDataEntryMaster rawMaterialInwardDataEntryMaster) {
+	public void setRawMaterialInwardDataEntryMaster(RawMaterialInwardMetaData rawMaterialInwardDataEntryMaster) {
 		this.rawMaterialInwardDataEntryMaster = rawMaterialInwardDataEntryMaster;
 	}
 }

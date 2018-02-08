@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="dataentry_rm_inward_master", catalog = "sbw")
-public class RawMaterialInwardDataEntryMaster implements Serializable {
+public class RawMaterialInwardMetaData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -63,16 +63,16 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "rawMaterialInwardDataEntryMaster", cascade = CascadeType.ALL)
-    private List<RawMaterialInwardDataEntry> rawMaterialInwardDataEntries;
+    private List<RawMaterialInward> rawMaterialInwardDataEntries;
 	
-	public RawMaterialInwardDataEntryMaster() {
+	public RawMaterialInwardMetaData() {
 	}
 
-	public RawMaterialInwardDataEntryMaster(String id, int noOfItems, String dateOfEntry, String supplierCode,
+	public RawMaterialInwardMetaData(String id, int noOfItems, String dateOfEntry, String supplierCode,
 			String godownCode, String dispatchedFrom, String recceivedAt, String challanNo, String challanDate,
 			String vehicleType, String vehicleNo, String waybillNo, String advanceFreightAmount, String totalAmount,
 			String factoryCode, String transporterName, String transporterAddress, String transporterPhone,
-			String identifier, List<RawMaterialInwardDataEntry> rawMaterialInwardDataEntries) {
+			String identifier, List<RawMaterialInward> rawMaterialInwardDataEntries) {
 		super();
 		this.id = id;
 		this.noOfItems = noOfItems;
@@ -239,11 +239,11 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 		this.transporterPhone = transporterPhone;
 	}
 
-	public List<RawMaterialInwardDataEntry> getRawMaterialInwardDataEntries() {
+	public List<RawMaterialInward> getRawMaterialInwardDataEntries() {
 		return rawMaterialInwardDataEntries;
 	}
 
-	public void setRawMaterialInwardDataEntries(List<RawMaterialInwardDataEntry> rawMaterialInwardDataEntries) {
+	public void setRawMaterialInwardDataEntries(List<RawMaterialInward> rawMaterialInwardDataEntries) {
 		this.rawMaterialInwardDataEntries = rawMaterialInwardDataEntries;
 	}
     

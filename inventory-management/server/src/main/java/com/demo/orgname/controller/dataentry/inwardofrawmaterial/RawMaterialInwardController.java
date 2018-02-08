@@ -7,19 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.orgname.dao.dataentry.rawmaterialinward.RawMaterialInwardDataEntry;
-import com.demo.orgname.service.dataentry.rawmaterial.RawMaterialInwardDataEntryServiceImpl;
+import com.demo.orgname.dao.dataentry.rawmaterialinward.RawMaterialInwardMetaData;
+import com.demo.orgname.service.dataentry.rawmaterial.RawMaterialInwardServiceImpl;
+
 
 @RestController
-@RequestMapping("/rawMaterialInward")
+@RequestMapping("/rawMaterialInwardDataEntry")
 public class RawMaterialInwardController {
 	
 	@Autowired
-	private RawMaterialInwardDataEntryServiceImpl rawMaterialInwardDataEntryService;
+	private RawMaterialInwardServiceImpl rawMaterialInwardDataEntryMasterService;
 	
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public void save(@RequestBody RawMaterialInwardDataEntry rawMaterialInwardDataEntry) {
-		rawMaterialInwardDataEntryService.addRawMaterialInwardDataEntry(rawMaterialInwardDataEntry);
+    public void save(@RequestBody RawMaterialInwardMetaData rawMaterialInwardDataEntryMaster) {
+		rawMaterialInwardDataEntryMasterService.addRawMaterialInwardDataEntry(rawMaterialInwardDataEntryMaster);
     }
 
 }
