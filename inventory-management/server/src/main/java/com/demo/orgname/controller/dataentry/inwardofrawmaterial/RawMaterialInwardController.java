@@ -16,11 +16,11 @@ import com.demo.orgname.service.dataentry.inwardofrawmaterial.RawMaterialInwardS
 public class RawMaterialInwardController {
 	
 	@Autowired
-	private RawMaterialInwardServiceImpl rawMaterialInwardDataEntryMasterService;
+	private RawMaterialInwardServiceImpl rawMaterialInwardServiceImpl;
 	
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void save(@RequestBody RawMaterialInward rawMaterialInward) {
-		rawMaterialInwardDataEntryMasterService.addRawMaterialInward(rawMaterialInward);
+		rawMaterialInwardServiceImpl.addRawMaterialInward(rawMaterialInward);
     }
 
 }

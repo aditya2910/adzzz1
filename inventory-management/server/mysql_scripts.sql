@@ -209,3 +209,34 @@ CREATE TABLE dataentry_rm_inward (
 	]
 }
 
+
+--http://localhost:8082/rawMaterialIssueForConsumptionDataEntry
+{
+	"dateOfEntry": "06-02-2018",
+	"challanNo": "abc/de/123",
+	"challanDate": "02-02-2018",
+	"godownCode": "7e008080616a579a01616a5bd52a0003",
+	"noOfItems": "51",
+	"rawMaterialIssueForConsumptionDataEntries": [
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagQuantity": "21",
+			"quantityInWeight": "41"
+		},
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagQuantity": "21",
+			"quantityInWeight": "41"
+		},
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagQuantity": "21",
+			"quantityInWeight": "41"
+		}
+		
+	]
+}
+

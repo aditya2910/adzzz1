@@ -1,6 +1,5 @@
 package com.demo.orgname.dao.dataentry.inwardofrawmaterial;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,48 +16,46 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="dataentry_rm_inward_metadata", catalog = "sbw")
-public class RawMaterialInward implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class RawMaterialInward {
 	
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	@Column(name = "id", nullable = false)
 	private String id;
-	@Column(name = "noOfItems", nullable = false)
+	@Column(name = "no_of_items", nullable = false)
 	private int noOfItems;     // types of supply
-	@Column(name = "dateOfEntry", nullable = false)
+	@Column(name = "date_of_entry", nullable = false)
 	private String dateOfEntry;
-	@Column(name = "supplierCode", nullable = false)
+	@Column(name = "supplier_code", nullable = false)
 	private String supplierCode;    // jaha se maal aaya  -- create object of Suppliers
-	@Column(name = "godownCode", nullable = false)
+	@Column(name = "godown_code", nullable = false)
 	private String godownCode;
-	@Column(name = "dispatchedFrom", nullable = false)
+	@Column(name = "dispatched_from", nullable = false)
 	private String dispatchedFrom;
-	@Column(name = "recceivedAt", nullable = false)
+	@Column(name = "recceived_at", nullable = false)
 	private String recceivedAt;
-	@Column(name = "challanNo", nullable = false)
+	@Column(name = "challan_no", nullable = false)
 	private String challanNo;
-	@Column(name = "challanDate", nullable = false)
+	@Column(name = "challan_date", nullable = false)
 	private String challanDate;
-	@Column(name = "vehicleType", nullable = false)
+	@Column(name = "vehicle_type", nullable = false)
 	private String vehicleType;
-	@Column(name = "vehicleNo", nullable = false)
+	@Column(name = "vehicle_no", nullable = false)
 	private String vehicleNo;
-	@Column(name = "waybillNo", nullable = false)
+	@Column(name = "waybill_no", nullable = false)
 	private String waybillNo;
-	@Column(name = "advanceFreightAmount", nullable = false)
+	@Column(name = "advance_freight_amount", nullable = false)
 	private String advanceFreightAmount;
-	@Column(name = "totalAmount", nullable = false)
+	@Column(name = "total_amount", nullable = false)
 	private String totalAmount;
-	@Column(name = "factoryCode", nullable = false)
+	@Column(name = "factory_code", nullable = false)
 	private String factoryCode;
-	@Column(name = "transporterName", nullable = false)
+	@Column(name = "transporter_name", nullable = false)
 	private String transporterName;
-	@Column(name = "transporterAddress", nullable = false)
+	@Column(name = "transporter_address", nullable = false)
 	private String transporterAddress;
-	@Column(name = "transporterPhone", nullable = false)
+	@Column(name = "transporter_phone", nullable = false)
 	private String transporterPhone;
 	
 	@JsonManagedReference

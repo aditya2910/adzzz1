@@ -1,4 +1,4 @@
-package com.demo.orgname.dao.dataentry.inwardofrawmaterial;
+package com.demo.orgname.dao.dataentry.rawmaterialissueforconsumption;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,9 +15,9 @@ import org.hibernate.annotations.GenericGenerator;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "dataentry_rm_inward_data", catalog = "sbw")
-public class RawMaterialInwardData {
-
+@Table(name="dataentry_rm_issue_for_consumption_data", catalog = "sbw")
+public class RawMaterialIssueForConsumptionData {
+	
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
@@ -29,28 +29,25 @@ public class RawMaterialInwardData {
 	private String rmType;
 	@Column(name = "bag_quantity")
 	private String bagQuantity;
-	@Column(name = "unit_quantity")
-	private String unitQuantity;
-	@Column(name = "value_rupees")
-	private String valueRupees;
+	@Column(name = "quantity_in_weight")
+	private String quantityInWeight;
+	
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "deId", referencedColumnName = "id")
-	private RawMaterialInward rawMaterialInward;
-
-	// NOTE: create parameterized constructor without having deId column
-	public RawMaterialInwardData() {
+	private RawMaterialIssueForConsumption rawMaterialIssueForConsumption;
+	
+	public RawMaterialIssueForConsumptionData() {
 	}
 
-	public RawMaterialInwardData(String rmCode, String rmType, String bagQuantity, String unitQuantity,
-			String valueRupees, RawMaterialInward rawMaterialInward) {
+	public RawMaterialIssueForConsumptionData(String rmCode, String rmType, String bagQuantity, String quantityInWeight,
+			RawMaterialIssueForConsumption rawMaterialIssueForConsumption) {
 		super();
 		this.rmCode = rmCode;
 		this.rmType = rmType;
 		this.bagQuantity = bagQuantity;
-		this.unitQuantity = unitQuantity;
-		this.valueRupees = valueRupees;
-		this.rawMaterialInward = rawMaterialInward;
+		this.quantityInWeight = quantityInWeight;
+		this.rawMaterialIssueForConsumption = rawMaterialIssueForConsumption;
 	}
 
 	public String getDeId() {
@@ -85,29 +82,19 @@ public class RawMaterialInwardData {
 		this.bagQuantity = bagQuantity;
 	}
 
-	public String getUnitQuantity() {
-		return unitQuantity;
+	public String getQuantityInWeight() {
+		return quantityInWeight;
 	}
 
-	public void setUnitQuantity(String unitQuantity) {
-		this.unitQuantity = unitQuantity;
+	public void setQuantityInWeight(String quantityInWeight) {
+		this.quantityInWeight = quantityInWeight;
 	}
 
-	public String getValueRupees() {
-		return valueRupees;
+	public RawMaterialIssueForConsumption getRawMaterialIssueForConsumption() {
+		return rawMaterialIssueForConsumption;
 	}
 
-	public void setValueRupees(String valueRupees) {
-		this.valueRupees = valueRupees;
+	public void setRawMaterialIssueForConsumption(RawMaterialIssueForConsumption rawMaterialIssueForConsumption) {
+		this.rawMaterialIssueForConsumption = rawMaterialIssueForConsumption;
 	}
-
-	public RawMaterialInward getRawMaterialInward() {
-		return rawMaterialInward;
-	}
-
-	public void setRawMaterialInward(RawMaterialInward rawMaterialInward) {
-		this.rawMaterialInward = rawMaterialInward;
-	}
-
-	
 }
