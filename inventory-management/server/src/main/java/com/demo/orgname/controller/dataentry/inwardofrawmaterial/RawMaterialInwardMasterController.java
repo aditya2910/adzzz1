@@ -13,7 +13,7 @@ import com.demo.orgname.service.dataentry.rawmaterial.RawMaterialInwardDataEntry
 
 @RestController
 @RequestMapping("/rawMaterialInwardMaster")
-public class RawMaterialInwardDataEntryMasterController {
+public class RawMaterialInwardMasterController {
 	
 	@Autowired
 	private RawMaterialInwardDataEntryMasterServiceImpl rawMaterialInwardDataEntryMasterService;
