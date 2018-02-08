@@ -11,7 +11,7 @@ import com.demo.orgname.dao.dataentry.rawmaterialissueforconsumption.RawMaterial
 import com.demo.orgname.service.dataentry.rawmaterialissueforconsumption.RawMaterialIssueForConsumptionServiceImpl;
 
 /**
- * Labelling
+ * all these RWs are being used for labeling of raw material
  * @author adityakumar
  *
  */

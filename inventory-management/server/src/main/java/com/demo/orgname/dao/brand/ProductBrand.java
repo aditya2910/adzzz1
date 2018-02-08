@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "product_brand", catalog = "sbw")
 public class ProductBrand {
-
+	// TODO: make a OneToMany Table for storing the names of RM used to make biris of different brands.
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")

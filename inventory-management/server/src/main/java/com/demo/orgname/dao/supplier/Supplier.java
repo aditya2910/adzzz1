@@ -20,7 +20,7 @@ public class Supplier {
 	@Column(name = "name", nullable = false)
     private String name;
 	@Column(name = "type")
-    private String type;
+    private String type;// TODO: keep type as empty till PROD
 	@Column(name = "address", unique=true, nullable = false)
     private String address;
 	@Column(name = "phone", unique=true, nullable = false)

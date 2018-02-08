@@ -28,6 +28,8 @@ public class ContractorSlipEntry {
 	@Column(name = "transaction_no", nullable = false)
 	private String transactionNo; // auto generate - day wise
 	// below are Contractor Production
+	@Column(name = "factory_code")
+	private String factoryCode;
 	@Column(name = "contractor_code", nullable = false)
 	private String contractorCode;
 	@Column(name = "product_godown_code", nullable = false)
@@ -63,7 +65,7 @@ public class ContractorSlipEntry {
 	public ContractorSlipEntry() {
 	}
 
-	public ContractorSlipEntry(String id, String dateOfEntry, String transactionNo, String contractorCode,
+	public ContractorSlipEntry(String id, String dateOfEntry, String factoryCode, String transactionNo, String contractorCode,
 			String productGodownCode, String checkerCode, String passedByCheckerCode, String noOfCheckers,
 			String consumptionRate, String givenTobaccoQuantity, String givenLeavesQuantity,
 			String givenLeavesBagQuantity, String givenYarnQuantity, String challanNo, String givenConsumptionRate,
@@ -72,6 +74,7 @@ public class ContractorSlipEntry {
 		this.id = id;
 		this.dateOfEntry = dateOfEntry;
 		this.transactionNo = transactionNo;
+		this.factoryCode = factoryCode;
 		this.contractorCode = contractorCode;
 		this.productGodownCode = productGodownCode;
 		this.checkerCode = checkerCode;
@@ -93,6 +96,14 @@ public class ContractorSlipEntry {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getFactoryCode() {
+		return factoryCode;
+	}
+
+	public void setFactoryCode(String factoryCode) {
+		this.factoryCode = factoryCode;
 	}
 
 	public String getDateOfEntry() {

@@ -118,13 +118,13 @@ CREATE TABLE dataentry_rm_inward (
 	PRIMARY KEY (de_id),
 	FOREIGN KEY (id) REFERENCES dataentry_rm_inward_master(id)
 );
--- RAW Material - Inward Data Entry
+-- RAW Material - Inward Data Entry -- http://localhost:8082/rawMaterialInwardDataEntry
 {
-	"noOfItems": "2",
-	"dateOfEntry": "06-02-2018",
-	"supplierCode": "7e008080616a579a01616a5bd52a0001",
-	"godownCode": "7e008080616a579a01616a5bd52a0002",
-	"dispatchedFrom": "Allahabad",
+	"noOfItems": "1",
+	"dateOfEntry": "08-02-2018",
+	"supplierCode": "7e0080806175ae05016175c6984d0022",
+	"godownCode": "7e0080806175ae05016175af00ef0000",
+	"dispatchedFrom": "Gujarat",
 	"recceivedAt": "Pakur",
 	"challanNo": "abc/de/123",
 	"challanDate": "02-02-2018",
@@ -133,33 +133,18 @@ CREATE TABLE dataentry_rm_inward (
 	"waybillNo": "002-123-01",
 	"advanceFreightAmount": "2000",
 	"totalAmount": "10000",
-	"factoryCode": "7e008080616a579a01616a5bd52a0003",
+	"factoryCode": "7e0080806175ae05016175cff18e0024",
 	"transporterName": "Transporter Name 1",
 	"transporterAddress": "#12, Trinity road, Lukhnow-560037, U.P.",
 	"transporterPhone": "1234567890",
 	"rawMaterialInwardDataEntries": [
 		{
-			"rmCode": "ab121",
-			"rmType": "type1",
+			"rmCode": "4028abfe6175980b0161759b41cb0002",
+			"rmType": "Bags",
 			"bagQuantity": "21",
-			"unitQuantity": "41",
-			"valueRupees": "34341"
-		},
-		{
-			"rmCode": "ab121",
-			"rmType": "type1",
-			"bagQuantity": "21",
-			"unitQuantity": "41",
-			"valueRupees": "34341"
-		},
-		{
-			"rmCode": "ab121",
-			"rmType": "type1",
-			"bagQuantity": "21",
-			"unitQuantity": "41",
-			"valueRupees": "34341"
+			"unitQuantity": "500KG",
+			"valueRupees": "100000"
 		}
-		
 	]
 }
 
@@ -212,33 +197,67 @@ CREATE TABLE dataentry_rm_inward (
 
 --http://localhost:8082/rawMaterialIssueForConsumptionDataEntry
 {
-	"dateOfEntry": "06-02-2018",
+	"dateOfEntry": "08-02-2018",
 	"challanNo": "abc/de/123",
 	"challanDate": "02-02-2018",
-	"godownCode": "7e008080616a579a01616a5bd52a0003",
-	"noOfItems": "51",
+	"godownCode": "7e0080806175ae05016175b237170004",
+	"brandCode": "7e0080806175ae05016175bbb0b70017",
+	"noOfItems": "8",
 	"rawMaterialIssueForConsumptionDataEntries": [
 		{
-			"rmCode": "ab121",
-			"rmType": "type1",
-			"bagQuantity": "21",
-			"quantityInWeight": "41"
+			"rmCode": "4028abfe6175980b0161759c9a4d0005",
+			"rmType": "new gunny bags",
+			"bagQuantity": "5Piece",
+			"quantityInWeight": ""
 		},
 		{
-			"rmCode": "ab121",
-			"rmType": "type1",
-			"bagQuantity": "21",
-			"quantityInWeight": "41"
+			"rmCode": "4028abfe6175980b0161759d1d700007",
+			"rmType": "cartoon",
+			"bagQuantity": "10Piece",
+			"quantityInWeight": ""
 		},
 		{
-			"rmCode": "ab121",
-			"rmType": "type1",
-			"bagQuantity": "21",
-			"quantityInWeight": "41"
+			"rmCode": "7e0080806175ae05016175fa423a002d",
+			"rmType": "gum tape",
+			"bagQuantity": "1RL",
+			"quantityInWeight": ""
+		},
+		{
+			"rmCode": "4028abfe6175980b0161759f82780008",
+			"rmType": "soft coal",
+			"bagQuantity": "",
+			"quantityInWeight": "30KG"
+		},
+		{
+			"rmCode": "4028abfe6175980b0161759f9d8c0009",
+			"rmType": "char coal",
+			"bagQuantity": "",
+			"quantityInWeight": "60KG"
+		},
+		{
+			"rmCode": "4028abfe6175980b0161759fdac1000a",
+			"rmType": "chemical starch",
+			"bagQuantity": "",
+			"quantityInWeight": "2KG"
+		},
+		{
+			"rmCode": "4028abfe6175980b016175a273090011",
+			"rmType": "No 25 Tissue",
+			"bagQuantity": "10800Piece",
+			"quantityInWeight": ""
+		},
+		{
+			"rmCode": "4028abfe6175980b016175a2912a0012",
+			"rmType": "No 25 craft",
+			"bagQuantity": "540Piece",
+			"quantityInWeight": ""
 		}
-		
 	]
 }
+
+
+
+
 
 
 --> http://localhost:8082/contractorSlipDataEntry

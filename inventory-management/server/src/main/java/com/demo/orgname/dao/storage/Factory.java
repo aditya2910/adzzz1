@@ -19,7 +19,7 @@ public class Factory {
 	@Column(name = "name", nullable = false)
     private String name;
 	@Column(name = "type", unique=true, nullable = false)
-    private String type;
+    private String type; // TODO: keep type as empty till PROD
 	@Column(name = "area", nullable = false)
     private String area;
 	@Column(name = "address", unique=true, nullable = false)

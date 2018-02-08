@@ -29,6 +29,8 @@ public class RawMaterialIssueForConsumption {
 	private String challanNo;
 	@Column(name = "challan_date", nullable = false)
 	private String challanDate;
+	@Column(name = "brand_code")
+	private String brandCode;
 	@Column(name = "godown_code", nullable = false)
 	private String godownCode;
 	@Column(name = "no_of_items", nullable = false)
@@ -42,13 +44,14 @@ public class RawMaterialIssueForConsumption {
 	}
 
 	public RawMaterialIssueForConsumption(String id, String dateOfEntry, String challanNo, String challanDate,
-			String godownCode, int noOfItems,
+			String godownCode, String brandCode, int noOfItems,
 			List<RawMaterialIssueForConsumptionData> rawMaterialIssueForConsumptionDataEntries) {
 		super();
 		this.id = id;
 		this.dateOfEntry = dateOfEntry;
 		this.challanNo = challanNo;
 		this.challanDate = challanDate;
+		this.brandCode = brandCode;
 		this.godownCode = godownCode;
 		this.noOfItems = noOfItems;
 		this.rawMaterialIssueForConsumptionDataEntries = rawMaterialIssueForConsumptionDataEntries;
@@ -62,6 +65,14 @@ public class RawMaterialIssueForConsumption {
 		this.id = id;
 	}
 
+	public String getBrandCode() {
+		return brandCode;
+	}
+
+	public void setBrandCode(String brandCode) {
+		this.brandCode = brandCode;
+	}
+	
 	public String getDateOfEntry() {
 		return dateOfEntry;
 	}
