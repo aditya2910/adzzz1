@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.orgname.dao.dataentry.rawmaterialinward.RawMaterialInwardMetaData;
-import com.demo.orgname.service.dataentry.rawmaterial.RawMaterialInwardServiceImpl;
+import com.demo.orgname.dao.dataentry.inwardofrawmaterial.RawMaterialInwardMetaData;
+import com.demo.orgname.service.dataentry.inwardofrawmaterial.RawMaterialInwardServiceImpl;
 
 
 @RestController

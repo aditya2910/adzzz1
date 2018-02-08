@@ -1,4 +1,4 @@
-package com.demo.orgname.dao.dataentry.rawmaterialinward;
+package com.demo.orgname.dao.dataentry.inwardofrawmaterial;
 
 import java.io.Serializable;
 
