@@ -110,26 +110,6 @@ CREATE TABLE dataentry_rm_inward_master (
     identifier varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
-{
-	"noOfItems": "2",
-	"dateOfEntry": "06-02-2018",
-	"supplierCode": "7e008080616a579a01616a5bd52a0001",
-	"godownCode": "7e008080616a579a01616a5bd52a0002",
-	"dispatchedFrom": "Allahabad",
-	"recceivedAt": "Pakur",
-	"challanNo": "abc/de/123",
-	"challanDate": "02-02-2018",
-	"vehicleType": "truck",
-	"vehicleNo": "UP-12J-5257",
-	"waybillNo": "002-123-01",
-	"advanceFreightAmount": "2000",
-	"totalAmount": "10000",
-	"factoryCode": "7e008080616a579a01616a5bd52a0003",
-	"transporterName": "Transporter Name 1",
-	"transporterAddress": "#12, Trinity road, Lukhnow-560037, U.P.",
-	"transporterPhone": "1234567890",
-	"identifier": "23d395c8-f0e0-47a5-afc5-8b3a6efcb917"
-}
 
 CREATE TABLE dataentry_rm_inward (
 	de_id varchar(60) NOT NULL,
@@ -159,10 +139,18 @@ CREATE TABLE dataentry_rm_inward (
 	"identifier": "23d395c8-f0e0-47a5-afc5-8b3a6efcb917",
 	"rawMaterialInwardDataEntries": [
 		{
-			"identifier1": "abc1239"
-		}, 
+			"rm_code": "ab121",
+			"rm_type": "type1",
+			"bag_quantity": "21",
+			"unit_quantity": "41",
+			"value_rupees": "34341"
+		},
 		{
-			"identifier2": "abc1234"
+			"rm_code": "ab12",
+			"rm_type": "type12",
+			"bag_quantity": "2",
+			"unit_quantity": "42",
+			"value_rupees": "34342"
 		}
 	]
 }
