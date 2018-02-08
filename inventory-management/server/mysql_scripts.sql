@@ -118,6 +118,7 @@ CREATE TABLE dataentry_rm_inward (
 	PRIMARY KEY (de_id),
 	FOREIGN KEY (id) REFERENCES dataentry_rm_inward_master(id)
 );
+-- RAW Material - Inward Data Entry
 {
 	"noOfItems": "2",
 	"dateOfEntry": "06-02-2018",
@@ -138,18 +139,73 @@ CREATE TABLE dataentry_rm_inward (
 	"transporterPhone": "1234567890",
 	"rawMaterialInwardDataEntries": [
 		{
-			"rm_code": "ab121",
-			"rm_type": "type1",
-			"bag_quantity": "21",
-			"unit_quantity": "41",
-			"value_rupees": "34341"
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagQuantity": "21",
+			"unitQuantity": "41",
+			"valueRupees": "34341"
 		},
 		{
-			"rm_code": "ab12",
-			"rm_type": "type12",
-			"bag_quantity": "2",
-			"unit_quantity": "42",
-			"value_rupees": "34342"
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagQuantity": "21",
+			"unitQuantity": "41",
+			"valueRupees": "34341"
+		},
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagQuantity": "21",
+			"unitQuantity": "41",
+			"valueRupees": "34341"
 		}
+		
 	]
 }
+
+
+
+-- RAW Material - WareHouse Transfer Data Entry
+{
+	"challanNo": "abc/de/123",
+	"receivedOrIssuedDate": "06-02-2018",
+	"receiverGodownCode": "7e008080616a579a01616a5bd52a0001",
+	"issuerGodownCode": "7e008080616a579a01616a5bd52a0002",
+	"vehicleType": "truck",
+	"vehicleNo": "WB-12J-5257",
+	"transporterName": "Transporter Name 1",
+	"transporterAddress": "#12, Trinity road, Lukhnow-560037, U.P.",
+	"transporterPhone": "1234567890",
+	"noOfItems": "5",
+	"rawMaterialWarehouseTransferDataEntries": [
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagUnit": "1",
+			"rate": "1",
+			"grossWeight": "1",
+			"quantityInWeight": "1",
+			"valueRupees": "1"
+		},
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagUnit": "1",
+			"rate": "1",
+			"grossWeight": "1",
+			"quantityInWeight": "1",
+			"valueRupees": "1"
+		},
+		{
+			"rmCode": "ab121",
+			"rmType": "type1",
+			"bagUnit": "1",
+			"rate": "1",
+			"grossWeight": "1",
+			"quantityInWeight": "1",
+			"valueRupees": "1"
+		}
+		
+	]
+}
+

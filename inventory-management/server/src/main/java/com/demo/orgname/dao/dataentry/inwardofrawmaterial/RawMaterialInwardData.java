@@ -26,7 +26,7 @@ public class RawMaterialInwardData implements Serializable {
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	@Column(name = "id", nullable = false)
-	private String de_id;
+	private String deId;
 	@Column(name = "rm_code")
 	private String rmCode;
 	@Column(name = "rm_type")
@@ -39,7 +39,7 @@ public class RawMaterialInwardData implements Serializable {
 	private String valueRupees;
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "de_id", referencedColumnName = "id")
+	@JoinColumn(name = "deId", referencedColumnName = "id")
 	private RawMaterialInward rawMaterialInward;
 
 	// NOTE: create parameterized constructor without having de_id column
@@ -57,12 +57,12 @@ public class RawMaterialInwardData implements Serializable {
 		this.rawMaterialInward = rawMaterialInward;
 	}
 
-	public String getDe_id() {
-		return de_id;
+	public String getDeId() {
+		return deId;
 	}
 
-	public void setDe_id(String de_id) {
-		this.de_id = de_id;
+	public void setDeId(String deId) {
+		this.deId = deId;
 	}
 
 	public String getRmCode() {
