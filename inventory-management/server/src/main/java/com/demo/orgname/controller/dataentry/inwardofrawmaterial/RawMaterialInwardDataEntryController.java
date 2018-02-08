@@ -1,4 +1,4 @@
-package com.demo.orgname.controller.dataentry.rawmaterialinward;
+package com.demo.orgname.controller.dataentry.inwardofrawmaterial;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
