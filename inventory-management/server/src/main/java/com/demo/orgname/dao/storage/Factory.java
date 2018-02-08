@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="rm_factory")
+@Table(name="rm_factory", catalog = "sbw")
 public class Factory {
 	@Id
 	@GeneratedValue(generator = "system-uuid")

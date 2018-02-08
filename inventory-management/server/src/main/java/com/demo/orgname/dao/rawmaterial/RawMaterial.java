@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="raw_material")
+@Table(name="raw_material", catalog = "sbw")
 public class RawMaterial {
 	
 	@Id

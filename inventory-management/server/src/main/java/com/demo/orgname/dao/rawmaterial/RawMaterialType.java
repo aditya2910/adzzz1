@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="rm_types")
+@Table(name="rm_types", catalog = "sbw")
 public class RawMaterialType {
 	
 	@Id

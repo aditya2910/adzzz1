@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "product_brand")
+@Table(name = "product_brand", catalog = "sbw")
 public class ProductBrand {
 
 	@Id
