@@ -69,8 +69,6 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 	private String transporterAddress;
 	@Column(name = "transporterPhone", nullable = false)
 	private String transporterPhone;
-	@Column(name = "identifier", nullable = false)
-	private String identifier;
 	
 	//@JoinColumn (name="de_id")
 	@JsonManagedReference
@@ -106,7 +104,6 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 		this.transporterName = transporterName;
 		this.transporterAddress = transporterAddress;
 		this.transporterPhone = transporterPhone;
-		this.identifier = identifier;
 		this.rawMaterialInwardDataEntries = rawMaterialInwardDataEntries;
 	}
 
@@ -252,14 +249,6 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 
 	public void setTransporterPhone(String transporterPhone) {
 		this.transporterPhone = transporterPhone;
-	}
-
-	public String getIdentifier() {
-		return identifier;
-	}
-
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
 	}
 
 	public List<RawMaterialInwardDataEntry> getRawMaterialInwardDataEntries() {
