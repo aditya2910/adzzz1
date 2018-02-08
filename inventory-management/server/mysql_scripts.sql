@@ -136,7 +136,6 @@ CREATE TABLE dataentry_rm_inward (
 	"transporterName": "Transporter Name 1",
 	"transporterAddress": "#12, Trinity road, Lukhnow-560037, U.P.",
 	"transporterPhone": "1234567890",
-	"identifier": "23d395c8-f0e0-47a5-afc5-8b3a6efcb917",
 	"rawMaterialInwardDataEntries": [
 		{
 			"rm_code": "ab121",
