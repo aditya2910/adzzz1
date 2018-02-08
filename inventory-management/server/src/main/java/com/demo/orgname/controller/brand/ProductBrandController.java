@@ -27,8 +27,7 @@ public class ProductBrandController {
 	
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<ProductBrand> getAll() {
-		List<ProductBrand> brands = brandService.getAllBrands();
-        return brands;
+		return brandService.getAllBrands();
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

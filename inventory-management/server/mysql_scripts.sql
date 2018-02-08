@@ -240,3 +240,38 @@ CREATE TABLE dataentry_rm_inward (
 	]
 }
 
+
+--> http://localhost:8082/contractorSlipDataEntry
+{
+	"dateOfEntry": "06-02-2018",
+	"transactionNo": "test/txn/1234",
+	"contractorCode": "M01",
+	"productGodownCode": "7e008080616a579a01616a5bd52a0012",
+	"checkerCode": "7e008080616a579a01616a5bd52a0011",
+	"passedByCheckerCode": "7e008080616a579a01616a5bd52a0014",
+	"noOfCheckers": "2",
+	"consumptionRate": "0.580",
+	"givenTobaccoQuantity": "50KG",
+	"givenLeavesQuantity": "10KG",
+	"givenLeavesBagQuantity": "2KG",
+	"givenYarnQuantity": "5KG",
+	"givenLeavesQuantity": "10KG",
+	"challanNo": "abc/de/123",
+	"givenConsumptionRate": "0.580",
+	"contractorSlipEntryDataEntries": [
+		{
+			"checkerCode": "7e008080616a579a01616a5bd52a0015",
+			"checkerName": "Aditya Checker",
+			"timeFromTo": "1000-1800",
+			"neatProductCount": "50000",
+			"chhatProductCount": "2000"
+		},
+		{
+			"checkerCode": "7e008080616a579a01616a5bd52a0015",
+			"checkerName": "Vikash Checker",
+			"timeFromTo": "1000-1800",
+			"neatProductCount": "50000",
+			"chhatProductCount": "2000"
+		}
+	]
+}
