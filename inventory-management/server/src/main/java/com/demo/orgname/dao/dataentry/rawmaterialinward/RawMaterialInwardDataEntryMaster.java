@@ -1,35 +1,26 @@
 package com.demo.orgname.dao.dataentry.rawmaterialinward;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-//@JsonFilter("RawMaterialInwardDataEntryMaster")
 @Table(name="dataentry_rm_inward_master", catalog = "sbw")
 public class RawMaterialInwardDataEntryMaster implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
@@ -70,14 +61,11 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 	@Column(name = "transporterPhone", nullable = false)
 	private String transporterPhone;
 	
-	//@JoinColumn (name="de_id")
 	@JsonManagedReference
-	//@OneToMany(mappedBy = "rawMaterialInwardDataEntryMaster", cascade = CascadeType.ALL, targetEntity = RawMaterialInwardDataEntry.class, fetch = FetchType.LAZY)
 	@OneToMany(mappedBy = "rawMaterialInwardDataEntryMaster", cascade = CascadeType.ALL)
     private List<RawMaterialInwardDataEntry> rawMaterialInwardDataEntries;
 	
 	public RawMaterialInwardDataEntryMaster() {
-			
 	}
 
 	public RawMaterialInwardDataEntryMaster(String id, int noOfItems, String dateOfEntry, String supplierCode,
@@ -258,8 +246,5 @@ public class RawMaterialInwardDataEntryMaster implements Serializable {
 	public void setRawMaterialInwardDataEntries(List<RawMaterialInwardDataEntry> rawMaterialInwardDataEntries) {
 		this.rawMaterialInwardDataEntries = rawMaterialInwardDataEntries;
 	}
-	
-	
-	
     
 }
