@@ -1,4 +1,4 @@
-package com.demo.orgname.pf.dao;
+package com.demo.orgname.pf.dao.person;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class MasterPfPerson {
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
 	@Column(name = "id", nullable = false)
 	private long id;
-	@Column(name = "uan_no")
+	@Column(name = "uan_no", unique = true)
 	private String uanNo;
 	@Column(name = "name")
 	private String name;
@@ -25,14 +25,6 @@ public class MasterPfPerson {
 	private String address;
 	@Column(name = "munshi_code")
 	private String munshiCode;
-
-	public MasterPfPerson(String uanNo, String name, String address, String munshiCode) {
-		super();
-		this.uanNo = uanNo;
-		this.name = name;
-		this.address = address;
-		this.munshiCode = munshiCode;
-	}
 
 	public long getId() {
 		return id;
