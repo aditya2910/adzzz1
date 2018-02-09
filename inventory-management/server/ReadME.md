@@ -1,3 +1,5 @@
+TODO: main RM consumption rate entry is pending
+
 S E R V E R
 
 This project uses MySql. Its config is stored in application.properties

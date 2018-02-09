@@ -1,4 +1,4 @@
-package com.demo.serverpf;
+package com.demo.orgname.pf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
