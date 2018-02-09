@@ -28,7 +28,7 @@ public class RawMaterialInward {
 	@Column(name = "date_of_entry", nullable = false)
 	private String dateOfEntry;
 	@Column(name = "supplier_code", nullable = false)
-	private String supplierCode;    // jaha se maal aaya  -- create object of Suppliers
+	private String supplierCode;    // jaha se maal aaya  -- it can be the stored suppier or any random, so,we need to provide Others option too
 	@Column(name = "godown_code", nullable = false)
 	private String godownCode;
 	@Column(name = "dispatched_from", nullable = false)
