@@ -19,8 +19,10 @@ public class ContractorLabourWage {
 	private long id;
 	@Column(name = "contractor_code", unique = true)
 	private String contractorCode;
-	@Column(name = "contractor_labours_wage")
-	private String contractorLaboursWage;
+	@Column(name = "contractor_labour_gross_wage")
+	private String contractorLabourGrossWage;
+	@Column(name = "contractor_labour_epf_wage")
+	private String contractorLabourEpfWage;
 	
 	public long getId() {
 		return id;
@@ -34,10 +36,19 @@ public class ContractorLabourWage {
 	public void setContractorCode(String contractorCode) {
 		this.contractorCode = contractorCode;
 	}
-	public String getContractorLaboursWage() {
-		return contractorLaboursWage;
+	public String getContractorLabourGrossWage() {
+		return contractorLabourGrossWage;
 	}
-	public void setContractorLaboursWage(String contractorLaboursWage) {
-		this.contractorLaboursWage = contractorLaboursWage;
+	public void setContractorLabourGrossWage(String contractorLabourGrossWage) {
+		this.contractorLabourGrossWage = contractorLabourGrossWage;
 	}
+	public String getContractorLabourEpfWage() {
+		return contractorLabourEpfWage;
+	}
+	public void setContractorLabourEpfWage(String contractorLabourEpfWage) {
+		this.contractorLabourEpfWage = contractorLabourEpfWage;
+	}
+	
+	
+	
 }

@@ -28,21 +28,21 @@ public class PfController {
 	
 	private String MASTER_PF_FILEPATH_FORM_10 = "/Users/adityakumar/Desktop/data/pf_data_master_form_10.xlsx";
 	
-	private String PF_CONTRACTOR_LABOUR_WAGE_LIST = "/Users/adityakumar/Desktop/data/pf_contractor_labour_wage_list.xlsx";
+	private String PF_CONTRACTOR_LABOUR_WAGE_LIST = "/Users/adityakumar/Desktop/data/pf/pf_contractor_labour_wage_list.xlsx";
 	
 	private String ECR_REPORT_FILEPATH = "/Users/adityakumar/Desktop/data/ecr.txt";
 	
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getAll() {
-		List<MasterPfPerson> persons = pfPersonContractorService.getAllMasterPfPersons(MASTER_PF_FILEPATH);
-		for (MasterPfPerson person : persons) {
-			pfPersonContractorService.savePfPerson(person);
-		}
-		
-//		List<ContractorLabourWage> contractorLabourWages = pfPersonContractorService.getAllContractorLabourWages(PF_CONTRACTOR_LABOUR_WAGE_LIST);
-//		for (ContractorLabourWage contractorLabourWage : contractorLabourWages) {
-//			pfPersonContractorService.saveContractorLabourWages(contractorLabourWage);
+//		List<MasterPfPerson> persons = pfPersonContractorService.getAllMasterPfPersons(MASTER_PF_FILEPATH);
+//		for (MasterPfPerson person : persons) {
+//			pfPersonContractorService.savePfPerson(person);
 //		}
+		
+		List<ContractorLabourWage> contractorLabourWages = pfPersonContractorService.getAllContractorLabourWages(PF_CONTRACTOR_LABOUR_WAGE_LIST);
+		for (ContractorLabourWage contractorLabourWage : contractorLabourWages) {
+			pfPersonContractorService.saveContractorLabourWages(contractorLabourWage);
+		}
 //		
 //		pfService.saveConsolidatedPersonWithWageAndPfDistribution();
 //		

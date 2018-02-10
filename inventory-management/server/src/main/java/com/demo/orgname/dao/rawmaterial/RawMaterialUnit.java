@@ -21,11 +21,43 @@ public class RawMaterialUnit {
     private String unit;
 	@Column(name = "code", unique=true, nullable = false)
     private String code;
-	@Column(name = "conversion_rate", unique=true, nullable = false)
+	@Column(name = "conversion_rate", nullable = false)
     private String conversionRate;
 	
 	public RawMaterialUnit() {
 		
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getConversionRate() {
+		return conversionRate;
+	}
+
+	public void setConversionRate(String conversionRate) {
+		this.conversionRate = conversionRate;
 	}
 
 	
