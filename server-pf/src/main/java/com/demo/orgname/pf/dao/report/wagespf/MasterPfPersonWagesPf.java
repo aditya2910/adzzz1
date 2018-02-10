@@ -23,13 +23,26 @@ public class MasterPfPersonWagesPf {
 	private String uanNo;
 	@Column(name = "name")
 	private String name;
-	@Column(name = "address")
-	private String address;
-	@Column(name = "contractor_code")
-	private String contractorCode;
-	@Column(name = "wage")
-	private String wage;
-	// TODO: create all the columns needs for all report in this table itself
+	@Column(name = "gross_wage")
+	private String grossWage;
+	@Column(name = "epf_wage")
+	private String epfWage;
+	@Column(name = "eps_wage")
+	private String epsWage;
+	@Column(name = "edli_wage")
+	private String edliWage;
+	
+	@Column(name = "ee_pf")
+	private String eePf;
+	@Column(name = "eps_pf")
+	private String epsPf;
+	@Column(name = "er_pf")
+	private String erPf;
+	
+	@Column(name = "ncp_days")
+	private String ncpDays;
+	@Column(name = "refunds")
+	private String refunds;
 	
 	public long getId() {
 		return id;
@@ -55,24 +68,58 @@ public class MasterPfPersonWagesPf {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddress() {
-		return address;
+	public String getGrossWage() {
+		return grossWage;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setGrossWage(String grossWage) {
+		this.grossWage = grossWage;
 	}
-	public String getContractorCode() {
-		return contractorCode;
+	public String getEpfWage() {
+		return epfWage;
 	}
-	public void setContractorCode(String contractorCode) {
-		this.contractorCode = contractorCode;
+	public void setEpfWage(String epfWage) {
+		this.epfWage = epfWage;
 	}
-	public String getWage() {
-		return wage;
+	public String getEpsWage() {
+		return epsWage;
 	}
-	public void setWage(String wage) {
-		this.wage = wage;
+	public void setEpsWage(String epsWage) {
+		this.epsWage = epsWage;
 	}
-	
-	
+	public String getEdliWage() {
+		return edliWage;
+	}
+	public void setEdliWage(String edliWage) {
+		this.edliWage = edliWage;
+	}
+	public String getEePf() {
+		return eePf;
+	}
+	public void setEePf(String eePf) {
+		this.eePf = eePf;
+	}
+	public String getEpsPf() {
+		return epsPf;
+	}
+	public void setEpsPf(String epsPf) {
+		this.epsPf = epsPf;
+	}
+	public String getErPf() {
+		return erPf;
+	}
+	public void setErPf(String erPf) {
+		this.erPf = erPf;
+	}
+	public String getNcpDays() {
+		return ncpDays;
+	}
+	public void setNcpDays(String ncpDays) {
+		this.ncpDays = ncpDays;
+	}
+	public String getRefunds() {
+		return refunds;
+	}
+	public void setRefunds(String refunds) {
+		this.refunds = refunds;
+	}
 }

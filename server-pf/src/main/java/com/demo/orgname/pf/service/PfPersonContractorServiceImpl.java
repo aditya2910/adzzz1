@@ -2,10 +2,17 @@ package com.demo.orgname.pf.service;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +20,7 @@ import com.demo.orgname.pf.dao.contractor.ContractorLabourWage;
 import com.demo.orgname.pf.dao.contractor.ContractorLabourWageRepository;
 import com.demo.orgname.pf.dao.person.MasterPfPerson;
 import com.demo.orgname.pf.dao.person.MasterPfPersonRepository;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @Service
 public class PfPersonContractorServiceImpl {
@@ -62,7 +65,7 @@ public class PfPersonContractorServiceImpl {
 						} else if(cell.getColumnIndex() == 2) {
 							person.setUanNo(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 3) {
-							person.setMunshiCode(cell.getStringCellValue());
+							person.setContractorCode(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 4) {
 							person.setName(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 5) {
@@ -128,8 +131,16 @@ public class PfPersonContractorServiceImpl {
 						if(cell.getColumnIndex() == 0) {
 							contractorLabourWage.setContractorCode(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 1) {
-							contractorLabourWage.setContractorLaboursWage(cell.getStringCellValue());
-						} 
+							contractorLabourWage.setContractorLabourGrossWage(cell.getStringCellValue());
+							if(Double.parseDouble(cell.getStringCellValue()) == 0) {
+								// TODO: set no. of days in current month to NCP days
+								contractorLabourWage.setNcpDays(28);
+							} else {
+								contractorLabourWage.setNcpDays(0);
+							}
+						} else if(cell.getColumnIndex() == 2) {
+							contractorLabourWage.setContractorLabourEpfWage(cell.getStringCellValue());
+						}
 						break;
 					}
 				}
@@ -147,5 +158,62 @@ public class PfPersonContractorServiceImpl {
 
 	public void saveContractorLabourWages(ContractorLabourWage contractorLabourWage) {
 		contractorLabourWageRepository.save(contractorLabourWage);
+	}
+
+	public void saveForm10ToMasterPerson(String fileName) {
+		try {
+			FileInputStream file = new FileInputStream(new File(fileName));
+			// Create Workbook instance holding reference to .xlsx file
+			XSSFWorkbook workbook = new XSSFWorkbook(file);
+			// Get first/desired sheet from the workbook
+			XSSFSheet sheet = workbook.getSheetAt(0);
+			// Iterate through each rows one by one
+			Iterator<Row> rowIterator = sheet.iterator();
+			while (rowIterator.hasNext()) {
+				String pfPortalMemberId = null;
+				String dateOfLeaving = null;
+				String reasonOfLeaving = null;
+				Row row = rowIterator.next();
+				// For each row, iterate through all the columns
+				Iterator<Cell> cellIterator = row.cellIterator();
+				while (cellIterator.hasNext()) {
+					Cell cell = cellIterator.next();
+					// Check the cell type and format accordingly
+					switch (cell.getCellType()) {
+					case Cell.CELL_TYPE_NUMERIC:
+						System.out.print(cell.getNumericCellValue() + " ");
+						break;
+					case Cell.CELL_TYPE_STRING:
+						System.out.print(cell.getStringCellValue() + " ");
+						System.out.print(cell.getColumnIndex() + " ");
+						if(cell.getColumnIndex() == 0) {
+							pfPortalMemberId = cell.getStringCellValue();
+						} else if(cell.getColumnIndex() == 1) {
+							dateOfLeaving = cell.getStringCellValue();
+						} else if(cell.getColumnIndex() == 2) {
+							reasonOfLeaving = cell.getStringCellValue();
+						}
+						break;
+					}
+				}
+				System.out.println("");
+				MasterPfPerson person = masterPfPersonRepository.findByPfPortalMemberId(pfPortalMemberId).get(0);
+				person.setDateOfLeaving(dateOfLeaving);
+				person.setReasonOfLeaving(reasonOfLeaving);
+				person.setDateOfEntryForLeaving(getTodayDate());
+				masterPfPersonRepository.save(person);
+			}
+			file.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private String getTodayDate() {
+		String PATTERN="dd-MMM-yy";
+		SimpleDateFormat dateFormat=new SimpleDateFormat();
+		dateFormat.applyPattern(PATTERN);
+		return dateFormat.format(Calendar.getInstance().getTime());
 	}
 }

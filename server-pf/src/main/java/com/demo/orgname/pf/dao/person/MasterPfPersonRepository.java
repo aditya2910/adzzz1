@@ -13,5 +13,5 @@ public interface MasterPfPersonRepository extends CrudRepository<MasterPfPerson,
 	//@Query(name = [name], nativeQuery = true)
 	//List<Object[]> methodThatQueriesMultipleTables();
 
-    List<MasterPfPerson> findByName(String name);
+    List<MasterPfPerson> findByPfPortalMemberId(String pfPortalMemberId);
 }

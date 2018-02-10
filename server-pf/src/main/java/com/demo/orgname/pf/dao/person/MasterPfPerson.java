@@ -19,11 +19,12 @@ public class MasterPfPerson {
 	private long id;
 	
 	private String name;
-	private String pfPortalMemberId;
+	@Column(unique=true, nullable = false)
+	private String pfPortalMemberId; // TODO: part of company account id
 	private String relationship;
 	private String fatherOrHusbandName;
 	private String gender;
-	private String munshiCode;
+	private String contractorCode;
 	private String dateOfBirth;
 	private String maritalStatus;
 	private String mobileNo;
@@ -33,6 +34,8 @@ public class MasterPfPerson {
 	private String pensionNo;
 	private String dateOfJoining;
 	private String dateOfLeaving;
+	private String reasonOfLeaving;
+	private String dateOfEntryForLeaving;
 	private String schemeCertificateNo;
 	private String ppoNo;
 	private String education;
@@ -74,11 +77,11 @@ public class MasterPfPerson {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getMunshiCode() {
-		return munshiCode;
+	public String getContractorCode() {
+		return contractorCode;
 	}
-	public void setMunshiCode(String munshiCode) {
-		this.munshiCode = munshiCode;
+	public void setContractorCode(String contractorCode) {
+		this.contractorCode = contractorCode;
 	}
 	public String getDateOfBirth() {
 		return dateOfBirth;
@@ -128,6 +131,18 @@ public class MasterPfPerson {
 	public void setDateOfLeaving(String dateOfLeaving) {
 		this.dateOfLeaving = dateOfLeaving;
 	}
+	public String getReasonOfLeaving() {
+		return reasonOfLeaving;
+	}
+	public void setReasonOfLeaving(String reasonOfLeaving) {
+		this.reasonOfLeaving = reasonOfLeaving;
+	}
+	public String getDateOfEntryForLeaving() {
+		return dateOfEntryForLeaving;
+	}
+	public void setDateOfEntryForLeaving(String dateOfEntryForLeaving) {
+		this.dateOfEntryForLeaving = dateOfEntryForLeaving;
+	}
 	public String getSchemeCertificateNo() {
 		return schemeCertificateNo;
 	}
@@ -152,4 +167,6 @@ public class MasterPfPerson {
 	public void setBranchCode(String branchCode) {
 		this.branchCode = branchCode;
 	}
+	
+	
 }

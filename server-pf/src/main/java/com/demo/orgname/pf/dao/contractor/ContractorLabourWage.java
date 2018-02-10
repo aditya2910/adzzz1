@@ -23,7 +23,15 @@ public class ContractorLabourWage {
 	private String contractorLabourGrossWage;
 	@Column(name = "contractor_labour_epf_wage")
 	private String contractorLabourEpfWage;
+	@Column(name = "ncp_days")
+	private int ncpDays;
 	
+	public int getNcpDays() {
+		return ncpDays;
+	}
+	public void setNcpDays(int ncpDays) {
+		this.ncpDays = ncpDays;
+	}
 	public long getId() {
 		return id;
 	}
