@@ -65,6 +65,22 @@ public class PfPersonContractorServiceImpl {
 							person.setMunshiCode(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 4) {
 							person.setName(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 5) {
+							person.setFatherOrHusbandName(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 6) {
+							person.setDateOfBirth(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 7) {
+							person.setDateOfJoining(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 8) {
+							person.setGender(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 9) {
+							person.setRelationship(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 10) {
+							person.setMaritalStatus(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 11) {
+							person.setMobileNo(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 12) {
+							person.setBranchCode(cell.getStringCellValue());
 						}
 						break;
 					}

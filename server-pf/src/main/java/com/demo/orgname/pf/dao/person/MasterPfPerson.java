@@ -28,6 +28,7 @@ public class MasterPfPerson {
 	private String maritalStatus;
 	private String mobileNo;
 	private String address;
+	@Column(unique=true, nullable = false)
 	private String uanNo;
 	private String pensionNo;
 	private String dateOfJoining;
