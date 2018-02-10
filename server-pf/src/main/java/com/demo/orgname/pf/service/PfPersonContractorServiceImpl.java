@@ -20,7 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 @Service
-public class ReadExcel {
+public class PfPersonContractorServiceImpl {
 	
 	@Autowired
 	private MasterPfPersonRepository masterPfPersonRepository;
@@ -58,13 +58,13 @@ public class ReadExcel {
 						System.out.print(cell.getStringCellValue() + " ");
 						System.out.print(cell.getColumnIndex() + " ");
 						if(cell.getColumnIndex() == 1) {
-							person.setUanNo(cell.getStringCellValue());
+							person.setPfPortalMemberId(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 2) {
-							person.setName(cell.getStringCellValue());
+							person.setUanNo(cell.getStringCellValue());
 						} else if(cell.getColumnIndex() == 3) {
-							person.setAddress(cell.getStringCellValue());
-						} else if(cell.getColumnIndex() == 4) {
 							person.setMunshiCode(cell.getStringCellValue());
+						} else if(cell.getColumnIndex() == 4) {
+							person.setName(cell.getStringCellValue());
 						}
 						break;
 					}

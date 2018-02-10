@@ -22,4 +22,8 @@ public class RawMaterialUnitsServiceImpl {
 		return rawMaterialUnits;
 	}
 
+	public void addRawMaterialUnit(RawMaterialUnit rawMaterialUnit) {
+		rawMaterialUnitsRepository.save(rawMaterialUnit);
+	}
+
 }

@@ -22,4 +22,8 @@ public class RawMaterialTypesServiceImpl {
 		return rawMaterialTypes;
 	}
 
+	public void addRawMaterialType(RawMaterialType rawMaterialType) {
+		rawMaterialTypesRepository.save(rawMaterialType);
+	}
+
 }
