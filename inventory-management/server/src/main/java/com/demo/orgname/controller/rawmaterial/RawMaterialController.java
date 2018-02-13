@@ -1,6 +1,7 @@
 package com.demo.orgname.controller.rawmaterial;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.orgname.dao.rawmaterial.RawMaterial;
+import com.demo.orgname.service.rawmaterial.RawMaterialDto;
+import com.demo.orgname.service.rawmaterial.RawMaterialDtoConverter;
 import com.demo.orgname.service.rawmaterial.RawMaterialServiceImpl;
 
 @RestController
@@ -25,16 +28,20 @@ public class RawMaterialController {
 	private RawMaterialServiceImpl rawMaterialService;
 	
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public void save(@RequestBody RawMaterial rawMaterial) {
+    public RawMaterialDto save(@RequestBody RawMaterial rawMaterial) {
 		System.out.println("Saving Raw Material : " + rawMaterial.getName());
-		rawMaterialService.addRawMaterial(rawMaterial);
+		RawMaterial rm = rawMaterialService.addRawMaterial(rawMaterial);
+		return RawMaterialDtoConverter.convert(rm);
     }
 	
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<RawMaterial> getAll() {
+    public List<RawMaterialDto> getAll() {
 		System.out.println("..........................................getting all raw materials: " + context);
-		List<RawMaterial> rawMaterials = rawMaterialService.getAllRawMaterials();
-        return rawMaterials;
+		//List<RawMaterial> rawMaterials = rawMaterialService.getAllRawMaterials();
+		
+		return rawMaterialService.getAllRawMaterials().stream()
+			.map(RawMaterialDtoConverter::convert)
+			.collect(Collectors.toList());
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

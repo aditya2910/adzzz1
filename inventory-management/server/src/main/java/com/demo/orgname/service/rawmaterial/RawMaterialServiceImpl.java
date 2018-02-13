@@ -22,8 +22,8 @@ public class RawMaterialServiceImpl {
 		return rawMaterials;
 	}
 
-	public void addRawMaterial(RawMaterial rawMaterial) {
-		repository.save(rawMaterial);
+	public RawMaterial addRawMaterial(RawMaterial rawMaterial) {
+		return repository.save(rawMaterial);
 	}
 	
 	public RawMaterial getRawMaterial(String id) {
