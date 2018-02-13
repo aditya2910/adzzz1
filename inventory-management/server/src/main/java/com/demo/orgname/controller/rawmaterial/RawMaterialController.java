@@ -37,8 +37,6 @@ public class RawMaterialController {
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<RawMaterialDto> getAll() {
 		System.out.println("..........................................getting all raw materials: " + context);
-		//List<RawMaterial> rawMaterials = rawMaterialService.getAllRawMaterials();
-		
 		return rawMaterialService.getAllRawMaterials().stream()
 			.map(RawMaterialDtoConverter::convert)
 			.collect(Collectors.toList());
@@ -59,9 +57,10 @@ public class RawMaterialController {
     }
 	
 	@RequestMapping(method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public void update(@RequestBody RawMaterial rawMaterial) {
+    public RawMaterialDto update(@RequestBody RawMaterial rawMaterial) {
 		System.out.println("updating raw material");
-		rawMaterialService.updateRawMaterial(rawMaterial);
+		RawMaterial rm = rawMaterialService.updateRawMaterial(rawMaterial);
+		return RawMaterialDtoConverter.convert(rm);
     }
 	
 	

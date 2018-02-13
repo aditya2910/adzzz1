@@ -34,7 +34,7 @@ public class RawMaterialServiceImpl {
 		return (int) repository.count();
 	}
 
-	public void updateRawMaterial(RawMaterial rawMaterial) {
-		repository.save(rawMaterial);
+	public RawMaterial updateRawMaterial(RawMaterial rawMaterial) {
+		return repository.save(rawMaterial);
 	}
 }
