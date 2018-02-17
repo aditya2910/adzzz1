@@ -44,7 +44,10 @@ public class RawMaterialServiceImpl {
 	}
 
 	public RawMaterial updateRawMaterial(RawMaterial rawMaterial) {
-		//return repository.save(rawMaterial);
-		return null;
+		return repository.save(rawMaterial);
+	}
+
+	public void deleteRawMaterial(String id) {
+		repository.delete(id);;
 	}
 }

@@ -96,7 +96,11 @@ public class RawMaterialController {
 		return RawMaterialDtoConverter.convert(rm);
     }
 	
-	
-	
+	@RequestMapping(value="/{id}", method= RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<RawMaterialDto> deleteById(@PathVariable String id) throws RawMaterialException {
+		System.out.println("delete raw material");
+		rawMaterialService.deleteRawMaterial(id);
+		return new ResponseEntity<RawMaterialDto>(HttpStatus.OK);
+    }
 	// custom query - NOT WORKING
 }
