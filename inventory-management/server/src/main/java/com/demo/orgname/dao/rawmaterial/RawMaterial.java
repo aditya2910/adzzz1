@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.rawmaterial.RawMaterialBo;
+
 @Entity
 @Table(name="raw_material", catalog = "sbw")
 public class RawMaterial {
@@ -26,12 +28,18 @@ public class RawMaterial {
     
     public RawMaterial() {
 	}
-
+    
+    public RawMaterial(RawMaterialBo bo) {
+    		this.setName(bo.getName());
+    		this.setType(bo.getType());
+    		this.setUnit(bo.getUnit());
+    }
+    
 	public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	protected void setId(String id) {
 		this.id = id;
 	}
 
@@ -39,7 +47,7 @@ public class RawMaterial {
 		return name;
 	}
 
-	public void setName(String name) {
+	protected void setName(String name) {
 		this.name = name;
 	}
 
@@ -47,7 +55,7 @@ public class RawMaterial {
 		return unit;
 	}
 
-	public void setUnit(String unit) {
+	protected void setUnit(String unit) {
 		this.unit = unit;
 	}
 
@@ -55,7 +63,7 @@ public class RawMaterial {
 		return type;
 	}
 
-	public void setType(String type) {
+	protected void setType(String type) {
 		this.type = type;
 	}
     

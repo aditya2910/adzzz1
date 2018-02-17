@@ -1,4 +1,5 @@
-package com.demo.orgname.service.rawmaterial;
+package com.demo.orgname.controller.rawmaterial;
+
 
 public class RawMaterialDto {
 	
@@ -6,6 +7,9 @@ public class RawMaterialDto {
 	private String name;
 	private String unit;
     private String type;
+    
+    public RawMaterialDto() {
+    }
     
 	public RawMaterialDto(String id, String name, String unit, String type) {
 		super();

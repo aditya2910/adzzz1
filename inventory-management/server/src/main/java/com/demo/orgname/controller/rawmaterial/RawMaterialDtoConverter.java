@@ -1,4 +1,4 @@
-package com.demo.orgname.service.rawmaterial;
+package com.demo.orgname.controller.rawmaterial;
 
 import com.demo.orgname.dao.rawmaterial.RawMaterial;
 
