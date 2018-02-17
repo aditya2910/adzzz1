@@ -37,20 +37,27 @@ public class RawMaterialController {
 		RawMaterialBo rmBo = getRawMaterialBo(rawMaterialDto);
 		RawMaterial rm = rawMaterialService.addRawMaterial(rmBo);
 		
-		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rm),HttpStatus.OK);
+		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rm), HttpStatus.OK);
     }
 
 	private RawMaterialBo getRawMaterialBo(RawMaterialDto rawMaterialDto) throws RawMaterialException {
 		try {
 			return new RawMaterialBo(rawMaterialDto);
 		} catch (Exception e) {
-			throw new RawMaterialException("Input Raw Material is having invalid value.", e);
+			throw new RawMaterialException("Input Raw Material is having invalid value.", e, 400);
 		}
 	}
 	
 	@ExceptionHandler(RawMaterialException.class)
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
 		ErrorResponse error = new ErrorResponse();
+		if(ex instanceof RawMaterialException) {
+			RawMaterialException rmEx = (RawMaterialException) ex;
+			error.setErrorCode(rmEx.getErrorCode());
+			error.setMessage(rmEx.getMessage());
+			error.setDescription(ex.getLocalizedMessage());
+			return new ResponseEntity<ErrorResponse>(error, HttpStatus.valueOf(rmEx.getErrorCode()));
+		}
 		error.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		error.setMessage(ex.getMessage());
 		error.setDescription(ex.getCause().toString());
@@ -66,10 +73,13 @@ public class RawMaterialController {
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public RawMaterial getById(@PathVariable String id) {
+    public RawMaterial getById(@PathVariable String id) throws RawMaterialException {
 		System.out.println("getting raw material");
 		RawMaterial rawMaterial = rawMaterialService.getRawMaterial(id);
 		System.out.println("rawMaterial: " + rawMaterial);
+		if(rawMaterial == null) {
+			throw new RawMaterialException("No Raw Material Found", 404);
+		}
         return rawMaterial;
     }
 	
