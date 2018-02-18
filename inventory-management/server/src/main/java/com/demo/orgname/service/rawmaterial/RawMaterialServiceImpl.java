@@ -16,11 +16,15 @@ public class RawMaterialServiceImpl {
 	@Autowired
 	private RawMaterialRepository repository;
 	
-	public List<RawMaterial> getAllRawMaterials() {
+	public List<RawMaterial> getAllRawMaterials() throws RawMaterialException {
 		List<RawMaterial> rawMaterials = new ArrayList<>();
-		repository.findAll()
-			.forEach(rawMaterials::add);
-		return rawMaterials;
+		try {
+			repository.findAll()
+				.forEach(rawMaterials::add);
+			return rawMaterials;
+		} catch (Exception e) {
+			throw new RawMaterialException("Exception occured while getting all raw material.", e, 500);
+		}
 	}
 
 	public RawMaterial addRawMaterial(RawMaterialBo bo) throws RawMaterialException {
@@ -39,12 +43,16 @@ public class RawMaterialServiceImpl {
 		}
 	}
 
-	public int getRawMaterialsCount() {
-		return (int) repository.count();
+	public int getRawMaterialsCount() throws RawMaterialException {
+		try {
+			return (int) repository.count();
+		} catch (Exception e) {
+			throw new RawMaterialException("Exception occured while getting count of raw magerials", e, 500) ;
+		}
 	}
 
-	public RawMaterial updateRawMaterial(RawMaterial rawMaterial) {
-		return repository.save(rawMaterial);
+	public RawMaterial updateRawMaterial(RawMaterialBo bo) {
+		return repository.save(new RawMaterial(bo));
 	}
 
 	public void deleteRawMaterial(String id) {

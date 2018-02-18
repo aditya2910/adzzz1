@@ -30,6 +30,7 @@ public class RawMaterial {
 	}
     
     public RawMaterial(RawMaterialBo bo) {
+    		this.setId(bo.getId());
     		this.setName(bo.getName());
     		this.setType(bo.getType());
     		this.setUnit(bo.getUnit());

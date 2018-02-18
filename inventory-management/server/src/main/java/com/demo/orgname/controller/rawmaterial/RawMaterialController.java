@@ -34,15 +34,63 @@ public class RawMaterialController {
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<RawMaterialDto> save(@RequestBody RawMaterialDto rawMaterialDto) throws RawMaterialException {
 		System.out.println("Saving Raw Material : " + rawMaterialDto.getName());
-		RawMaterialBo rmBo = getRawMaterialBo(rawMaterialDto);
-		RawMaterial rm = rawMaterialService.addRawMaterial(rmBo);
+		RawMaterialBo rawMaterialBo = getRawMaterialBo(rawMaterialDto, null);
+		RawMaterial rawMaterial = rawMaterialService.addRawMaterial(rawMaterialBo);
 		
-		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rm), HttpStatus.OK);
+		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rawMaterial), HttpStatus.OK);
     }
 
-	private RawMaterialBo getRawMaterialBo(RawMaterialDto rawMaterialDto) throws RawMaterialException {
+	
+
+	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<RawMaterialDto>> getAll() throws RawMaterialException {
+		System.out.println("..........................................getting all raw materials: " + context);
+		List<RawMaterialDto> rawMaterialDtos = rawMaterialService.getAllRawMaterials().stream()
+			.map(RawMaterialDtoConverter::convert)
+			.collect(Collectors.toList());
+		return new ResponseEntity<List<RawMaterialDto>>(rawMaterialDtos, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<RawMaterialDto> getById(@PathVariable String id) throws RawMaterialException {
+		System.out.println("getting raw material");
+		RawMaterial rawMaterial = rawMaterialService.getRawMaterial(id);
+		System.out.println("rawMaterial: " + rawMaterial);
+		if(rawMaterial == null) {
+			throw new RawMaterialException("No Raw Material Found", 404);
+		}
+		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rawMaterial), HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/count", method= RequestMethod.GET)
+    public int getCount() throws RawMaterialException {
+		System.out.println("getting raw materials count");
+		return rawMaterialService.getRawMaterialsCount();
+    }
+	
+	@RequestMapping(value="/{id}", method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<RawMaterialDto> update(@RequestBody RawMaterialDto rawMaterialDto, @PathVariable String id) throws RawMaterialException {
+		System.out.println("updating raw material");
+		rawMaterialDto.setId(id);
+		RawMaterialBo rawMaterialBo = getRawMaterialBo(rawMaterialDto, id);
+		//rawMaterialBo.set
+		RawMaterial rawMaterial = rawMaterialService.updateRawMaterial(rawMaterialBo);
+		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rawMaterial), HttpStatus.OK);
+    }
+	
+	@RequestMapping(value="/{id}", method= RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<RawMaterialDto> deleteById(@PathVariable String id) throws RawMaterialException {
+		System.out.println("delete raw material");
+		rawMaterialService.deleteRawMaterial(id);
+		return new ResponseEntity<RawMaterialDto>(HttpStatus.OK);
+    }
+	
+	private RawMaterialBo getRawMaterialBo(RawMaterialDto rawMaterialDto, String id) throws RawMaterialException {
 		try {
-			return new RawMaterialBo(rawMaterialDto);
+			if(id == null) {
+				return new RawMaterialBo(rawMaterialDto);
+			}
+			return new RawMaterialBo(rawMaterialDto, id);
 		} catch (Exception e) {
 			throw new RawMaterialException("Input Raw Material is having invalid value.", e, 400);
 		}
@@ -63,44 +111,5 @@ public class RawMaterialController {
 		error.setDescription(ex.getCause().toString());
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-
-	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<RawMaterialDto> getAll() {
-		System.out.println("..........................................getting all raw materials: " + context);
-		return rawMaterialService.getAllRawMaterials().stream()
-			.map(RawMaterialDtoConverter::convert)
-			.collect(Collectors.toList());
-    }
-	
-	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public RawMaterial getById(@PathVariable String id) throws RawMaterialException {
-		System.out.println("getting raw material");
-		RawMaterial rawMaterial = rawMaterialService.getRawMaterial(id);
-		System.out.println("rawMaterial: " + rawMaterial);
-		if(rawMaterial == null) {
-			throw new RawMaterialException("No Raw Material Found", 404);
-		}
-        return rawMaterial;
-    }
-	
-	@RequestMapping(value="/count", method= RequestMethod.GET)
-    public int getCount() {
-		System.out.println("getting raw materials count");
-		return rawMaterialService.getRawMaterialsCount();
-    }
-	
-	@RequestMapping(method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public RawMaterialDto update(@RequestBody RawMaterial rawMaterial) {
-		System.out.println("updating raw material");
-		RawMaterial rm = rawMaterialService.updateRawMaterial(rawMaterial);
-		return RawMaterialDtoConverter.convert(rm);
-    }
-	
-	@RequestMapping(value="/{id}", method= RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<RawMaterialDto> deleteById(@PathVariable String id) throws RawMaterialException {
-		System.out.println("delete raw material");
-		rawMaterialService.deleteRawMaterial(id);
-		return new ResponseEntity<RawMaterialDto>(HttpStatus.OK);
-    }
 	// custom query - NOT WORKING
 }

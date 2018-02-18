@@ -8,7 +8,14 @@ public class RawMaterialBo extends RawMaterial {
 	public RawMaterialBo(RawMaterialDto dto) {
 		this.setName(dto.getName());
 		this.setUnit(dto.getUnit());
-		this.setType(dto.getUnit());
+		this.setType(dto.getType());
+	}
+	
+	public RawMaterialBo(RawMaterialDto dto, String id) {
+		this.setId(id);
+		this.setName(dto.getName());
+		this.setUnit(dto.getUnit());
+		this.setType(dto.getType());
 	}
 	
 	@Override
@@ -25,5 +32,13 @@ public class RawMaterialBo extends RawMaterial {
 			throw new IllegalArgumentException("Input unit is invalid");
 		}
 		super.setUnit(unit);
+	}
+	
+	@Override
+	protected void setId(String id) {
+		if(id == null || id.isEmpty() || id.length() <= 5) {
+			throw new IllegalArgumentException("Input id is invalid");
+		}
+		super.setId(id);
 	}
 }
