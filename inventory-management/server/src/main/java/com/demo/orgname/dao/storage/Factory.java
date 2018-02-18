@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.storage.FactoryBo;
+
 @Entity
 @Table(name="rm_factory", catalog = "sbw")
 public class Factory {
@@ -26,6 +28,19 @@ public class Factory {
     private String address;
 	@Column(name = "phone", unique=true, nullable = false)
     private String phone;
+	
+	public Factory() {
+	}
+	
+	public Factory(FactoryBo bo) {
+		this.setId(bo.getId());
+		this.setName(bo.getName());
+		this.setType(bo.getType());
+		this.setArea(bo.getArea());
+		this.setAddress(bo.getAddress());
+		this.setPhone(bo.getPhone());
+	}
+	
 	public String getId() {
 		return id;
 	}
