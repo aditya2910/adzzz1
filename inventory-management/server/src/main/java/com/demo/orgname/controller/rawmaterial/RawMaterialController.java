@@ -37,7 +37,7 @@ public class RawMaterialController {
 		RawMaterialBo rawMaterialBo = getRawMaterialBo(rawMaterialDto, null);
 		RawMaterial rawMaterial = rawMaterialService.addRawMaterial(rawMaterialBo);
 		
-		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rawMaterial), HttpStatus.OK);
+		return new ResponseEntity<RawMaterialDto>(new RawMaterialDto(rawMaterial), HttpStatus.OK);
     }
 
 	
@@ -45,9 +45,10 @@ public class RawMaterialController {
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<RawMaterialDto>> getAll() throws RawMaterialException {
 		System.out.println("..........................................getting all raw materials: " + context);
-		List<RawMaterialDto> rawMaterialDtos = rawMaterialService.getAllRawMaterials().stream()
-			.map(RawMaterialDtoConverter::convert)
-			.collect(Collectors.toList());
+		List<RawMaterialDto> rawMaterialDtos = rawMaterialService.getAllRawMaterials()
+				.stream()
+				.map(RawMaterialDto::new)
+				.collect(Collectors.toList());
 		return new ResponseEntity<List<RawMaterialDto>>(rawMaterialDtos, HttpStatus.OK);
     }
 	
@@ -59,7 +60,7 @@ public class RawMaterialController {
 		if(rawMaterial == null) {
 			throw new RawMaterialException("No Raw Material Found", 404);
 		}
-		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rawMaterial), HttpStatus.OK);
+		return new ResponseEntity<RawMaterialDto>(new RawMaterialDto(rawMaterial), HttpStatus.OK);
     }
 	
 	@RequestMapping(value="/count", method= RequestMethod.GET)
@@ -75,7 +76,7 @@ public class RawMaterialController {
 		RawMaterialBo rawMaterialBo = getRawMaterialBo(rawMaterialDto, id);
 		//rawMaterialBo.set
 		RawMaterial rawMaterial = rawMaterialService.updateRawMaterial(rawMaterialBo);
-		return new ResponseEntity<RawMaterialDto>(RawMaterialDtoConverter.convert(rawMaterial), HttpStatus.OK);
+		return new ResponseEntity<RawMaterialDto>(new RawMaterialDto(rawMaterial), HttpStatus.OK);
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

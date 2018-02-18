@@ -1,5 +1,6 @@
 package com.demo.orgname.controller.rawmaterial;
 
+import com.demo.orgname.dao.rawmaterial.RawMaterial;
 
 public class RawMaterialDto {
 	
@@ -8,7 +9,12 @@ public class RawMaterialDto {
 	private String unit;
     private String type;
     
-    public RawMaterialDto() {
+    public RawMaterialDto(RawMaterial rawMaterial) {
+    		super();
+		this.id = rawMaterial.getId();
+		this.name = rawMaterial.getName();
+		this.unit = rawMaterial.getUnit();
+		this.type = rawMaterial.getUnit();
     }
     
 	public RawMaterialDto(String id, String name, String unit, String type) {

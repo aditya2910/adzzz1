@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.demo.orgname.dao.rawmaterial.RawMaterial;
 import com.demo.orgname.dao.rawmaterial.RawMaterialRepository;
 import com.demo.orgname.exception.RawMaterialException;
+import com.demo.orgname.util.StringUtility;
 
 @Service
 public class RawMaterialServiceImpl {
@@ -47,15 +48,29 @@ public class RawMaterialServiceImpl {
 		try {
 			return (int) repository.count();
 		} catch (Exception e) {
-			throw new RawMaterialException("Exception occured while getting count of raw magerials", e, 500) ;
+			throw new RawMaterialException("Exception occured while getting count of raw materials", e, 500) ;
 		}
 	}
 
-	public RawMaterial updateRawMaterial(RawMaterialBo bo) {
-		return repository.save(new RawMaterial(bo));
+	public RawMaterial updateRawMaterial(RawMaterialBo bo) throws RawMaterialException {
+		//return repository.save(new RawMaterial(bo));
+		try {
+			return repository.save(new RawMaterial(bo));
+		} catch (Exception e) {
+			throw new RawMaterialException("Exception occured while updaing raw material", e, 500) ;
+		}
 	}
 
-	public void deleteRawMaterial(String id) {
-		repository.delete(id);;
+	public void deleteRawMaterial(String id) throws RawMaterialException {
+		if(!StringUtility.checkIfStringIsNotNullOrEmpty(id)) {
+			throw new RawMaterialException("Given Raw material is invalid", 400) ;
+		}
+		try {
+			repository.delete(id);
+		} catch (NullPointerException e) {
+			throw new RawMaterialException("Exception occured while deleting raw material", e, 500) ;
+		} catch (Exception e) {
+			throw new RawMaterialException("Exception occured while deleting raw material", e, 500) ;
+		}
 	}
 }
