@@ -29,7 +29,7 @@ public class RawMaterialType {
 	public RawMaterialType(RawMaterialTypeBo bo) {
 		this.setId(bo.getId());
 		this.setType(bo.getType());
-}
+	}
 
 	public String getId() {
 		return id;

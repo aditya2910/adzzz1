@@ -1,6 +1,6 @@
 package com.demo.orgname.exception;
 
-public class RawMaterialTypeException extends Exception {
+public class InventoryException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -8,18 +8,18 @@ public class RawMaterialTypeException extends Exception {
 	private Throwable exception;
 	private int errorCode;
 	
-	public RawMaterialTypeException() {
+	public InventoryException() {
 		super();
 	}
 
-	public RawMaterialTypeException(String errorMessage, Throwable e, int errorCode) {
+	public InventoryException(String errorMessage, Throwable e, int errorCode) {
 		super(errorMessage, e);
 		this.errorMessage = errorMessage;
 		this.exception = e;
 		this.errorCode = errorCode;
 	}
 	
-	public RawMaterialTypeException(String errorMessage, int errorCode) {
+	public InventoryException(String errorMessage, int errorCode) {
 		super(errorMessage);
 		this.errorMessage = errorMessage;
 		this.errorCode = errorCode;

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.orgname.dao.rawmaterial.RawMaterial;
 import com.demo.orgname.exception.ErrorResponse;
-import com.demo.orgname.exception.RawMaterialException;
+import com.demo.orgname.exception.InventoryException;
 import com.demo.orgname.service.rawmaterial.RawMaterialBo;
 import com.demo.orgname.service.rawmaterial.RawMaterialServiceImpl;
 
@@ -32,7 +32,7 @@ public class RawMaterialController {
 	private RawMaterialServiceImpl rawMaterialService;
 	
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RawMaterialDto> save(@RequestBody RawMaterialDto rawMaterialDto) throws RawMaterialException {
+    public ResponseEntity<RawMaterialDto> save(@RequestBody RawMaterialDto rawMaterialDto) throws InventoryException {
 		System.out.println("Saving Raw Material : " + rawMaterialDto.getName());
 		RawMaterialBo rawMaterialBo = getRawMaterialBo(rawMaterialDto, null);
 		RawMaterial rawMaterial = rawMaterialService.addRawMaterial(rawMaterialBo);
@@ -41,7 +41,7 @@ public class RawMaterialController {
     }
 
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<List<RawMaterialDto>> getAll() throws RawMaterialException {
+    public ResponseEntity<List<RawMaterialDto>> getAll() throws InventoryException {
 		System.out.println("..........................................getting all raw materials: " + context);
 		List<RawMaterialDto> rawMaterialDtos = rawMaterialService.getAllRawMaterials()
 				.stream()
@@ -51,24 +51,24 @@ public class RawMaterialController {
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RawMaterialDto> getById(@PathVariable String id) throws RawMaterialException {
+    public ResponseEntity<RawMaterialDto> getById(@PathVariable String id) throws InventoryException {
 		System.out.println("getting raw material");
 		RawMaterial rawMaterial = rawMaterialService.getRawMaterial(id);
 		System.out.println("rawMaterial: " + rawMaterial);
 		if(rawMaterial == null) {
-			throw new RawMaterialException("No Raw Material Found", 404);
+			throw new InventoryException("No Raw Material Found", 404);
 		}
 		return new ResponseEntity<RawMaterialDto>(new RawMaterialDto(rawMaterial), HttpStatus.OK);
     }
 	
 	@RequestMapping(value="/count", method= RequestMethod.GET)
-    public int getCount() throws RawMaterialException {
+    public int getCount() throws InventoryException {
 		System.out.println("getting raw materials count");
 		return rawMaterialService.getRawMaterialsCount();
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<RawMaterialDto> update(@RequestBody RawMaterialDto rawMaterialDto, @PathVariable String id) throws RawMaterialException {
+    public ResponseEntity<RawMaterialDto> update(@RequestBody RawMaterialDto rawMaterialDto, @PathVariable String id) throws InventoryException {
 		System.out.println("updating raw material");
 		rawMaterialDto.setId(id);
 		RawMaterialBo rawMaterialBo = getRawMaterialBo(rawMaterialDto, id);
@@ -78,32 +78,32 @@ public class RawMaterialController {
     }
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<RawMaterialDto> deleteById(@PathVariable String id) throws RawMaterialException {
+	public ResponseEntity<RawMaterialDto> deleteById(@PathVariable String id) throws InventoryException {
 		System.out.println("delete raw material");
 		rawMaterialService.deleteRawMaterial(id);
 		return new ResponseEntity<RawMaterialDto>(HttpStatus.OK);
     }
 	
-	private RawMaterialBo getRawMaterialBo(RawMaterialDto rawMaterialDto, String id) throws RawMaterialException {
+	private RawMaterialBo getRawMaterialBo(RawMaterialDto rawMaterialDto, String id) throws InventoryException {
 		try {
 			if(id == null) {
 				return new RawMaterialBo(rawMaterialDto);
 			}
 			return new RawMaterialBo(rawMaterialDto, id);
 		} catch (Exception e) {
-			throw new RawMaterialException("Input Raw Material is having invalid value.", e, 400);
+			throw new InventoryException("Input Raw Material is having invalid value.", e, 400);
 		}
 	}
 	
-	@ExceptionHandler(RawMaterialException.class)
+	@ExceptionHandler(InventoryException.class)
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
 		ErrorResponse error = new ErrorResponse();
-		if(ex instanceof RawMaterialException) {
-			RawMaterialException rmEx = (RawMaterialException) ex;
-			error.setErrorCode(rmEx.getErrorCode());
-			error.setMessage(rmEx.getMessage());
+		if(ex instanceof InventoryException) {
+			InventoryException inventoryExcption = (InventoryException) ex;
+			error.setErrorCode(inventoryExcption.getErrorCode());
+			error.setMessage(inventoryExcption.getMessage());
 			error.setDescription(ex.getLocalizedMessage());
-			return new ResponseEntity<ErrorResponse>(error, HttpStatus.valueOf(rmEx.getErrorCode()));
+			return new ResponseEntity<ErrorResponse>(error, HttpStatus.valueOf(inventoryExcption.getErrorCode()));
 		}
 		error.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		error.setMessage(ex.getMessage());

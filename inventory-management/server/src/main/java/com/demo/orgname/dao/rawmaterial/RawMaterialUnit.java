@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.rawmaterial.RawMaterialUnitBo;
+
 @Entity
 @Table(name="rm_units", catalog = "sbw")
 public class RawMaterialUnit {
@@ -25,7 +27,13 @@ public class RawMaterialUnit {
     private String conversionRate;
 	
 	public RawMaterialUnit() {
-		
+	}
+	
+	public RawMaterialUnit(RawMaterialUnitBo bo) {
+		this.setId(bo.getId());
+		this.setUnit(bo.getUnit());
+		this.setCode(bo.getCode());
+		this.setConversionRate(bo.getConversionRate());
 	}
 
 	public String getId() {
