@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.brand.ProductBrandBo;
+
 @Entity
 @Table(name = "product_brand", catalog = "sbw")
 public class ProductBrand {
@@ -21,6 +23,15 @@ public class ProductBrand {
 	private String name;
 	@Column(name = "type", nullable = false)
 	private String type;
+	
+	public ProductBrand() {
+	}
+	
+	public ProductBrand(ProductBrandBo bo) {
+		this.setId(bo.getId());
+		this.setName(bo.getName());
+		this.setType(bo.getType());
+	}
 	
 	public String getId() {
 		return id;
