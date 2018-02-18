@@ -24,7 +24,7 @@ public class RawMaterialUnit {
 	@Column(name = "code", unique=true, nullable = false)
     private String code;
 	@Column(name = "conversion_rate", nullable = false)
-    private String conversionRate;
+    private String conversionRate;    // this is the value of conversion rate from current unit to its very next smaller unit. e.g. it will be 1000 if code=KG
 	
 	public RawMaterialUnit() {
 	}

@@ -85,6 +85,8 @@ public class RawMaterialController {
     }
 	
 	private RawMaterialBo getRawMaterialBo(RawMaterialDto rawMaterialDto, String id) throws InventoryException {
+		// TODO: handling exception like this method needs to be replicated in all methods which creates BOs.
+		// this sends proper validation message to UI
 		try {
 			if(id == null) {
 				return new RawMaterialBo(rawMaterialDto);
