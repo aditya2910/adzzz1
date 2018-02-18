@@ -40,8 +40,6 @@ public class RawMaterialController {
 		return new ResponseEntity<RawMaterialDto>(new RawMaterialDto(rawMaterial), HttpStatus.OK);
     }
 
-	
-
 	@RequestMapping(method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<RawMaterialDto>> getAll() throws RawMaterialException {
 		System.out.println("..........................................getting all raw materials: " + context);

@@ -69,8 +69,6 @@ public class RawMaterialServiceImpl {
 		}
 		try {
 			repository.delete(id);
-		} catch (NullPointerException e) {
-			throw new RawMaterialException("Exception occured while deleting raw material", e, 500) ;
 		} catch (Exception e) {
 			throw new RawMaterialException("Exception occured while deleting raw material", e, 500) ;
 		}

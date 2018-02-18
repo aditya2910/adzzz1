@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.rawmaterial.RawMaterialTypeBo;
+
 @Entity
 @Table(name="rm_types", catalog = "sbw")
 public class RawMaterialType {
@@ -23,6 +25,11 @@ public class RawMaterialType {
 	public RawMaterialType() {
 		
 	}
+	
+	public RawMaterialType(RawMaterialTypeBo bo) {
+		this.setId(bo.getId());
+		this.setType(bo.getType());
+}
 
 	public String getId() {
 		return id;
