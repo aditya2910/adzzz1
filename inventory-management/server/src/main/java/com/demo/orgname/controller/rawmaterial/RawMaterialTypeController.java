@@ -69,7 +69,7 @@ public class RawMaterialTypeController {
 		return new ResponseEntity<RawMaterialTypeDto>(HttpStatus.OK);
     }
 	
-	
+	// TODO: create layer wise exception classes
 	@ExceptionHandler(InventoryException.class)
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
 		ErrorResponse error = new ErrorResponse();

@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.supplier.SupplierBo;
+
 @Entity
 @Table(name="supplier", catalog = "sbw")
 public class Supplier {
@@ -25,6 +27,18 @@ public class Supplier {
     private String address;
 	@Column(name = "phone", unique=true, nullable = false)
     private String phone;
+	
+	public Supplier() {
+		super();
+	}
+
+	public Supplier(SupplierBo bo) {
+		this.setId(bo.getId());
+		this.setName(bo.getName());
+		this.setType(bo.getType());
+		this.setAddress(bo.getAddress());
+		this.setPhone(bo.getPhone());
+	}
 	
 	public String getId() {
 		return id;
