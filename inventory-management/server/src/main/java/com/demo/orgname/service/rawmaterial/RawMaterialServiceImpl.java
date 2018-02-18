@@ -37,6 +37,9 @@ public class RawMaterialServiceImpl {
 	}
 	
 	public RawMaterial getRawMaterial(String id) throws RawMaterialException {
+		if(!StringUtility.checkIfStringIsNotNullOrEmpty(id)) {
+			throw new RawMaterialException("Given Raw material is invalid", 400) ;
+		}
 		try {
 			return repository.findOne(id);
 		} catch (Exception e) {
@@ -53,7 +56,6 @@ public class RawMaterialServiceImpl {
 	}
 
 	public RawMaterial updateRawMaterial(RawMaterialBo bo) throws RawMaterialException {
-		//return repository.save(new RawMaterial(bo));
 		try {
 			return repository.save(new RawMaterial(bo));
 		} catch (Exception e) {

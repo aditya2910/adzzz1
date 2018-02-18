@@ -43,7 +43,7 @@ public class StoreCORSFilter implements Filter {
     public void doFilter( ServletRequest request, ServletResponse res, FilterChain chain ) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse)res;
         response.setHeader( "Access-Control-Allow-Origin", "*" );
-        response.setHeader( "Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE" );
+        response.setHeader( "Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE" );
         response.setHeader( "Access-Control-Max-Age", "3600" );
         response.setHeader( "Access-Control-Allow-Headers", "Authorization, X-SSL-Client-DN, Predix-Zone-Id, Origin, x-requested-with, Content-Type, Accept" );
         response.setHeader( "Access-Control-Allow-Credentials", "*" );
