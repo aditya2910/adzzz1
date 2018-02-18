@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.checker.CheckerBo;
+
 @Entity
 @Table(name="checker", catalog = "sbw")
 public class Checker {
@@ -23,6 +25,17 @@ public class Checker {
     private String address;
 	@Column(name = "phone", unique=true, nullable = false)
     private String phone;
+	
+	public Checker() {
+		super();
+	}
+
+	public Checker(CheckerBo bo) {
+		this.setId(bo.getId());
+		this.setName(bo.getName());
+		this.setAddress(bo.getAddress());
+		this.setPhone(bo.getPhone());
+	}
 	
 	public String getId() {
 		return id;

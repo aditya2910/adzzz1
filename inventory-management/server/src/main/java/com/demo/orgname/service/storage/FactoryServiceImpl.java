@@ -29,7 +29,7 @@ public class FactoryServiceImpl {
 		List<Factory> factories = new ArrayList<>();
 		try {
 			repository.findAll()
-			.forEach(factories::add);
+				.forEach(factories::add);
 			return factories;
 		} catch (Exception e) {
 			throw new InventoryException("Exception occured while getting all factories", e, 500);
