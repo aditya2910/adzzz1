@@ -35,7 +35,12 @@ public class RawMaterialBo extends RawMaterial {
 	}
 	
 	@Override
-	protected void setId(String id) {
+	public void setType(String type) {
+		super.setType(type);
+	}
+	
+	@Override
+	public void setId(String id) {
 		if(id == null || id.isEmpty() || id.length() <= 5) {
 			throw new IllegalArgumentException("Input id is invalid");
 		}
