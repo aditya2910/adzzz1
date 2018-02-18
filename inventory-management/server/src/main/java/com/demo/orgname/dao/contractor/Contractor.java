@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.demo.orgname.service.contractor.ContractorBo;
+
 @Entity
 @Table(name="contractor", catalog = "sbw")
 public class Contractor {
@@ -18,11 +20,22 @@ public class Contractor {
 	@Column(name = "id", nullable = false)
 	private String id;
 	@Column(name = "name", nullable = false)
-    private String name;
+    private String name; // TODO: we should add alternate name field also
 	@Column(name = "address", nullable = false)
     private String address;
 	@Column(name = "phone", unique=true, nullable = false)
     private String phone;
+	
+	public Contractor() {
+		super();
+	}
+
+	public Contractor(ContractorBo bo) {
+		this.setId(bo.getId());
+		this.setName(bo.getName());
+		this.setAddress(bo.getAddress());
+		this.setPhone(bo.getPhone());
+	}
 	
 	public String getId() {
 		return id;

@@ -9,7 +9,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.demo.orgname.service.brand.ProductTypeBo;
-import com.demo.orgname.service.rawmaterial.RawMaterialUnitBo;
 
 @Entity
 @Table(name = "product_type", catalog = "sbw")
