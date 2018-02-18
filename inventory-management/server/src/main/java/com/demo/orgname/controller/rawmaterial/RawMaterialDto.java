@@ -9,6 +9,9 @@ public class RawMaterialDto {
 	private String unit;
     private String type;
     
+    public RawMaterialDto() {
+    }
+    
     public RawMaterialDto(RawMaterial rawMaterial) {
     		super();
 		this.id = rawMaterial.getId();
