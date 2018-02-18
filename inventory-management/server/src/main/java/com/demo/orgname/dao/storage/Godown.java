@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.demo.orgname.service.storage.GodownBo;
 // TODO: change rm_godown to godown
 @Entity
 @Table(name="rm_godown", catalog = "sbw")
@@ -27,6 +29,18 @@ public class Godown {
     private String address;
 	@Column(name = "phone", nullable = false)
     private String phone;
+	
+	public Godown() {
+	}
+	
+	public Godown(GodownBo bo) {
+		this.setId(bo.getId());
+		this.setName(bo.getName());
+		this.setType(bo.getType());
+		this.setArea(bo.getArea());
+		this.setAddress(bo.getAddress());
+		this.setPhone(bo.getPhone());
+	}
 	
 	public String getId() {
 		return id;

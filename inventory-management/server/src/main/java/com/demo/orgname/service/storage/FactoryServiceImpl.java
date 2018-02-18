@@ -18,7 +18,6 @@ public class FactoryServiceImpl {
 	private FactoryRepository repository;
 	
 	public Factory addFactory(FactoryBo factoryBo) throws InventoryException {
-		//repository.save(factory);
 		try {
 			return repository.save(new Factory(factoryBo));
 		} catch (Exception e) {
