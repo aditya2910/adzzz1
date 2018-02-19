@@ -13,7 +13,7 @@ import com.demo.orgname.service.contractor.ContractorBo;
 @Entity
 @Table(name="contractor", catalog = "sbw")
 public class Contractor {
-
+	// TODO:  create a simple contractor code which can be used in PF. e.g. M05
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid")
