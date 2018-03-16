@@ -1,17 +1,23 @@
 package com.demo.report.reportpoc.test5;
 
 import static net.sf.dynamicreports.report.builder.DynamicReports.col;
+import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.border.Border;
+
 import net.sf.dynamicreports.jasper.builder.JasperReportBuilder;
 import net.sf.dynamicreports.report.builder.DynamicReports;
 import net.sf.dynamicreports.report.builder.component.Components;
 import net.sf.dynamicreports.report.builder.datatype.DataTypes;
+import net.sf.dynamicreports.report.builder.style.BorderBuilder;
+import net.sf.dynamicreports.report.builder.style.StyleBuilder;
 import net.sf.dynamicreports.report.constant.HorizontalAlignment;
 import net.sf.dynamicreports.report.exception.DRException;
 import net.sf.jasperreports.engine.JRDataSource;
@@ -23,13 +29,19 @@ public class CollectionDatasourceReport {
 		   build();
 		}
 		private void build() {
+			StyleBuilder columnHeaderStyle = stl.style()
+                    .bold()
+                    .setBackgroundColor(Color.LIGHT_GRAY)
+                    .setBorder(stl.pen1Point())
+                    .setHorizontalAlignment(HorizontalAlignment.LEFT);
 
+					
 			JasperReportBuilder report = DynamicReports.report();
 			report
 				.columns(
-	                  col.column("Item", "item", DataTypes.stringType()),
-	                  col.column("Quantity", "quantity", DataTypes.integerType()),
-	                  col.column("Unit price", "unitPrice", DataTypes.bigDecimalType()))
+	                  col.column("Item", "item", DataTypes.stringType()).setHorizontalAlignment(HorizontalAlignment.LEFT).setTitleStyle(columnHeaderStyle),
+	                  col.column("Quantity", "quantity", DataTypes.integerType()).setHorizontalAlignment(HorizontalAlignment.LEFT).setTitleStyle(columnHeaderStyle),
+	                  col.column("Unit price", "unitPrice", DataTypes.bigDecimalType()).setHorizontalAlignment(HorizontalAlignment.LEFT).setTitleStyle(columnHeaderStyle))
 				.setDataSource(createDataSource())
 				.title(
 						Components.text("SimpleReportExample")
@@ -39,6 +51,7 @@ public class CollectionDatasourceReport {
 			try {
 				report.show();
 				report.toPdf(new FileOutputStream("/Users/adityakumar/Desktop/delete/poc/report-poc/src/main/resources/reports/report.pdf"));
+				//report.toCsv(new FileOutputStream("/Users/adityakumar/Desktop/delete/poc/report-poc/src/main/resources/reports/report.csv"));
 			} catch (DRException | FileNotFoundException e) {
 				e.printStackTrace();
 			}
