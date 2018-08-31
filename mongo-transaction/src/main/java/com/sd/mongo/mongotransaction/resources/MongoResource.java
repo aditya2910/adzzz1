@@ -37,12 +37,16 @@ public class MongoResource {
 			user.setName("Priyam");
 			userRepository.save(user);
 			
-			Thread.sleep(10000);
+			//Thread.sleep(10000);
 			
 			Task task = new Task();
-			task.setId("srtgsr");
+			//task.setId("srtgsr");
 			task.setName("test-task1");
+			//throw Exception();
 			taskRepository.save(task);
+			
+			String name = userRepository.findByName("Priyam");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
