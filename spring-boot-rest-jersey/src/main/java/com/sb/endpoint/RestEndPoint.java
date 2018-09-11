@@ -13,9 +13,13 @@ public class RestEndPoint {
 	@Autowired
 	private ApplicationContext context;
 	
+	@Autowired
+	private SampleProperty sampleProperty;
+	
 	@RequestMapping(value = "/hello" , method= RequestMethod.GET)
     public String startWork() {
 		System.out.println("..........................................get context: " + context);
+		System.out.println(sampleProperty.getTwo());
         return "hello";
     }
 	
