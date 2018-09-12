@@ -3,7 +3,7 @@ package com.sb.service.test.primary;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("bmw")
 public class Bmw implements Car {
 
 	@Override
