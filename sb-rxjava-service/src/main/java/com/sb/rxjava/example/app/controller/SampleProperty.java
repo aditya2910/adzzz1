@@ -1,4 +1,4 @@
-package com.sb.rxjava.example.controller;
+package com.sb.rxjava.example.app.controller;
 
 import java.util.Map;
 

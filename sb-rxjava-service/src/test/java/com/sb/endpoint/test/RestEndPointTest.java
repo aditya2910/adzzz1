@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.sb.rxjava.example.controller.RestEndPoint;
+import com.sb.rxjava.example.app.controller.RestEndPoint;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = RestEndPoint.class, secure = false)
