@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:couchbase="http://www.springframework.org/schema/data/couchbase"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+     http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/data/couchbase
+       http://www.springframework.org/schema/data/couchbase/spring-couchbase.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      
+      
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       
+">
+
+<context:annotation-config />
+
+<bean id="resourceLoader"
+    class="org.springframework.core.io.DefaultResourceLoader" />
+
+<context:component-scan base-package="com.test"/>
+
+<bean id="grid.cfg"
+    class="org.apache.ignite.configuration.IgniteConfiguration">
+    <property name="discoverySpi">
+      <bean
+        class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+        <property name="ipFinder">
+          <bean
+            class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
+            <property name="addresses">
+              <list>
+                <value>127.0.0.1</value>
+              </list>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+<property name="atomicConfiguration">
+      <bean
+        class="org.apache.ignite.configuration.AtomicConfiguration">
+        <!-- Set number of backups. -->
+        <property name="backups" value="1" />
+
+        <!-- Set number of sequence values to be reserved. -->
+        <property name="atomicSequenceReserveSize" value="5000" />
+      </bean>
+    </property>
+
+    
+
+
+    <property name="serviceConfiguration">
+      <list>
+        <bean class="org.apache.ignite.services.ServiceConfiguration">
+          <property name="name"
+            value="task1Service" />
+          <property name="maxPerNodeCount" value="1" />
+          <property name="totalCount" value="1" />
+          <property name="service">
+            <bean
+              class="com.test.ignite.service.Task1ServiceImpl" />
+          </property>
+        </bean>
+        
+      </list>
+    </property>
+    <property name="failureDetectionTimeout" value="60000" />
+  </bean>
+
+
+
+
+  <!-- === -->
+
+<bean id="sender" class="zipkin2.reporter.beans.OkHttpSenderFactoryBean">
+    <property name="endpoint" value="http://localhost:9411/api/v2/spans"/>
+  </bean>
+
+  <!-- allows us to read the service name from spring config -->
+  <context:property-placeholder/>
+
+  <!-- Controls aspects of tracing such as the service name that shows up in the UI -->
+  <bean id="tracing" class="brave.spring.beans.TracingFactoryBean">
+    <property name="localServiceName" value="${zipkin.service:om-----cache-----framework}"/>
+    <property name="spanReporter">
+      <bean class="zipkin2.reporter.beans.AsyncReporterFactoryBean">
+        <property name="encoder" value="JSON_V2"/>
+        <property name="sender" ref="sender"/>
+        <!-- wait up to half a second for any in-flight spans on close -->
+        <property name="closeTimeout" value="500"/>
+      </bean>
+    </property>
+    <property name="propagationFactory">
+      <bean id="propagationFactory" class="brave.propagation.ExtraFieldPropagation" factory-method="newFactory">
+        <constructor-arg index="0">
+          <util:constant static-field="brave.propagation.B3Propagation.FACTORY"/>
+        </constructor-arg>
+        <constructor-arg index="1">
+          <list>
+            <value>user-name</value>
+          </list>
+        </constructor-arg>
+      </bean>
+    </property>
+    <property name="currentTraceContext">
+      <bean class="brave.spring.beans.CurrentTraceContextFactoryBean">
+        <property name="scopeDecorators">
+          <bean class="brave.context.log4j12.MDCScopeDecorator" factory-method="create"/>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- Allows someone to add tags to a span if a trace is in progress, via SpanCustomizer -->
+  <bean id="spanCustomizer" class="brave.CurrentSpanCustomizer" factory-method="create">
+    <constructor-arg index="0" ref="tracing"/>
+  </bean>
+
+  <!-- Decides how to name and tag spans. By default they are named the same as the http method. -->
+  <bean id="httpTracing" class="brave.spring.beans.HttpTracingFactoryBean">
+    <property name="tracing" ref="tracing"/>
+  </bean>
+
+
+
+
+
+
+<!-- === -->
+
+  <mvc:interceptors>
+    <bean class="brave.spring.webmvc.SpanCustomizingHandlerInterceptor"/>
+  </mvc:interceptors>
+ <!-- === --> 
+  
+  <!-- === -->
+
+<bean id="httpClientBuilder" class="brave.httpclient.TracingHttpClientBuilder"
+      factory-method="create">
+    <constructor-arg ref="httpTracing"/>
+  </bean>
+
+  <bean id="httpClient" factory-bean="httpClientBuilder" factory-method="build"/>
+
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    <constructor-arg>
+      <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+        <constructor-arg ref="httpClient"/>
+      </bean>
+    </constructor-arg>
+  </bean>
+
+  <mvc:annotation-driven/>
+
+
+<bean id="helloBean" class="com.test.ignite.task.HelloBean">
+  </bean>
+
+
+
+
+
+</beans>
