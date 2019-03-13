@@ -1,0 +1,20 @@
+spring:
+logging:
+  level:
+    org.springframework: INFO
+    com.sb: INFO
+  pattern:
+    console: "%d %-5level [%thread] %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+server:
+  port: 4085
+
+    
+one:
+  two:
+    three:
+      key1: mapValue1
+      key2: mapValue2
+    four:
+      key1: mapValue1
+      key2: mapValue2

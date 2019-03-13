@@ -26,38 +26,38 @@ public class RestfulHello {
         
 
         
-//        try {
-//
-//    		URL url = new URL("http://localhost:6082/bootelkzipkin2");
-//    		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//    		conn.setRequestMethod("GET");
-//    		conn.setRequestProperty("Accept", "application/json");
-//
-//    		if (conn.getResponseCode() != 200) {
-//    			throw new RuntimeException("Failed : HTTP error code : "
-//    					+ conn.getResponseCode());
-//    		}
-//
-//    		BufferedReader br = new BufferedReader(new InputStreamReader(
-//    			(conn.getInputStream())));
-//
-//    		String output;
-//    		System.out.println("Output from Server .... \n");
-//    		while ((output = br.readLine()) != null) {
-//    			System.out.println(output);
-//    		}
-//
-//    		conn.disconnect();
-//
-//    	  } catch (MalformedURLException e) {
-//
-//    		e.printStackTrace();
-//
-//    	  } catch (IOException e) {
-//
-//    		e.printStackTrace();
-//
-//    	  }
+        try {
+
+    		URL url = new URL("http://localhost:6083/bootelkzipkin3");
+    		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    		conn.setRequestMethod("GET");
+    		conn.setRequestProperty("Accept", "application/json");
+
+    		if (conn.getResponseCode() != 200) {
+    			throw new RuntimeException("Failed : HTTP error code : "
+    					+ conn.getResponseCode());
+    		}
+
+    		BufferedReader br = new BufferedReader(new InputStreamReader(
+    			(conn.getInputStream())));
+
+    		String output;
+    		System.out.println("Output from Server .... \n");
+    		while ((output = br.readLine()) != null) {
+    			System.out.println(output);
+    		}
+
+    		conn.disconnect();
+
+    	  } catch (MalformedURLException e) {
+
+    		e.printStackTrace();
+
+    	  } catch (IOException e) {
+
+    		e.printStackTrace();
+
+    	  }
         
         return new ResponseEntity<String>("{\"msg\": \"Hello World\"}", httpHeaders, HttpStatus.OK);
     }

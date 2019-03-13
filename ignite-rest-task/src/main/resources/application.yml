@@ -1,0 +1,12 @@
+server:
+  port: 4085
+
+    
+one:
+  two:
+    three:
+      key1: mapValue1
+      key2: mapValue2
+    four:
+      key1: mapValue1
+      key2: mapValue2
