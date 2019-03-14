@@ -17,17 +17,17 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.sb.endpoint.SampleControllerLoggingYml;
+import com.sb.endpoint.SampleControllerLogging;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = SampleControllerLoggingYml.class, secure = false)
+@WebMvcTest(value = SampleControllerLogging.class, secure = false)
 public class RestEndPointTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@Autowired
-	private SampleControllerLoggingYml restEndPoint;
+	private SampleControllerLogging restEndPoint;
 	
 	@Configuration
     @ComponentScan ( basePackages = {"com.sb.worker", "com.sb.endpoint"} )
