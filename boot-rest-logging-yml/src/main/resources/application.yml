@@ -4,8 +4,8 @@ logging:
     org.springframework: INFO
     com.sb: INFO
   pattern:
-    console: "%d %-5level [%thread] %logger : %msg%n"
-    file: "%d %-5level [%thread] %logger : %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread, %X{mdc_Key_1}] %-5level %logger{36}:  %X{mdc_Key_1} - %m%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread, %X{mdc_Key_1}] %-5level %logger{36}:  %X{mdc_Key_1} - %m%n"
 server:
   port: 4085
 
