@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sb.service.Verify;
-
 @RestController
 @RequestMapping("/main")
 public class RestEndPoint {
@@ -16,16 +14,12 @@ public class RestEndPoint {
 	private ApplicationContext context;
 	
 	@Autowired
-	private Verify verify;
-	
-	@Autowired
 	private SampleProperty sampleProperty;
 	
 	@RequestMapping(value = "/hello" , method= RequestMethod.GET)
     public String startWork() {
 		System.out.println("..........................................get context: " + context);
 		System.out.println(sampleProperty.getTwo());
-		verify.sayHello();
         return "hello";
     }
 	

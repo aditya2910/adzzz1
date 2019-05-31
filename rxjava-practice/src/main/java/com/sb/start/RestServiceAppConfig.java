@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Configuration
 //@ImportResource("classpath:appConfig.xml")
 //@Component
-@ComponentScan ( {"com.sb.worker", "com.sb.endpoint", "com.sb.service"} )
+@ComponentScan ( {"com.sb.worker", "com.sb.endpoint"} )
 public class RestServiceAppConfig {
 
 }

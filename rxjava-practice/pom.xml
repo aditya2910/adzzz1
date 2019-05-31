@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-rest-jersey</artifactId>
+	<artifactId>rxjava-practice</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>demo</name>
-	<description>spring-boot-rest-jersey</description>
+	<description>rxjava-practice</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -44,42 +44,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/com.cedarsoftware/java-util -->
-<dependency>
-    <groupId>com.cedarsoftware</groupId>
-    <artifactId>java-util</artifactId>
-    <version>1.8.0</version>
-</dependency>
 		<dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <scope>runtime</scope>
-   </dependency>
-   <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <scope>runtime</scope>
-   </dependency>
-   <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.14</version>
-      <scope>runtime</scope>
-   </dependency>
-<!-- https://mvnrepository.com/artifact/com.twitter/util-logging -->
-<dependency>
-    <groupId>com.twitter</groupId>
-    <artifactId>util-logging_2.12</artifactId>
-    <version>19.5.1</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
-<dependency>
-    <groupId>commons-logging</groupId>
-    <artifactId>commons-logging</artifactId>
-    <version>1.2</version>
-</dependency>
-
-   
+		    <groupId>io.reactivex</groupId>
+		    <artifactId>rxjava</artifactId>
+		    <version>1.3.8</version>
+		</dependency>
 
 	</dependencies>
 

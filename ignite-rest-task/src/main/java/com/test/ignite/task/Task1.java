@@ -16,11 +16,15 @@ import org.apache.ignite.compute.ComputeJobResult;
 import org.apache.ignite.compute.ComputeTaskAdapter;
 import org.apache.ignite.compute.ComputeTaskName;
 import org.apache.ignite.resources.SpringApplicationContextResource;
-import org.springframework.cloud.sleuth.zipkin.ZipkinSpanReporter;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.web.client.RestTemplate;
+//import org.springframework.http.HttpMethod;
+//import org.springframework.web.client.RestTemplate;
+
+
+import org.apache.log4j.Logger;
+
 
 @ComputeTaskName("task1")
 public class Task1 extends ComputeTaskAdapter<String, Object> {
@@ -34,30 +38,35 @@ public class Task1 extends ComputeTaskAdapter<String, Object> {
 	@SpringApplicationContextResource
 	private ApplicationContext ctx;
 
+	Logger logger = Logger.getLogger(Task1.class);
 	
 	@Override
 	public Map<? extends ComputeJob, ClusterNode> map(List<ClusterNode> nodes, String arg) throws IgniteException {
 		System.out.println(".....inside Task1 map....  ");
-		RestTemplate restTemplate = ctx.getBean(RestTemplate.class);
-		System.out.println(".....inside Task1 map.... restTemplate: "+ restTemplate);
-        System.out.println(Arrays.asList(ctx.getBeanDefinitionNames()));
+		//RestTemplate restTemplate = ctx.getBean(RestTemplate.class);
+		//System.out.println(".....inside Task1 map.... restTemplate: "+ restTemplate);
+        //System.out.println(Arrays.asList(ctx.getBeanDefinitionNames()));
         
+        logger.debug("......I am debug");
+        logger.warn("......I am warn");
+        logger.info("......I am info");
+        logger.error("......I am error");
         
-        ZipkinSpanReporter zipkinSpanReporter = ctx.getBean(ZipkinSpanReporter.class);
-		System.out.println(".....inside Task1 map.... zipkinSpanReporter: "+ zipkinSpanReporter);
+//        ZipkinSpanReporter zipkinSpanReporter = ctx.getBean(ZipkinSpanReporter.class);
+//		System.out.println(".....inside Task1 map.... zipkinSpanReporter: "+ zipkinSpanReporter);
 
 		
 //		restTemplate = new RestTemplateBuilder()
 //        .additionalInterceptors(TracingClientHttpRequestInterceptor.create(tracing))
 //        .build();
 		
-		System.out.println(".....inside Task1 map.... restTemplate: "+ restTemplate);
+		//System.out.println(".....inside Task1 map.... restTemplate: "+ restTemplate);
 		
-		String response = (String) restTemplate.exchange("http://localhost:6083/bootelkzipkin3", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
-	      }).getBody();
-			
-			System.out.println("boot elk response: " + response);
-		
+//		String response = (String) restTemplate.exchange("http://localhost:6083/bootelkzipkin3", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+//	      }).getBody();
+//			
+//			System.out.println("boot elk response: " + response);
+//		
 		
 		Map<ComputeJob, ClusterNode> map = new HashMap<ComputeJob, ClusterNode>();
 

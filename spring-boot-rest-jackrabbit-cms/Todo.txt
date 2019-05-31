@@ -1,0 +1,4 @@
+1. validate input JSON to REST service. - validate only few fields in nested object of input JSON
+2. spring exception handling
+3. CRUD to JCR
+4. search on JCR

@@ -19,6 +19,10 @@
 		
 		<spring.version>3.2.18.RELEASE</spring.version>
 		<brave.version>5.6.1</brave.version>
+		
+		<log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <ignite.version>2.7.0</ignite.version>
 	</properties>
 
 	<dependencies>
@@ -46,29 +50,79 @@
 		</dependency>
 	
 		<!-- Adds the MVC class and method names to server spans -->
-	    <dependency>
+	    <!-- <dependency>
 	      <groupId>io.zipkin.brave</groupId>
 	      <artifactId>brave-instrumentation-spring-webmvc</artifactId>
 	    </dependency>
-	    <!-- Instruments the underlying HttpClient requests that call the backend -->
+	    Instruments the underlying HttpClient requests that call the backend
 	    <dependency>
 	      <groupId>io.zipkin.brave</groupId>
 	      <artifactId>brave-instrumentation-httpclient</artifactId>
-	    </dependency>
+	    </dependency> -->
 	
 	    <!-- Integrates so you can use log patterns like %X{traceId}/%X{spanId} -->
 	    <dependency>
-	      <groupId>log4j</groupId>
-	      <artifactId>log4j</artifactId>
-	      <version>1.2.17</version>
-	    </dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-log4j</artifactId>
+            <version>${ignite.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- <dependency>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-slf4j</artifactId>
+            <version>${ignite.version}</version>
+            <scope>test</scope>
+        </dependency>
 	    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<!-- <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.7</version>
+</dependency> -->
+
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-1.2-api</artifactId>
+    <version>2.7</version>
+</dependency>
+<dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+            <scope>test</scope>
+            
+        </dependency>
+        
+        
+        
+        
+	    <!-- <dependency>
 	      <groupId>io.zipkin.brave</groupId>
 	      <artifactId>brave-context-log4j12</artifactId>
-	    </dependency>
+	    </dependency> -->
 	
 	    <!-- The below are needed to report traces to http://localhost:9411/api/v2/spans -->
-	    <dependency>
+	    <!-- <dependency>
 	      <groupId>io.zipkin.brave</groupId>
 	      <artifactId>brave-spring-beans</artifactId>
 	    </dependency>
@@ -79,7 +133,7 @@
 	    <dependency>
 	      <groupId>io.zipkin.reporter2</groupId>
 	      <artifactId>zipkin-sender-okhttp3</artifactId>
-	    </dependency>
+	    </dependency> -->
 	    
 	    
 	    <dependency>
@@ -88,7 +142,7 @@
 	      <version>2.5</version>
 	      <scope>provided</scope>
 	    </dependency>
-	    <dependency>
+	    <!-- <dependency>
 	      <groupId>org.springframework</groupId>
 	      <artifactId>spring-webmvc</artifactId>
 	      <version>${spring.version}</version>
@@ -97,12 +151,12 @@
 	      <groupId>org.springframework</groupId>
 	      <artifactId>spring-web</artifactId>
 	      <version>${spring.version}</version>
-	    </dependency>
+	    </dependency> -->
 	    
-	    <dependency>
+	   <!--  <dependency>
 		    <groupId>io.zipkin.reporter2</groupId>
 		    <artifactId>zipkin-reporter-spring-beans</artifactId>
-		</dependency>
+		</dependency> -->
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-sleuth-zipkin -->
 		<dependency>
@@ -113,7 +167,7 @@
 		
 	</dependencies>
 	
-	<dependencyManagement>
+<!-- 	<dependencyManagement>
 	    <dependencies>
 	      <dependency>
 	        <groupId>io.zipkin.brave</groupId>
@@ -123,7 +177,7 @@
 	        <scope>import</scope>
 	      </dependency>
 	    </dependencies>
-	 </dependencyManagement>
+	 </dependencyManagement> -->
 
 	<build>
 		<plugins>

@@ -6,35 +6,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sb.service.Verify;
+import com.sb.service.JackRabbitServiceImpl;
+import com.sb.util.AppUtil;
 
 @RestController
-@RequestMapping("/main")
+@RequestMapping("/jr")
 public class RestEndPoint {
 	
 	@Autowired
 	private ApplicationContext context;
 	
 	@Autowired
-	private Verify verify;
+	private JackRabbitServiceImpl jackRabbitService;
 	
 	@Autowired
 	private SampleProperty sampleProperty;
 	
-	@RequestMapping(value = "/hello" , method= RequestMethod.GET)
+	@RequestMapping(value = "/save" , method= RequestMethod.GET)
     public String startWork() {
 		System.out.println("..........................................get context: " + context);
 		System.out.println(sampleProperty.getTwo());
-		verify.sayHello();
+		jackRabbitService.saveContent(AppUtil.getContentToSaveInJR());
+		
         return "hello";
     }
 	
-	
-	@RequestMapping(value = "/abc" , method= RequestMethod.POST)
-    public String defaultEndpoint() {
-		System.out.println(".......................................post...Default ");
-        return "Default Handler response Success";
-    }
 	
 	
 }
