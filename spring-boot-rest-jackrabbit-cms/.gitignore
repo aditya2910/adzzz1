@@ -24,3 +24,7 @@ nbdist/
 
 S3Storage/
 bin/
+repository/
+jackrabbit/
+derby.log
+repository.xml
