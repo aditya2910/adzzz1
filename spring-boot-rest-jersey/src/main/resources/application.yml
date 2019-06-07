@@ -1,6 +1,7 @@
 server:
   port: 7080
-
+a:
+  b: testing_val
     
 one:
   two:

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sb.config.Traceable;
 import com.sb.service.JackRabbitServiceImpl;
+import com.sb.service.SpringValueClass;
 import com.sb.util.AppUtil;
 
 @RestController
@@ -27,13 +28,16 @@ public class JRController {
 	@Autowired
 	private SampleProperty sampleProperty;
 	
+	@Autowired
+	private SpringValueClass springValueClass;
+	
 	@Traceable
 	@RequestMapping(value = "/save" , method= RequestMethod.GET)
     public String startWork() {
 		System.out.println("..........................................get context: " + context);
 		System.out.println(sampleProperty.getTwo());
-		jackRabbitService.saveContent(AppUtil.getContentToSaveInJR());
-		
+		//jackRabbitService.saveContent(AppUtil.getContentToSaveInJR());
+		System.out.println(springValueClass.getValueFromFile());
         return "hello";
     }
 	

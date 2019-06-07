@@ -1,7 +1,10 @@
 server:
   port: 7080
 
-    
+value:
+  from:
+    file: Value got from the file
+
 one:
   two:
     three:
