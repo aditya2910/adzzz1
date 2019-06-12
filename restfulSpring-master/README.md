@@ -1,3 +1,6 @@
+Its a pratice project
+
+
 # Restful Spring
 
 - Build with: mvn clean install
