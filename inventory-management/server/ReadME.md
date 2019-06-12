@@ -1,3 +1,14 @@
+
+This is an incompleteproject.
+Its complete version saved in gitlab.
+
+This app creates a bundle with both front end and backend code. Used frontend tach is Angular5 and backend is Spring boot.
+Pending: security integration
+
+
+
+
+
 TODO: main RM consumption rate entry is pending
 
 S E R V E R
