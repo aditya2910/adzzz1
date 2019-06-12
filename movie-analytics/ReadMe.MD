@@ -1,3 +1,8 @@
+This is a python project.
+Does sentimental analysis using the movie reviews from BookMyShow.com
+It does natural language processing.
+
+
 
 you need to download dataset from nltk:
 import nltk
