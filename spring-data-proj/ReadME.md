@@ -1,3 +1,7 @@
+This project is a sqample wireframe of spring-boot-spring-data using MySQL underlying.
+
+
+
 This project uses MySql. Its config is stored in application.properties
 
 For Postman call for RawMaterial:
