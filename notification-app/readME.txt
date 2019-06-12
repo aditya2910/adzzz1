@@ -1,3 +1,5 @@
+Its an improvement project over RealtimeNotification project
+
 Below are steps for starting kafka:
 
 Install zookeeper and add its bin folder in PATH
