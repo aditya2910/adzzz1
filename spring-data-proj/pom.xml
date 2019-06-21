@@ -25,6 +25,20 @@
 	</properties>
 
 	<dependencies>
+
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.6.1</version>
+	<scope>compile</scope>
+</dependency>
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger2</artifactId>
+		<version>2.6.1</version>
+		<scope>compile</scope>
+	</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -44,12 +58,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-webmvc -->
-<dependency>
-    <groupId>org.springframework.data</groupId>
-    <artifactId>spring-data-rest-webmvc</artifactId>
-    <version>1.0.0.RELEASE</version>
-</dependency>
+
 		
 	</dependencies>
 
