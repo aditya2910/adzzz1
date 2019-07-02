@@ -1,0 +1,13 @@
+server:
+  port: 7080
+a:
+  b: testing_val
+    
+one:
+  two:
+    three:
+      key1: mapValue1
+      key2: mapValue2
+    four:
+      key1: mapValue1
+      key2: mapValue2

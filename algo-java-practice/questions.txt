@@ -1,0 +1,60 @@
+Questions:
+
+
+Singly Linked List:
+1. CRUD 
+2. get length
+3. Swap nodes in a linked list without swapping data
+4. Reverse
+5. Merge two sorted linked lists
+
+
+Circular Linked List:
+1. CRUD 
+2. Sorted insert for circular linked list
+
+
+Doubly Linked List:
+1. CRUD
+2. Reverse
+3. The Great Tree-List Recursion Problem
+4. QuickSort on Doubly Linked List
+5. Merge Sort for Doubly Linked List
+
+
+Stack:
+1. CRUD using array
+2. Infix to Postfix Conversion using Stack
+3. Evaluation of Postfix Expression
+4. Reverse a String using Stack
+5. Implement two stacks in an array
+5. Check for balanced parentheses in an expression
+6. Next Greater Element
+7. Reverse a stack using recursion
+8. Sort a stack using recursion
+9. The Stock Span Problem
+10. Design and Implement Special Stack Data Structure
+11. Implement Stack using Queues
+12. Design a stack with operations on middle element
+13. How to efficiently implement k stacks in a single array?
+14. Sort a stack using recursion
+
+Queue:
+1. CRUD using array
+2. Linked List Implementation of Queue
+3. Priority Queue Implementation
+4. Implement Queue using Stacks
+5. Find the first circular tour that visits all petrol pumps
+6. Maximum of all subarrays of size k
+7. An Interesting Method to Generate Binary Numbers from 1 to n
+8. How to efficiently implement k Queues in a single array?
+
+
+Binary Tree:
+1. Enumeration of Binary Tree
+2. CRUD
+3. Tree Traversals
+4. BFS vs DFS for Binary Tree
+5. Level Order Tree Traversal
+6. Diameter of a Binary Tree
+7. 
