@@ -3,17 +3,39 @@ package com.adzzz.dsa.singlylinkedlist.crud;
 public class SinglyLinkedListCrud {
 
 	public static void main(String[] args) {
-		// Create singly list with 4 items
+		System.out.println("Create singly list with 4 values - 1, 2, 3, 4");
 		SinglyNode list = createSinglyLinkedList();
-		// Read singly list with 4 items
+		
+		System.out.println("Read singly list with 4 values - 1, 2, 3, 4");
 		printListContent(list);
 		
-		// Update node with 3 to 9
+		System.out.println("Update node with value 3 to 9");
 		SinglyNode updatedList = updateSinglyLinkedList(list, 3, 9);
 		printListContent(updatedList);
+		
+		System.out.println("Delete node with value 2");
+		SinglyNode deletedItemList = deleteSinglyLinkedList(list, 2);
+		printListContent(deletedItemList);
+		
+	}
+
+	private static SinglyNode deleteSinglyLinkedList(SinglyNode list, int valueToDelete) {
+		// TODO: handle first and last nodes
+		SinglyNode currentNode = null, matchingValueNextNode = null;
+		for (SinglyNode nodeIndex = list.getNode(); nodeIndex != null; nodeIndex = nodeIndex.getNode()) {
+			if(valueToDelete == nodeIndex.getValue()) {
+				currentNode = nodeIndex;
+				matchingValueNextNode = nodeIndex.getNode();
+			}
+		}
+		currentNode.setNode(matchingValueNextNode.getNode());
+		currentNode.setValue(matchingValueNextNode.getValue());
+		
+		return list;
 	}
 
 	private static SinglyNode updateSinglyLinkedList(SinglyNode list, int oldValue, int newValue) {
+		// TODO: check first node
 		SinglyNode matchedNode = null;
 		for (SinglyNode tmp = list.getNode(); tmp != null; tmp = tmp.getNode()) {
 			if (oldValue == tmp.getValue()) {
