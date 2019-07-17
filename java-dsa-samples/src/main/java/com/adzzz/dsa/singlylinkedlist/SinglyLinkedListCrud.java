@@ -1,4 +1,4 @@
-package com.adzzz.dsa.singlylinkedlist.crud;
+package com.adzzz.dsa.singlylinkedlist;
 
 public class SinglyLinkedListCrud {
 
