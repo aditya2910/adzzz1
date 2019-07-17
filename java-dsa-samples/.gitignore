@@ -24,3 +24,5 @@ nbdist/
 
 S3Storage/
 bin/
+/.apt_generated/
+/.apt_generated_tests/
