@@ -17,6 +17,18 @@ public class SinglyLinkedListCrud {
 		SinglyNode deletedItemList = deleteSinglyLinkedList(list, 2);
 		printListContent(deletedItemList);
 		
+		System.out.println("Get Length of singly linked list");
+		int listLength = getLengthOfSinglyLinkedList(list);
+		System.out.println(listLength);
+	}
+
+	private static int getLengthOfSinglyLinkedList(SinglyNode list) {
+		int counter = 1;
+		//TODO: make counter to 0 and return 0 if list is empty
+		for (SinglyNode nodeIndex = list.getNode(); nodeIndex != null; nodeIndex = nodeIndex.getNode()) {
+			counter++;
+		}
+		return counter;
 	}
 
 	private static SinglyNode deleteSinglyLinkedList(SinglyNode list, int valueToDelete) {
