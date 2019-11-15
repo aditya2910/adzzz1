@@ -71,8 +71,6 @@ public class SinglyLinkedListCrud {
 		SinglyNode node4 = new SinglyNode(4);
 		node3.setNode(node4);
 		
-		
-		
 		return node1;
 	}
 
