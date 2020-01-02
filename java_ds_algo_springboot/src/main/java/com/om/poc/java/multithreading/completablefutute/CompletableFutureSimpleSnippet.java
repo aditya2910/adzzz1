@@ -16,7 +16,7 @@ public class CompletableFutureSimpleSnippet {
 
       System.out.println("Result " + count);
     } catch (InterruptedException | ExecutionException ex) {
-      // Exceptions from the future should be handled here
+        ex.printStackTrace();
     }
   }
 

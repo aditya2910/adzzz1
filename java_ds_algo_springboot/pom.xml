@@ -8,15 +8,15 @@
     <artifactId>java-ds-algo-springboot</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    
-<parent>
+    <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.8.RELEASE</version>
 		<relativePath/>
-    <!-- lookup parent from repository -->
+        <!-- lookup parent from repository -->
 	</parent>
-	<dependencies>
+    
+<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -26,13 +26,13 @@
     <artifactId>javax.inject</artifactId>
     <version>1</version>
 </dependency>
-      <!--<dependency>-->
-      <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-      <!--<artifactId>jackson-databind</artifactId>-->
-      <!--<version>2.9.4</version>-->
-      <!--</dependency>-->
+    <!--<dependency>-->
+    <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+    <!--<artifactId>jackson-databind</artifactId>-->
+    <!--<version>2.9.4</version>-->
+    <!--</dependency>-->
 
-      <dependency>
+    <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-core</artifactId>
     <version>2.9.8</version>
@@ -42,22 +42,22 @@
     <artifactId>jackson-databind</artifactId>
     <version>2.9.8</version>
 </dependency>
-      <!-- https://mvnrepository.com/artifact/com.google.auto.service/auto-service -->
-      <!--<dependency>-->
-      <!--<groupId>com.google.auto.service</groupId>-->
-      <!--<artifactId>auto-service</artifactId>-->
-      <!--<version>1.0-rc6</version>-->
-      <!--</dependency>-->
+    <!-- https://mvnrepository.com/artifact/com.google.auto.service/auto-service -->
+    <!--<dependency>-->
+    <!--<groupId>com.google.auto.service</groupId>-->
+    <!--<artifactId>auto-service</artifactId>-->
+    <!--<version>1.0-rc6</version>-->
+    <!--</dependency>-->
 
-      <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
-      <dependency>
+    <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+    <dependency>
     <groupId>javax.persistence</groupId>
     <artifactId>persistence-api</artifactId>
     <version>1.0</version>
 </dependency>
 
-      <!-- https://mvnrepository.com/artifact/org.json/json -->
-      <dependency>
+    <!-- https://mvnrepository.com/artifact/org.json/json -->
+    <dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
     <version>20190722</version>
