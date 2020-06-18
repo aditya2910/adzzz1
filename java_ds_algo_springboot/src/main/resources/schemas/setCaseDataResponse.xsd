@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.adeptra.net/Adeptra/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.adeptra.net/Adeptra/">
+    <xsd:include schemaLocation="common.xsd"></xsd:include>
+    <xsd:complexType name="caseResponseType">
+        <xsd:sequence>
+            <xsd:element name="caseId" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="status" type="tns:statusType" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="variableList" type="tns:variableListType" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="setCaseDataResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="caseDataResponse" type="tns:caseResponseType" maxOccurs="1" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

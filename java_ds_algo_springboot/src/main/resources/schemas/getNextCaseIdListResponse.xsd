@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.adeptra.net/Adeptra/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.adeptra.net/Adeptra/">
+    <xsd:include schemaLocation="common.xsd"></xsd:include>
+    <xsd:element name="getNextCaseIdListResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="status" type="tns:statusType"
+                    maxOccurs="1" minOccurs="1"></xsd:element>
+                <xsd:element name="caseIdList" type="tns:caseIdListType"
+                    maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="caseIdListType">
+        <xsd:sequence>
+            <xsd:element name="caseId" type="xsd:string" maxOccurs="1"
+                minOccurs="1"></xsd:element>
+            <xsd:element name="clientId" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="currentQueueId" type="xsd:string"
+                maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="tenantCode" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

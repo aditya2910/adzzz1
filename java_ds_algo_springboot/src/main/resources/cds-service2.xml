@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:task="http://www.springframework.org/schema/task"
+     xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.0.xsd">
+
+
+    <bean id="vehicle" class="com.om.poc.delete3spring.Vehicle"></bean>
+
+    <!--<bean id="AdeptraInsert" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"-->
+          <!--lazy-init="false">-->
+        <!--<property name="schemaCollection">-->
+            <!--<bean class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">-->
+                <!--<property name="inline" value="true" />-->
+                <!--<property name="xsds">-->
+                    <!--<list>-->
+                        <!--<value>classpath*:schemas/common.xsd</value>-->
+                        <!--<value>classpath*:schemas/getCaseDataRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/getCaseDataResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/getCaseStatusRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/getCaseStatusResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/getNextCaseIdListRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/getNextCaseIdListResponse.xsd-->
+                        <!--</value>-->
+                        <!--<value>classpath*:schemas/getQueueStatisticsRequest.xsd-->
+                        <!--</value>-->
+                        <!--<value>classpath*:schemas/getQueueStatisticsResponse.xsd-->
+                        <!--</value>-->
+                        <!--<value>classpath*:schemas/getVersionRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/getVersionResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseDataRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseDataResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseDeleteRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseDeleteResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseOpenRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseOpenResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseResultRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseResultResponse.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseTerminateRequest.xsd</value>-->
+                        <!--<value>classpath*:schemas/setCaseTerminateResponse.xsd</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</property>-->
+        <!--<property name="portTypeName" value="AdeptraInsert" />-->
+        <!--<property name="serviceName" value="AdeptraInsert" />-->
+        <!--<property name="locationUri" value="/cdsservice" />-->
+    <!--</bean>-->
+
+</beans>

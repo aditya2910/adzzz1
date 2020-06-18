@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.adeptra.net/Adeptra/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.adeptra.net/Adeptra/">
+    <xsd:include schemaLocation="common.xsd"></xsd:include>
+    <xsd:element name="getCaseDataRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceContext" type="tns:serviceContextType"
+                    maxOccurs="1" minOccurs="0"></xsd:element>
+                <xsd:element name="caseId" type="xsd:string"
+                    maxOccurs="1" minOccurs="1"></xsd:element>
+                <xsd:element name="variableList" type="tns:variableListType"
+                    maxOccurs="1" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -14,7 +14,7 @@ public class QueensProblem {
     if (setQueens(0)) {
       printQueens(chessTable);
     } else {
-      System.out.println("Solution is not possible....");
+      System.out.println("VehicleService is not possible....");
     }
   }
 

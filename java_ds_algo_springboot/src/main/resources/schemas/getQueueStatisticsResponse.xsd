@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.adeptra.net/Adeptra/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.adeptra.net/Adeptra/">
+    <xsd:include schemaLocation="common.xsd"></xsd:include>
+    <xsd:element name="getQueueStatisticsResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="status" type="tns:statusType"
+                    maxOccurs="1" minOccurs="1"></xsd:element>
+                <xsd:element name="queueStatisticsList" type="tns:queueStatisticsListType"
+                    maxOccurs="unbounded" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="queueStatisticsListType">
+        <xsd:sequence>
+            <xsd:element
+                name="queueStatistics"
+                type="tns:queueStatistics"
+                maxOccurs="unbounded"
+                minOccurs="1"
+            ></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="queueStatistics">
+        <xsd:sequence>
+            <xsd:element name="activeCaseCount" type="xsd:long" 
+            maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="queueName" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="actualQueueName" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="caseCount" type="xsd:long" maxOccurs="1"
+                minOccurs="1"></xsd:element>
+            <xsd:element name="closedCaseCount" type="xsd:long" maxOccurs="1"
+                minOccurs="1"></xsd:element>
+            <xsd:element name="newCaseCount" type="xsd:long" maxOccurs="1"
+                minOccurs="1"></xsd:element>
+            <xsd:element name="openCaseCount" type="xsd:long" maxOccurs="1"
+                minOccurs="1"></xsd:element>
+            <xsd:element name="lastUpdatedTime" type="xsd:dateTime"
+                maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="lastUpdatedTimeInUserTZ" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
