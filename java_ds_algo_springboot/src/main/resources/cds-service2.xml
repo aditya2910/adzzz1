@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.0.xsd">
 
 
-    <bean id="vehicle" class="com.om.poc.delete3spring.Vehicle"></bean>
+    <bean id="vehicle" class="com.poc.delete3spring.Vehicle"></bean>
 
     <!--<bean id="AdeptraInsert" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"-->
           <!--lazy-init="false">-->
