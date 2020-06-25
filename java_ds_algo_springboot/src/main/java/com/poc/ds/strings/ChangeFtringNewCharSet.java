@@ -16,7 +16,7 @@ public class ChangeFtringNewCharSet {
   private static String getNewCharSet(final char charSet[], final String input) {
     int n = input.length();
 
-    // hashing for new character set
+    // simplehashing for new character set
     char hashChar[] = new char[26];
     for (int i = 0; i < 26; i++) {
 

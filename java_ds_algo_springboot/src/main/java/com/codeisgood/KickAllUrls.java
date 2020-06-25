@@ -1,6 +1,7 @@
 package com.codeisgood;
 
-import java.awt.*;
+
+import java.awt.Desktop;
 import java.net.URI;
 import java.util.Arrays;
 
